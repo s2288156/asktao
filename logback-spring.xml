@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="5000">
+    <springProperty scope="context" name="PORT" source="server.port"/>
+    <springProperty scope="context" name="APPLICATION_NAME" source="spring.application.name"/>
+    <property name="USER_HOME" value="${user.home}"/>
+
+
+    <!-- 按照每天生成日志文件,如果当天单个日志文件达到500MB，则压缩为zip文件 -->
+    <appender name="RUNTIME"  class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>${USER_HOME}/logs/${APPLICATION_NAME}/%d{yyyy-MM-dd}.%i.log.zip</fileNamePattern>
+            <maxFileSize>50MB</maxFileSize>
+            <MaxHistory>5</MaxHistory>
+            <totalSizeCap>1GB</totalSizeCap>
+        </rollingPolicy>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>[%level]-[%d]-[%X{threadId}]-[%C:%L]-%msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <!-- 此日志appender是为开发使用，只配置最底级别，控制台输出的日志级别是大于或等于此级别的日志信息 -->
+        <Target>System.out</Target>
+        <encoder>
+            <pattern>[%level]-[%d]-[%X{threadId}]-[%C:%L]-%msg%n</pattern>
+            <charset>utf-8</charset>
+        </encoder>
+    </appender>
+
+    <!-- 生产环境，将此级别配置为适合的级别，以名日志文件太多或影响程序性能 -->
+    <root level="INFO">
+<!--        <appender-ref ref="RUNTIME"/>-->
+        <!-- 生产环境将请STDOUT去掉 -->
+        <appender-ref ref="STDOUT"/>
+    </root>
+</configuration>
