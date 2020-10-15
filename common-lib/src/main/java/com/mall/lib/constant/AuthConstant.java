@@ -34,4 +34,9 @@ public class AuthConstant {
      * 用户信息Http请求头
      */
     public static final String USER_TOKEN_HEADER = "user";
+
+    /**
+     * 后台管理client_id
+     */
+    public static final String ADMIN_CLIENT_ID = "admin-app";
 }
