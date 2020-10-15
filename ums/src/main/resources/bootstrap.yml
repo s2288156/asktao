@@ -3,3 +3,5 @@ spring:
     active: dev
   application:
     name: ums
+
+db_name: db_ums
