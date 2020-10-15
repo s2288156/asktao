@@ -7,6 +7,7 @@
     <modules>
         <module>ums</module>
         <module>common-web</module>
+        <module>common-lib</module>
     </modules>
 
     <parent>
