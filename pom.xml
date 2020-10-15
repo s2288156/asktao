@@ -9,6 +9,7 @@
         <module>common-web</module>
         <module>common-lib</module>
         <module>common-mybatis</module>
+        <module>auth-server</module>
     </modules>
 
     <parent>
