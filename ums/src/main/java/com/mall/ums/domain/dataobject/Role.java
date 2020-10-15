@@ -17,7 +17,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Accessors(chain = true)
 @ToString(callSuper = true)
-@TableName(autoResultMap = true, value = "role")
+@TableName(autoResultMap = true, value = "t_role")
 public class Role {
 
     private String id;

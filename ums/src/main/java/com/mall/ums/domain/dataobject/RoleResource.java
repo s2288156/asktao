@@ -16,7 +16,7 @@ import lombok.experimental.Accessors;
 @AllArgsConstructor
 @Accessors(chain = true)
 @ToString(callSuper = true)
-@TableName(autoResultMap = true, value = "role_resource")
+@TableName(autoResultMap = true, value = "t_role_resource")
 public class RoleResource {
 
     private String id;

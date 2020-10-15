@@ -18,7 +18,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Accessors(chain = true)
 @ToString(callSuper = true)
-@TableName(autoResultMap = true, value = "manager")
+@TableName(autoResultMap = true, value = "t_manager")
 public class Manager {
 
     private String id;

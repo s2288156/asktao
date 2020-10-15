@@ -36,7 +36,7 @@ def generate(table, dir) {
 
 def generate(out, table, className, fields) {
     // ====================================== 表名称
-    def tableName = table.getName() - "t_"
+    def tableName = table.getName()
     // ====================================== className
     def cName = className - "T"
     out.println "package $packageName"

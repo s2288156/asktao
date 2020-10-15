@@ -17,7 +17,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Accessors(chain = true)
 @ToString(callSuper = true)
-@TableName(autoResultMap = true, value = "resource")
+@TableName(autoResultMap = true, value = "t_resource")
 public class Resource {
 
     private String id;
