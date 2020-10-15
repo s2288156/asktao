@@ -10,6 +10,7 @@
         <module>common-lib</module>
         <module>common-mybatis</module>
         <module>auth-server</module>
+        <module>gateway</module>
     </modules>
 
     <parent>

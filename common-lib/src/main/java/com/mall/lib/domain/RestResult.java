@@ -35,12 +35,20 @@ public class RestResult<T> implements Serializable {
         return build(ResultCodeEnum.SUCCESS, data);
     }
 
-    public static <T> RestResult<T> error(IResultCode<String, String> resultCode) {
+    public static <T> RestResult<T> failed(IResultCode<String, String> resultCode) {
         return build(resultCode, null);
     }
 
-    public static <T> RestResult<T> error(String returnCode, String returnMsg) {
+    public static <T> RestResult<T> failed(String returnCode, String returnMsg) {
         return new RestResult<>(returnCode, returnMsg, null);
+    }
+
+    public static <T> RestResult<T> unauthorized(T data) {
+        return build(ResultCodeEnum.UNAUTHORIZED, data);
+    }
+
+    public static <T> RestResult<T> forbidden(T data) {
+        return build(ResultCodeEnum.FORBIDDEN, data);
     }
 
     private static <T> RestResult<T> build(IResultCode<String, String> resultCode, T data) {

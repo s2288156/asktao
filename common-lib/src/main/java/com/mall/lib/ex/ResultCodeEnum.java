@@ -15,6 +15,8 @@ public enum ResultCodeEnum implements IResultCode<String, String> {
     // 一级宏观错误码
     USER_ERROR("A0001", "用户端错误"),
     USER_REGISTER_ERROR("A0100", "用户注册错误"),
+    UNAUTHORIZED("A0101", "暂未登录或token已经过期"),
+    FORBIDDEN("A0102", "没有相关权限"),
     USERNAME_EXISTS("A0111", "用户名已存在"),
     USERNAME_NOT_EXISTS("A0112", "用户名不存在"),
     USER_NOT_EXISTS("A0113", "用户不存在"),
