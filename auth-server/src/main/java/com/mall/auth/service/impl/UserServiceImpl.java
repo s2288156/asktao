@@ -4,6 +4,8 @@ import com.mall.auth.domain.SecurityUser;
 import com.mall.lib.constant.AuthConstant;
 import com.mall.lib.constant.MessageConstant;
 import com.mall.lib.domain.UserDto;
+import com.mall.ums.api.IManagerClient;
+import com.mall.ums.api.IMemberClient;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AccountExpiredException;
