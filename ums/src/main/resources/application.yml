@@ -1,0 +1,12 @@
+server:
+  port: 8500
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+feign:
+#  okhttp:
+#    enabled: true
+  httpclient:
+    connection-timeout: 3000
