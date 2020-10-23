@@ -45,12 +45,13 @@ public class AuthorizationManager implements ReactiveAuthorizationManager<Author
     @Autowired
     private IgnoreUrlsConfig ignoreUrlsConfig;
 
+    PathMatcher pathMatcher;
+
     @Override
     public Mono<AuthorizationDecision> check(Mono<Authentication> mono, AuthorizationContext authorizationContext) {
         ServerHttpRequest request = authorizationContext.getExchange().getRequest();
         URI uri = request.getURI();
-        log.info("request uri path = {}, rawPath = {}", uri.getPath(), uri.getRawPath());
-        PathMatcher pathMatcher = new AntPathMatcher();
+        pathMatcher = new AntPathMatcher();
         // 白名单路径 或者 跨域预请求放行
         List<String> ignoreUrls = ignoreUrlsConfig.getUrls();
         for (String ignoreUrl : ignoreUrls) {
@@ -59,15 +60,15 @@ public class AuthorizationManager implements ReactiveAuthorizationManager<Author
             }
         }
         // 无token拒绝访问
-        String token = request.getHeaders().getFirst(HttpHeaders.AUTHORIZATION);
+        final String token = request.getHeaders().getFirst(HttpHeaders.AUTHORIZATION);
         if (StringUtils.isBlank(token)) {
             return Mono.just(reject());
         }
-        String realToken = token.replace(AuthConstant.JWT_TOKEN_PREFIX, "");
+        final String realToken = token.replace(AuthConstant.JWT_TOKEN_PREFIX, "");
 
         // 不同用户体系登录不允许互相访问
         try {
-            if (userBelongsToRequestSystem(realToken)) {
+            if (!userBelongsToRequestSystem(realToken, uri.getPath())) {
                 return Mono.just(reject());
             }
         } catch (ParseException e) {
@@ -92,7 +93,9 @@ public class AuthorizationManager implements ReactiveAuthorizationManager<Author
                 log.warn("{} <<<<<<<<<<<<<<", arg);
             }
         }
-        authorities = authorities.stream().map(i -> i = AuthConstant.AUTHORITY_PREFIX + i).collect(Collectors.toList());
+        authorities = authorities.stream()
+                .map(i -> i = AuthConstant.AUTHORITY_PREFIX + i)
+                .collect(Collectors.toList());
         return mono
                 .filter(Authentication::isAuthenticated)
                 .flatMapIterable(Authentication::getAuthorities)
@@ -104,12 +107,21 @@ public class AuthorizationManager implements ReactiveAuthorizationManager<Author
 
     /**
      * 判断用户是否属于请求的系统，不同用户体系登录不允许互相访问
+     *
+     * @return 如果clientId和url匹配则返回true，否则返回false
      */
-    private boolean userBelongsToRequestSystem(String realToken) throws ParseException {
+    private boolean userBelongsToRequestSystem(String realToken, String path) throws ParseException {
         JWSObject jwsObject = JWSObject.parse(realToken);
         String userStr = jwsObject.getPayload().toString();
         UserDto userDto = JsonUtils.fromJson(userStr, UserDto.class);
-        // TODO: 2020/10/14 根据user clientId和url pattern判断不同用户体系
+        //  admin-app 只能匹配 /admin/...相关url admin + /admin/... -> true, admin + /other/... -> false
+        //  portal-app 不能匹配 /admin/...相关url  portal + /admin/... -> false, portal + /other/... -> true
+        if (userDto.isAdminClientId() && pathMatcher.match(AuthConstant.ADMIN_URL_PATTERN, path)) {
+            return true;
+        }
+        if (userDto.isPortalClientId() && !pathMatcher.match(AuthConstant.ADMIN_URL_PATTERN, path)) {
+            return true;
+        }
         return false;
     }
 

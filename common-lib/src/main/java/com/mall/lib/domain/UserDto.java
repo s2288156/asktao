@@ -2,6 +2,7 @@ package com.mall.lib.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.mall.lib.constant.AuthConstant;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -29,4 +30,11 @@ public class UserDto {
 
     private List<String> roles;
 
+    public boolean isAdminClientId() {
+        return AuthConstant.ADMIN_CLIENT_ID.equals(this.clientId);
+    }
+
+    public boolean isPortalClientId() {
+        return AuthConstant.PORTAL_CLIENT_ID.endsWith(this.clientId);
+    }
 }

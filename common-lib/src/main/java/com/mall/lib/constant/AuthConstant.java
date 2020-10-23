@@ -39,4 +39,15 @@ public class AuthConstant {
      * 后台管理client_id
      */
     public static final String ADMIN_CLIENT_ID = "admin-app";
+
+    /**
+     * 门户应用client_id
+     */
+    public static final String PORTAL_CLIENT_ID = "portal-app";
+
+    /**
+     * admin-app接口路径匹配
+     */
+    public static final String ADMIN_URL_PATTERN = "/admin/**";
+
 }
