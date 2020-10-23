@@ -24,10 +24,7 @@ import reactor.core.publisher.Mono;
 
 import java.net.URI;
 import java.text.ParseException;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -82,20 +79,7 @@ public class AuthorizationManager implements ReactiveAuthorizationManager<Author
         }
 
         // 管理端校验权限
-        Map<Object, Object> resourceRolesMap = redisTemplate.opsForHash().entries(AuthConstant.RESOURCE_ROLES_MAP_KEY);
-        Iterator<Object> iterator = resourceRolesMap.keySet().iterator();
-        List<String> authorities = new ArrayList<>();
-        while (iterator.hasNext()) {
-            String pattern = (String) iterator.next();
-            if (pathMatcher.match(pattern, uri.getPath())) {
-                authorities.addAll((ArrayList) resourceRolesMap.get(pattern));
-                Object arg = resourceRolesMap.get(pattern);
-                log.warn("{} <<<<<<<<<<<<<<", arg);
-            }
-        }
-        authorities = authorities.stream()
-                .map(i -> i = AuthConstant.AUTHORITY_PREFIX + i)
-                .collect(Collectors.toList());
+        Set<String> authorities = matchUrlAuthorities(uri);
         return mono
                 .filter(Authentication::isAuthenticated)
                 .flatMapIterable(Authentication::getAuthorities)
@@ -103,6 +87,36 @@ public class AuthorizationManager implements ReactiveAuthorizationManager<Author
                 .any(authorities::contains)
                 .map(AuthorizationDecision::new)
                 .defaultIfEmpty(reject());
+    }
+
+    /**
+     * 从redis中取出resource集合，获取与uri匹配的ROLES
+     */
+    private Set<String> matchUrlAuthorities(URI uri) {
+        Map<Object, Object> resourceRolesMap = redisTemplate.opsForHash().entries(AuthConstant.RESOURCE_ROLES_MAP_KEY);
+        Iterator<Object> iterator = resourceRolesMap.keySet().iterator();
+        Set<String> authorities = new HashSet<>();
+        while (iterator.hasNext()) {
+            String resourceUrlPattern = (String) iterator.next();
+            if (pathMatcher.match(resourceUrlPattern, uri.getPath())) {
+                authorities.addAll((ArrayList) resourceRolesMap.get(resourceUrlPattern));
+            }
+        }
+        return authorities.stream()
+                .map(i -> i = AuthConstant.AUTHORITY_PREFIX + i)
+                .collect(Collectors.toSet());
+    }
+
+    public static void main(String[] args) {
+        Set<String> roles = new HashSet<>();
+
+        roles.add("ROLE");
+        roles.add("ADMIN");
+        roles.add("MALL");
+        roles.add("ROLE");
+        roles.add("ROLE");
+
+        System.out.println(roles);
     }
 
     /**
@@ -119,10 +133,7 @@ public class AuthorizationManager implements ReactiveAuthorizationManager<Author
         if (userDto.isAdminClientId() && pathMatcher.match(AuthConstant.ADMIN_URL_PATTERN, path)) {
             return true;
         }
-        if (userDto.isPortalClientId() && !pathMatcher.match(AuthConstant.ADMIN_URL_PATTERN, path)) {
-            return true;
-        }
-        return false;
+        return userDto.isPortalClientId() && !pathMatcher.match(AuthConstant.ADMIN_URL_PATTERN, path);
     }
 
     private AuthorizationDecision allow() {
