@@ -25,6 +25,12 @@
             <artifactId>common-mybatis</artifactId>
             <version>1.0.0</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.mall</groupId>
+            <artifactId>ums-api</artifactId>
+            <version>1.0.0</version>
+        </dependency>
     </dependencies>
 
 

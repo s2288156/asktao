@@ -2,6 +2,7 @@ package com.mall.auth.config;
 
 import com.mall.auth.component.JwtTokenEnhancer;
 import com.mall.auth.service.impl.UserServiceImpl;
+import com.mall.lib.constant.AuthConstant;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -40,14 +41,14 @@ public class Oauth2ServerConfig extends AuthorizationServerConfigurerAdapter {
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
         clients.inMemory()
-                .withClient("admin-app")
+                .withClient(AuthConstant.ADMIN_CLIENT_ID)
                 .secret(passwordEncoder.encode("123456"))
                 .scopes("all")
                 .authorizedGrantTypes("password", "refresh_token")
                 .accessTokenValiditySeconds(3600 * 24 * 7)
                 .refreshTokenValiditySeconds(3600 * 24 * 14)
                 .and()
-                .withClient("portal-app")
+                .withClient(AuthConstant.PORTAL_CLIENT_ID)
                 .secret(passwordEncoder.encode("123456"))
                 .scopes("all")
                 .authorizedGrantTypes("password", "refresh_token")
