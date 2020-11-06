@@ -12,7 +12,7 @@ import java.text.SimpleDateFormat
  *   PROJECT     project
  *   FILES       files helper
  */
-packageName = "com.mall.ums.domain.dataobject;"  //这里要换成自己项目 实体的包路径
+packageName = "com.mall.ums.infrastructure.dataobject;"  //这里要换成自己项目 实体的包路径
 typeMapping = [
         (~/(?i)int/)                      : "Integer",  //数据库类型和Jave类型映射关系
         (~/(?i)float|double|real/): "Double",
@@ -31,14 +31,14 @@ def generate(table, dir) {
     // ====================================== 文件名称
     def className = javaName(table.getName().drop(1), true)
     def fields = calcFields(table)
-    new File(dir, className + ".java").withPrintWriter("utf-8") { out -> generate(out, table, className, fields) }
+    new File(dir, className + "DO" + ".java").withPrintWriter("utf-8") { out -> generate(out, table, className, fields) }
 }
 
 def generate(out, table, className, fields) {
     // ====================================== 表名称
     def tableName = table.getName()
     // ====================================== className
-    def cName = className - "T"
+    def cName = className - "T" + "DO"
     out.println "package $packageName"
     out.println ""
     out.println "import com.baomidou.mybatisplus.annotation.TableName;"

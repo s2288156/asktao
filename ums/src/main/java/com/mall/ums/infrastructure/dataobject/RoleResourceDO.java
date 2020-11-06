@@ -1,4 +1,4 @@
-package com.mall.ums.domain.dataobject;
+package com.mall.ums.infrastructure.dataobject;
 
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.AllArgsConstructor;
@@ -17,7 +17,7 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 @ToString(callSuper = true)
 @TableName(autoResultMap = true, value = "t_role_resource")
-public class RoleResource {
+public class RoleResourceDO {
 
     private String id;
 

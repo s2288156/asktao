@@ -1,4 +1,4 @@
-package com.mall.ums.domain.form;
+package com.mall.ums.interfaces.form;
 
 import lombok.Data;
 

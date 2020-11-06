@@ -1,4 +1,4 @@
-package com.mall.ums.controller;
+package com.mall.ums.interfaces.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

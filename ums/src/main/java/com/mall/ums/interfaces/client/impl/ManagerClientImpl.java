@@ -1,4 +1,4 @@
-package com.mall.ums.client.impl;
+package com.mall.ums.interfaces.client.impl;
 
 import com.mall.lib.domain.RestResult;
 import com.mall.lib.domain.UserDto;

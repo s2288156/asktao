@@ -1,4 +1,4 @@
-package com.mall.ums.domain.dataobject;
+package com.mall.ums.infrastructure.dataobject;
 
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.AllArgsConstructor;
@@ -17,8 +17,8 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Accessors(chain = true)
 @ToString(callSuper = true)
-@TableName(autoResultMap = true, value = "t_resource")
-public class Resource {
+@TableName(autoResultMap = true, value = "t_role")
+public class RoleDO {
 
     private String id;
 
@@ -27,18 +27,18 @@ public class Resource {
     private LocalDateTime updateTime;
 
     /**
-     * 资源名称
+     * 名称
      **/
     private String name;
-
-    /**
-     * 资源URL
-     **/
-    private String url;
 
     /**
      * 描述
      **/
     private String description;
+
+    /**
+     * 排序
+     **/
+    private Integer sort;
 
 }

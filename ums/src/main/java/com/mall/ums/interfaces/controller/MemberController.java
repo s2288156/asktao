@@ -1,4 +1,4 @@
-package com.mall.ums.controller;
+package com.mall.ums.interfaces.controller;
 
 import com.mall.lib.domain.RestResult;
 import org.springframework.web.bind.annotation.PostMapping;

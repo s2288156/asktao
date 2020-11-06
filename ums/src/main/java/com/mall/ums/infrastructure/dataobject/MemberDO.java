@@ -1,4 +1,4 @@
-package com.mall.ums.domain.dataobject;
+package com.mall.ums.infrastructure.dataobject;
 
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.AllArgsConstructor;
@@ -18,8 +18,8 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Accessors(chain = true)
 @ToString(callSuper = true)
-@TableName(autoResultMap = true, value = "t_manager")
-public class Manager {
+@TableName(autoResultMap = true, value = "t_member")
+public class MemberDO {
 
     private String id;
 
@@ -69,15 +69,5 @@ public class Manager {
      * 生日
      **/
     private LocalDate birthday;
-
-    /**
-     * 邮箱
-     **/
-    private String email;
-
-    /**
-     * 头像
-     **/
-    private String icon;
 
 }
