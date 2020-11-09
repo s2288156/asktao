@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>ums-api</artifactId>
+    <artifactId>ums-client</artifactId>
 
     <dependencies>
         <dependency>
@@ -33,4 +33,5 @@
             <version>1.0.0</version>
         </dependency>
     </dependencies>
+
 </project>

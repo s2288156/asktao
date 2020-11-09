@@ -11,7 +11,7 @@
         <module>common-mybatis</module>
         <module>auth-server</module>
         <module>gateway</module>
-        <module>ums-api</module>
+        <module>ums-client</module>
     </modules>
 
     <parent>
