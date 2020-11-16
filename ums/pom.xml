@@ -12,7 +12,8 @@
     <artifactId>ums</artifactId>
     <name>User Management System</name>
     <description>用户管理系统</description>
-
+<!--ce'sh-->
+<!--    来啦，小老弟  -->
     <dependencies>
         <dependency>
             <groupId>com.mall</groupId>
