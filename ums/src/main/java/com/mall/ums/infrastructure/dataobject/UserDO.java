@@ -1,6 +1,7 @@
 package com.mall.ums.infrastructure.dataobject;
 
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.mall.ums.infrastructure.enums.AccountTypeEnum;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -83,6 +84,6 @@ public class UserDO {
     /**
      * 账号类型，0 - 会员，1 - 商户，2 - 系统管理人员
      **/
-    private Integer accountType;
+    private AccountTypeEnum accountType;
 
 }
