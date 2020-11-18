@@ -1,5 +1,10 @@
 package com.mall.ums.domain.member.entity;
 
+import com.mall.ums.infrastructure.dataobject.UserDO;
+import com.mall.ums.infrastructure.enums.AccountTypeEnum;
+import com.mall.ums.infrastructure.mapper.UserMapper;
+import lombok.Setter;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
@@ -9,6 +14,10 @@ import java.time.LocalDate;
  */
 @Component
 public class Member {
+
+    @Autowired
+    private UserMapper userMapper;
+
     /**
      * 名字
      **/
@@ -52,10 +61,15 @@ public class Member {
     /**
      * 登录信息
      */
+    @Setter
     private LoginInfo loginInfo;
 
-    private void register() {
+    private static final AccountTypeEnum ACCOUNT_TYPE = AccountTypeEnum.MEMBER;
 
+    public void register() {
+        UserDO userDO = loginInfo.convert2Do();
+        userDO.setAccountType(ACCOUNT_TYPE);
+        userMapper.insert(userDO);
     }
 
 }

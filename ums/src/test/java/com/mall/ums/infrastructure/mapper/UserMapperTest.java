@@ -18,8 +18,6 @@ class UserMapperTest extends BaseTest {
     @Autowired
     private UserMapper userMapper;
 
-
-
     @Test
     void testInsert() {
         UserDO userDO = new UserDO();
