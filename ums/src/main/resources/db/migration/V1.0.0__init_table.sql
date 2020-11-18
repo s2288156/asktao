@@ -1,45 +1,3 @@
-CREATE TABLE `t_manager`
-(
-    `id`          varchar(32)      NOT NULL,
-    `create_time` timestamp        NULL DEFAULT CURRENT_TIMESTAMP COMMENT '注册时间',
-    `update_time` timestamp        NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    `username`    varchar(32)      NULL COMMENT '用户名',
-    `password`    varchar(32)      NULL COMMENT '密码',
-    `phone`       varchar(15)      NULL COMMENT '手机号',
-    `name`        varchar(16)      NULL COMMENT '名字',
-    `age`         tinyint UNSIGNED NULL COMMENT '年龄',
-    `gender`      tinyint UNSIGNED NULL COMMENT '性别，0 - 未知，1 - 男，2 - 女',
-    `status`      tinyint UNSIGNED NULL DEFAULT 1 COMMENT '账户状态，0 - 删除，1 - 正常，2 - 冻结',
-    `birthday`    date             NULL COMMENT '生日',
-    `email`       varchar(64)      NULL COMMENT '邮箱',
-    `icon`        varchar(255)     NULL COMMENT '头像',
-    PRIMARY KEY (`id`)
-) COMMENT = '后台管理人员表';
-
-CREATE TABLE `t_manager_role`
-(
-    `id`         varchar(32) NOT NULL,
-    `manager_id` varchar(32) NULL,
-    `role_id`    varchar(32) NULL,
-    PRIMARY KEY (`id`)
-);
-
-CREATE TABLE `t_member`
-(
-    `id`          varchar(32)      NOT NULL,
-    `create_time` timestamp        NULL DEFAULT CURRENT_TIMESTAMP COMMENT '注册时间',
-    `update_time` timestamp        NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    `username`    varchar(32)      NULL COMMENT '用户名',
-    `password`    varchar(32)      NULL COMMENT '密码',
-    `phone`       varchar(15)      NULL COMMENT '手机号',
-    `name`        varchar(16)      NULL COMMENT '名字',
-    `age`         tinyint UNSIGNED NULL COMMENT '年龄',
-    `gender`      tinyint UNSIGNED NULL COMMENT '性别，0 - 未知，1 - 男，2 - 女',
-    `status`      tinyint UNSIGNED NULL DEFAULT 1 COMMENT '账户状态，0 - 删除，1 - 正常，2 - 冻结',
-    `birthday`    date             NULL COMMENT '生日',
-    PRIMARY KEY (`id`)
-) COMMENT = '会员账号表';
-
 CREATE TABLE `t_resource`
 (
     `id`          varchar(32)  NOT NULL,
@@ -70,3 +28,29 @@ CREATE TABLE `t_role_resource`
     PRIMARY KEY (`id`)
 );
 
+CREATE TABLE `t_user`
+(
+    `id`           varchar(32)      NOT NULL,
+    `create_time`  timestamp        NULL DEFAULT CURRENT_TIMESTAMP COMMENT '注册时间',
+    `update_time`  timestamp        NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    `username`     varchar(32)      NULL COMMENT '用户名',
+    `password`     varchar(32)      NULL COMMENT '密码',
+    `phone`        varchar(15)      NULL COMMENT '手机号',
+    `name`         varchar(16)      NULL COMMENT '名字',
+    `age`          tinyint UNSIGNED NULL COMMENT '年龄',
+    `gender`       tinyint UNSIGNED NULL COMMENT '性别，0 - 未知，1 - 男，2 - 女',
+    `status`       tinyint UNSIGNED NULL DEFAULT 1 COMMENT '账户状态，0 - 删除，1 - 正常，2 - 冻结',
+    `birthday`     date             NULL COMMENT '生日',
+    `email`        varchar(64)      NULL COMMENT '邮箱',
+    `icon`         varchar(255)     NULL COMMENT '头像',
+    `account_type` tinyint          NOT NULL COMMENT '账号类型，0 - 会员，1 - 商户，2 - 系统管理人员',
+    PRIMARY KEY (`id`)
+) COMMENT = '后台管理人员表';
+
+CREATE TABLE `t_user_role`
+(
+    `id`      varchar(32) NOT NULL,
+    `user_id` varchar(32) NULL,
+    `role_id` varchar(32) NULL,
+    PRIMARY KEY (`id`)
+);

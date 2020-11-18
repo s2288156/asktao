@@ -16,12 +16,12 @@ import lombok.experimental.Accessors;
 @AllArgsConstructor
 @Accessors(chain = true)
 @ToString(callSuper = true)
-@TableName(autoResultMap = true, value = "t_manager_role")
-public class ManagerRoleDO {
+@TableName(autoResultMap = true, value = "t_user_role")
+public class UserRoleDO {
 
     private String id;
 
-    private String managerId;
+    private String userId;
 
     private String roleId;
 

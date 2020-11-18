@@ -18,8 +18,8 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Accessors(chain = true)
 @ToString(callSuper = true)
-@TableName(autoResultMap = true, value = "t_member")
-public class MemberDO {
+@TableName(autoResultMap = true, value = "t_user")
+public class UserDO {
 
     private String id;
 
@@ -69,5 +69,20 @@ public class MemberDO {
      * 生日
      **/
     private LocalDate birthday;
+
+    /**
+     * 邮箱
+     **/
+    private String email;
+
+    /**
+     * 头像
+     **/
+    private String icon;
+
+    /**
+     * 账号类型，0 - 会员，1 - 商户，2 - 系统管理人员
+     **/
+    private Integer accountType;
 
 }
