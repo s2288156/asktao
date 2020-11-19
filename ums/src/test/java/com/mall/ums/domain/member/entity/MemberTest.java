@@ -25,14 +25,14 @@ class MemberTest extends BaseTest {
     @Test
     @Transactional
     void testRegister() {
-        LoginInfo loginInfo = new LoginInfo();
-        loginInfo.setUsername("laozhang");
-        loginInfo.setPassword("112233");
+        RegisterInfo registerInfo = new RegisterInfo();
+        registerInfo.setUsername("loaaaaaaa");
+        registerInfo.setPassword("1123455");
 
-        member.setLoginInfo(loginInfo);
+        member.setRegisterInfo(registerInfo);
         member.register();
 
-        UserDO userDO = userMapper.selectOne(new LambdaQueryWrapper<UserDO>().eq(UserDO::getUsername, loginInfo.getUsername()));
+        UserDO userDO = userMapper.selectOne(new LambdaQueryWrapper<UserDO>().eq(UserDO::getUsername, registerInfo.getUsername()));
         assertNotNull(userDO);
         log.warn("userDO = {}", userDO);
     }

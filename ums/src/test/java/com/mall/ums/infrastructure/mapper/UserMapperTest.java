@@ -6,6 +6,7 @@ import com.mall.ums.infrastructure.enums.AccountTypeEnum;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -19,6 +20,7 @@ class UserMapperTest extends BaseTest {
     private UserMapper userMapper;
 
     @Test
+    @Transactional
     void testInsert() {
         UserDO userDO = new UserDO();
         userDO.setUsername("laowang");
@@ -28,6 +30,5 @@ class UserMapperTest extends BaseTest {
         assertEquals(1, insert);
         log.warn("userId = {}", userDO.getId());
         assertNotNull(userDO.getId());
-        userMapper.deleteById(userDO.getId());
     }
 }
