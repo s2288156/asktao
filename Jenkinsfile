@@ -1,9 +1,15 @@
 pipeline {
   agent any
   stages {
-    stage('git pull') {
+    stage('pull code') {
       steps {
         sh 'git pull'
+      }
+    }
+
+    stage('build') {
+      steps {
+        sh 'mvn clean package -U'
       }
     }
 
