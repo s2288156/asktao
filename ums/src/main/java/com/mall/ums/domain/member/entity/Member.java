@@ -1,8 +1,11 @@
 package com.mall.ums.domain.member.entity;
 
+import com.mall.lib.ex.BizException;
+import com.mall.lib.ex.ResultCodeEnum;
 import com.mall.ums.infrastructure.dataobject.UserDO;
 import com.mall.ums.infrastructure.enums.AccountTypeEnum;
 import com.mall.ums.infrastructure.mapper.UserMapper;
+import lombok.Data;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -12,6 +15,7 @@ import java.time.LocalDate;
 /**
  * @author wcy
  */
+@Data
 @Component
 public class Member {
 
@@ -61,13 +65,17 @@ public class Member {
     /**
      * 登录信息
      */
-    @Setter
     private LoginInfo loginInfo;
+
+    private RegisterInfo registerInfo;
 
     private static final AccountTypeEnum ACCOUNT_TYPE = AccountTypeEnum.MEMBER;
 
     public void register() {
-        UserDO userDO = loginInfo.convert2Do();
+        if (registerInfo == null) {
+            throw new BizException(ResultCodeEnum.USER_REGISTER_ERROR);
+        }
+        UserDO userDO = registerInfo.convert2Do();
         userDO.setAccountType(ACCOUNT_TYPE);
         userMapper.insert(userDO);
     }
