@@ -9,8 +9,8 @@ pipeline {
 
     stage('build') {
       steps {
-        sh '''cd ~
-pwd'''
+        sh '''su wu
+mvn clean package'''
       }
     }
 
