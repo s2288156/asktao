@@ -6,11 +6,11 @@ import com.mall.ums.infrastructure.dataobject.UserDO;
 import com.mall.ums.infrastructure.enums.AccountTypeEnum;
 import com.mall.ums.infrastructure.mapper.UserMapper;
 import lombok.Data;
-import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
+import java.util.Optional;
 
 /**
  * @author wcy
@@ -75,9 +75,18 @@ public class Member {
         if (registerInfo == null) {
             throw new BizException(ResultCodeEnum.USER_REGISTER_ERROR);
         }
+        checkUsernameNotExisted(registerInfo.getUsername());
+
         UserDO userDO = registerInfo.convert2Do();
         userDO.setAccountType(ACCOUNT_TYPE);
         userMapper.insert(userDO);
+    }
+
+    private void checkUsernameNotExisted(String username) {
+        Optional<UserDO> optionalUserDO = userMapper.selectByUsername(username);
+        if (optionalUserDO.isPresent()) {
+            throw new BizException(ResultCodeEnum.USERNAME_EXISTS);
+        }
     }
 
 }

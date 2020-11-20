@@ -1,6 +1,8 @@
 package com.mall.ums.domain.member.entity;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.mall.lib.ex.BizException;
+import com.mall.lib.ex.ResultCodeEnum;
 import com.mall.ums.BaseTest;
 import com.mall.ums.infrastructure.dataobject.UserDO;
 import com.mall.ums.infrastructure.mapper.UserMapper;
@@ -35,5 +37,8 @@ class MemberTest extends BaseTest {
         UserDO userDO = userMapper.selectOne(new LambdaQueryWrapper<UserDO>().eq(UserDO::getUsername, registerInfo.getUsername()));
         assertNotNull(userDO);
         log.warn("userDO = {}", userDO);
+
+        BizException bizException = assertThrows(BizException.class, () -> member.register());
+        assertEquals(ResultCodeEnum.USERNAME_EXISTS.code(), bizException.getCode());
     }
 }
