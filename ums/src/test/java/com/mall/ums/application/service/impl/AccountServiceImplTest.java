@@ -1,6 +1,7 @@
 package com.mall.ums.application.service.impl;
 
 import com.mall.ums.BaseTest;
+import com.mall.ums.application.dto.MemberRegisterDTO;
 import com.mall.ums.domain.member.entity.LoginInfo;
 import com.mall.ums.domain.member.entity.Member;
 import com.mall.ums.domain.member.entity.RegisterInfo;
@@ -21,11 +22,10 @@ class AccountServiceImplTest extends BaseTest {
     @Test
     @Transactional
     void testMemberRegister() {
-        Member member = new Member();
-        RegisterInfo registerInfo = new RegisterInfo();
-        registerInfo.setUsername("Zhang");
-        registerInfo.setPassword("112233");
-        member.setRegisterInfo(registerInfo);
-        assertDoesNotThrow(() -> accountService.registerMember(member));
+
+        MemberRegisterDTO memberRegisterDTO = new MemberRegisterDTO();
+        memberRegisterDTO.setUsername("Zhang");
+        memberRegisterDTO.setPassword("112233");
+        assertDoesNotThrow(() -> accountService.registerMember(memberRegisterDTO));
     }
 }

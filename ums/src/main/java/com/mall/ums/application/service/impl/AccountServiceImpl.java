@@ -1,5 +1,6 @@
 package com.mall.ums.application.service.impl;
 
+import com.mall.ums.application.dto.MemberRegisterDTO;
 import com.mall.ums.application.service.IAccountService;
 import com.mall.ums.domain.member.entity.LoginInfo;
 import com.mall.ums.domain.member.entity.Member;
@@ -17,8 +18,8 @@ public class AccountServiceImpl implements IAccountService {
     private Member member;
 
     @Override
-    public void registerMember(Member memberDto) {
-        member.setRegisterInfo(memberDto.getRegisterInfo());
+    public void registerMember(MemberRegisterDTO memberRegister) {
+        member.setRegisterInfo(memberRegister.getRegisterInfo());
         member.register();
     }
 }

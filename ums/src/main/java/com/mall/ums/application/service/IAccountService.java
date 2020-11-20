@@ -1,6 +1,6 @@
 package com.mall.ums.application.service;
 
-import com.mall.ums.domain.member.entity.Member;
+import com.mall.ums.application.dto.MemberRegisterDTO;
 
 /**
  * 账户相关
@@ -12,7 +12,7 @@ public interface IAccountService {
     /**
      * 注册会员
      *
-     * @param member 账号和密码
+     * @param memberRegister 账号和密码
      */
-    void registerMember(Member member);
+    void registerMember(MemberRegisterDTO memberRegister);
 }
