@@ -3,3 +3,35 @@ spring:
     active: dev
   application:
     name: mall-gateway
+  cloud:
+    nacos:
+      config:
+        file-extension: yaml
+        namespace: dev
+        extension-configs:
+          - data-id: gateway.yml
+            group: SERVER
+            refresh: true
+          - data-id: base-config.yml
+            group: BASE
+            refresh: false
+          - data-id: mysql.yml
+            group: BASE
+            refresh: false
+          - data-id: redis.yml
+            group: BASE
+            refresh: false
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: 'http://localhost:8200/auth/rsa/publicKey'
+
+secure:
+  ignore:
+    urls:
+      - "/auth/oauth/token"
+      - "/auth/rsa/publicKey"
+      - "/auth/user/register"
+      - "/auth/user/login"
+      - "/ums/member/register"
