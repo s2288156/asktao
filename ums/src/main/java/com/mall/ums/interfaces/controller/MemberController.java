@@ -20,7 +20,7 @@ public class MemberController {
 
     @PostMapping("/register")
     public RestResult<?> register(MemberRegisterForm memberRegister) {
-
+        accountService.registerMember(memberRegister.convert2Dto());
         return RestResult.success();
     }
 }
