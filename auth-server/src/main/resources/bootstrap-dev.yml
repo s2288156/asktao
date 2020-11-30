@@ -2,10 +2,20 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: http://localhost:8848
+        server-addr: http://local.com:8848
       config:
-        server-addr: http://localhost:8848
+        server-addr: http://local.com:8848
         file-extension: yaml
+        namespace: dev
+        extension-configs:
+          - data-id: base-config.yml
+            group: BASE
+            refresh: false
+          - data-id: redis.yml
+            group: BASE
+            refresh: false
+server:
+  port: 8400
 logging:
   level:
     root: info
