@@ -82,9 +82,6 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
                     <mainClass>com.mall.GatewayApplication</mainClass>
-                    <layers>
-                        <enabled>true</enabled>
-                    </layers>
                 </configuration>
             </plugin>
         </plugins>

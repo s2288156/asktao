@@ -41,9 +41,6 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
                     <mainClass>com.mall.UmsApplication</mainClass>
-                    <layers>
-                        <enabled>true</enabled>
-                    </layers>
                 </configuration>
             </plugin>
         </plugins>
