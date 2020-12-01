@@ -1,6 +1,6 @@
-package com.mall.auth.component;
+package com.mall.auth.infrastructure.component;
 
-import com.mall.auth.domain.SecurityUser;
+import com.mall.auth.application.dto.SecurityUser;
 import org.springframework.security.oauth2.common.DefaultOAuth2AccessToken;
 import org.springframework.security.oauth2.common.OAuth2AccessToken;
 import org.springframework.security.oauth2.provider.OAuth2Authentication;

@@ -1,4 +1,4 @@
-package com.mall.auth.service.impl;
+package com.mall.auth.application.service.impl;
 
 import com.mall.lib.constant.AuthConstant;
 import lombok.extern.slf4j.Slf4j;

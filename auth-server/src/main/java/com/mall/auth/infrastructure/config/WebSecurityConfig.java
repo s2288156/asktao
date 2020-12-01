@@ -1,4 +1,4 @@
-package com.mall.auth.config;
+package com.mall.auth.infrastructure.config;
 
 import org.springframework.boot.actuate.autoconfigure.security.servlet.EndpointRequest;
 import org.springframework.context.annotation.Bean;

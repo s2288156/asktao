@@ -1,4 +1,4 @@
-package com.mall.auth.domain;
+package com.mall.auth.application.dto;
 
 import com.mall.lib.domain.UserDto;
 import lombok.Data;

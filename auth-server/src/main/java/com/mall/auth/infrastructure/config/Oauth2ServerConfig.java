@@ -1,7 +1,7 @@
-package com.mall.auth.config;
+package com.mall.auth.infrastructure.config;
 
-import com.mall.auth.component.JwtTokenEnhancer;
-import com.mall.auth.service.impl.UserServiceImpl;
+import com.mall.auth.infrastructure.component.JwtTokenEnhancer;
+import com.mall.auth.application.service.impl.UserServiceImpl;
 import com.mall.lib.constant.AuthConstant;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;

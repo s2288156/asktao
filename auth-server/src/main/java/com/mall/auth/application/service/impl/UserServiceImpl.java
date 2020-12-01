@@ -1,6 +1,6 @@
-package com.mall.auth.service.impl;
+package com.mall.auth.application.service.impl;
 
-import com.mall.auth.domain.SecurityUser;
+import com.mall.auth.application.dto.SecurityUser;
 import com.mall.lib.constant.AuthConstant;
 import com.mall.lib.constant.MessageConstant;
 import com.mall.lib.domain.UserDto;

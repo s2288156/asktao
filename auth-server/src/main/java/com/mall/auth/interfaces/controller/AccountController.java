@@ -1,4 +1,4 @@
-package com.mall.auth.controller;
+package com.mall.auth.interfaces.controller;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.RequestMapping;
