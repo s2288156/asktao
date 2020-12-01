@@ -34,7 +34,7 @@ CREATE TABLE `t_user`
     `create_time`  timestamp        NULL DEFAULT CURRENT_TIMESTAMP COMMENT '注册时间',
     `update_time`  timestamp        NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     `username`     varchar(32)      NULL COMMENT '用户名',
-    `password`     varchar(32)      NULL COMMENT '密码',
+    `password`     varchar(64)      NULL COMMENT '密码',
     `phone`        varchar(15)      NULL COMMENT '手机号',
     `name`         varchar(16)      NULL COMMENT '名字',
     `age`          tinyint UNSIGNED NULL COMMENT '年龄',

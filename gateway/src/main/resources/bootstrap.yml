@@ -32,6 +32,5 @@ secure:
     urls:
       - "/auth/oauth/token"
       - "/auth/rsa/publicKey"
-      - "/auth/user/register"
-      - "/auth/user/login"
+      - "/auth/account/member_register"
       - "/ums/member/register"
