@@ -16,6 +16,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+import java.nio.file.AccessDeniedException;
 import java.util.List;
 
 /**
@@ -44,11 +45,11 @@ public class ControllerExceptionHandler {
                 e.getFieldError().getDefaultMessage()));
     }
 
-//    @ExceptionHandler(AccessDeniedException.class)
-//    public ResponseEntity<?> handleAccessDeniedException(AccessDeniedException ex) {
-//        log.warn("[AccessDeniedException]: {}", ex.getMessage());
-//        return ResponseEntity.status(HttpStatus.FORBIDDEN).body(RestResult.error(ResultCodeEnum.PERMISSION_ERROR));
-//    }
+    @ExceptionHandler(AccessDeniedException.class)
+    public ResponseEntity<?> handleAccessDeniedException(AccessDeniedException ex) {
+        log.warn("[AccessDeniedException]: {}", ex.getMessage());
+        return ResponseEntity.status(HttpStatus.FORBIDDEN).body(RestResult.failed(ResultCodeEnum.PERMISSION_ERROR));
+    }
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<?> handleException(Exception ex) {

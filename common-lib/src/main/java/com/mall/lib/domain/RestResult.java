@@ -4,26 +4,24 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.mall.lib.ex.IResultCode;
 import com.mall.lib.ex.ResultCodeEnum;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 
 /**
  * @author wcy
  */
+@EqualsAndHashCode(callSuper = true)
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Data
-public class RestResult<T> implements Serializable {
+public class RestResult<T> extends ReturnCodeMsg implements Serializable {
     private static final long serialVersionUID = -6614763960648586816L;
-
-    private final String returnCode;
-
-    private final String returnMsg;
 
     private final T data;
 
     public RestResult(String returnCode, String returnMsg, T data) {
-        this.returnCode = returnCode;
-        this.returnMsg = returnMsg;
+        super(returnCode, returnMsg);
         this.data = data;
     }
 

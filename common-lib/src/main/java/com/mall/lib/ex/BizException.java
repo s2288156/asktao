@@ -22,4 +22,9 @@ public class BizException extends RuntimeException implements Serializable {
         super(msg);
         this.code = errorEnum.code();
     }
+
+    public BizException(String message, String code) {
+        super(message);
+        this.code = code;
+    }
 }
