@@ -2,6 +2,7 @@ package com.mall.ums.interfaces.form;
 
 import com.mall.ums.application.dto.MemberRegisterDTO;
 import lombok.Data;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.validation.constraints.NotBlank;
 
@@ -20,7 +21,7 @@ public class MemberRegisterForm {
     public MemberRegisterDTO convert2Dto() {
         MemberRegisterDTO memberRegisterDTO = new MemberRegisterDTO();
         memberRegisterDTO.setUsername(getUsername());
-        memberRegisterDTO.setPassword(getPassword());
+        memberRegisterDTO.setPassword(new BCryptPasswordEncoder().encode(getPassword()));
         return memberRegisterDTO;
     }
 }

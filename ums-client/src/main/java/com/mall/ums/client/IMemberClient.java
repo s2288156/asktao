@@ -12,6 +12,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 @FeignClient("ums")
 public interface IMemberClient {
 
-    @PostMapping("/member/register")
+    @PostMapping("/member_register")
     RestResult<?> register(@RequestBody MemberRegisterForm memberRegisterForm);
 }
