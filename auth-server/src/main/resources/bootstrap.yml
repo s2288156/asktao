@@ -3,3 +3,6 @@ spring:
     active: dev
   application:
     name: auth-server
+server:
+  servlet:
+    context-path: /auth

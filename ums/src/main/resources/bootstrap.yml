@@ -1,7 +1,10 @@
+db_name: db_ums
+
 spring:
   profiles:
     active: dev
   application:
     name: ums
-
-db_name: db_ums
+server:
+  servlet:
+    context-path: /ums
