@@ -14,10 +14,4 @@ public class LoginInfo {
 
     private String password;
 
-    UserDO convert2Do() {
-        UserDO userDO = new UserDO();
-        userDO.setUsername(this.getUsername());
-        userDO.setPassword(this.getPassword());
-        return userDO;
-    }
 }

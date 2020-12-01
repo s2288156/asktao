@@ -51,8 +51,7 @@ class MemberTest extends BaseTest {
         loginInfo.setUsername(username);
 
         member.setRegisterInfo(null);
-        member.setLoginInfo(loginInfo);
-        member.login();
+        member.login(username);
 
         assertEquals(member.getLoginInfo().getPassword(), password);
         log.warn(">>>>> {}", member);

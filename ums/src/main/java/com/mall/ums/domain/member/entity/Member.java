@@ -91,12 +91,13 @@ public class Member {
         }
     }
 
-    public void login() {
-        Optional<UserDO> userDOOptional = userMapper.selectByUsername(loginInfo.getUsername());
+    public void login(String username) {
+        Optional<UserDO> userDOOptional = userMapper.selectByUsername(username);
         UserDO userDO = userDOOptional.orElseThrow(() -> {
             log.warn("用户[{}]不存在", loginInfo.getUsername());
             throw new BizException(ResultCodeEnum.USER_LOGIN_ERROR);
         });
+        loginInfo = new LoginInfo();
         loginInfo.setPassword(userDO.getPassword());
     }
 }
