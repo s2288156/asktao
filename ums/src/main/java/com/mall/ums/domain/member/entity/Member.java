@@ -6,6 +6,7 @@ import com.mall.ums.infrastructure.dataobject.UserDO;
 import com.mall.ums.infrastructure.enums.AccountTypeEnum;
 import com.mall.ums.infrastructure.mapper.UserMapper;
 import lombok.Data;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -15,6 +16,7 @@ import java.util.Optional;
 /**
  * @author wcy
  */
+@Slf4j
 @Data
 @Component
 public class Member {
@@ -89,4 +91,12 @@ public class Member {
         }
     }
 
+    public void login() {
+        Optional<UserDO> userDOOptional = userMapper.selectByUsername(loginInfo.getUsername());
+        UserDO userDO = userDOOptional.orElseThrow(() -> {
+            log.warn("用户[{}]不存在", loginInfo.getUsername());
+            throw new BizException(ResultCodeEnum.USER_LOGIN_ERROR);
+        });
+        loginInfo.setPassword(userDO.getPassword());
+    }
 }

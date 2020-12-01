@@ -1,5 +1,6 @@
 package com.mall.ums.application.service;
 
+import com.mall.lib.domain.UserDto;
 import com.mall.ums.application.dto.MemberRegisterDTO;
 
 /**
@@ -15,4 +16,12 @@ public interface IAccountService {
      * @param memberRegister 账号和密码
      */
     void registerMember(MemberRegisterDTO memberRegister);
+
+    /**
+     * 用户登录，根据username查询用户密码信息，交由spring security鉴权
+     *
+     * @param username 用户名
+     * @return 用户信息
+     */
+    UserDto memberLogin(String username);
 }

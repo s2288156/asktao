@@ -27,18 +27,43 @@ class MemberTest extends BaseTest {
     @Test
     @Transactional
     void testRegister() {
-        RegisterInfo registerInfo = new RegisterInfo();
-        registerInfo.setUsername("loaaaaaaa");
-        registerInfo.setPassword("1123455");
+        String username = "loaaaaaaa";
+        String password = "1123455";
+        registerMember(username, password);
 
-        member.setRegisterInfo(registerInfo);
-        member.register();
-
-        UserDO userDO = userMapper.selectOne(new LambdaQueryWrapper<UserDO>().eq(UserDO::getUsername, registerInfo.getUsername()));
+        UserDO userDO = userMapper.selectOne(new LambdaQueryWrapper<UserDO>().eq(UserDO::getUsername, username));
         assertNotNull(userDO);
         log.warn("userDO = {}", userDO);
 
         BizException bizException = assertThrows(BizException.class, () -> member.register());
         assertEquals(ResultCodeEnum.USERNAME_EXISTS.code(), bizException.getCode());
+    }
+
+    @Test
+    @Transactional
+    void testLogin() {
+        String username = "test_laowang";
+        String password = "112233";
+
+        registerMember(username, password);
+
+        LoginInfo loginInfo = new LoginInfo();
+        loginInfo.setUsername(username);
+
+        member.setRegisterInfo(null);
+        member.setLoginInfo(loginInfo);
+        member.login();
+
+        assertEquals(member.getLoginInfo().getPassword(), password);
+        log.warn(">>>>> {}", member);
+    }
+
+    private void registerMember(String username, String password) {
+        RegisterInfo registerInfo = new RegisterInfo();
+        registerInfo.setUsername(username);
+        registerInfo.setPassword(password);
+
+        member.setRegisterInfo(registerInfo);
+        member.register();
     }
 }
