@@ -1,12 +1,9 @@
 package com.mall.ums.client;
 
 import com.mall.lib.domain.RestResult;
-import com.mall.lib.domain.UserDto;
 import com.mall.ums.dto.MemberInfoDto;
-import com.mall.ums.dto.MemberRegisterForm;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
 /**
@@ -14,9 +11,6 @@ import org.springframework.web.bind.annotation.RequestParam;
  */
 @FeignClient(value = "ums", path = "/ums")
 public interface IMemberClient {
-
-    @PostMapping("/member_register")
-    RestResult<?> register(@RequestBody MemberRegisterForm memberRegisterForm);
 
     @PostMapping("/member_login")
     RestResult<MemberInfoDto> login(@RequestParam String username);

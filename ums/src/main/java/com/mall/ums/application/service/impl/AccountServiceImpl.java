@@ -1,12 +1,9 @@
 package com.mall.ums.application.service.impl;
 
-import com.mall.lib.domain.UserDto;
 import com.mall.ums.application.dto.MemberRegisterDTO;
 import com.mall.ums.application.service.IAccountService;
-import com.mall.ums.domain.member.entity.LoginInfo;
 import com.mall.ums.domain.member.entity.Member;
 import com.mall.ums.dto.MemberInfoDto;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
