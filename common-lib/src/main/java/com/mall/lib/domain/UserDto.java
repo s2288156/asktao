@@ -18,7 +18,7 @@ import java.util.List;
 @EqualsAndHashCode(callSuper = false)
 @NoArgsConstructor
 public class UserDto {
-    private Long id;
+    private String id;
 
     @JsonProperty(value = "user_name")
     private String username;
@@ -35,6 +35,6 @@ public class UserDto {
     }
 
     public boolean isPortalClientId() {
-        return AuthConstant.PORTAL_CLIENT_ID.endsWith(this.clientId);
+        return AuthConstant.CLIENT_ID_PORTAL.endsWith(this.clientId);
     }
 }

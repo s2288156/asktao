@@ -1,7 +1,10 @@
 package com.mall.ums.domain.member.entity;
 
+import com.mall.lib.constant.AuthConstant;
+import com.mall.lib.domain.UserDto;
 import com.mall.lib.ex.BizException;
 import com.mall.lib.ex.ResultCodeEnum;
+import com.mall.ums.domain.member.MemberConverter;
 import com.mall.ums.infrastructure.dataobject.UserDO;
 import com.mall.ums.infrastructure.enums.AccountTypeEnum;
 import com.mall.ums.infrastructure.mapper.UserMapper;
@@ -91,13 +94,15 @@ public class Member {
         }
     }
 
-    public void login(String username) {
+    public UserDto login(String username) {
         Optional<UserDO> userDOOptional = userMapper.selectByUsername(username);
         UserDO userDO = userDOOptional.orElseThrow(() -> {
             log.warn("用户[{}]不存在", loginInfo.getUsername());
             throw new BizException(ResultCodeEnum.USER_LOGIN_ERROR);
         });
-        loginInfo = new LoginInfo();
-        loginInfo.setPassword(userDO.getPassword());
+
+        return MemberConverter.userDo2UserDto(userDO);
     }
+
+
 }

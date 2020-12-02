@@ -26,6 +26,8 @@ public class AccountServiceImpl implements IAccountService {
 
     @Override
     public UserDto memberLogin(String username) {
+        member.login(username);
+
         return null;
     }
 }

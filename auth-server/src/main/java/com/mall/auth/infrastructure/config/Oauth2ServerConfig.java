@@ -48,7 +48,7 @@ public class Oauth2ServerConfig extends AuthorizationServerConfigurerAdapter {
                 .accessTokenValiditySeconds(3600 * 24 * 7)
                 .refreshTokenValiditySeconds(3600 * 24 * 14)
                 .and()
-                .withClient(AuthConstant.PORTAL_CLIENT_ID)
+                .withClient(AuthConstant.CLIENT_ID_PORTAL)
                 .secret(passwordEncoder.encode("123456"))
                 .scopes("all")
                 .authorizedGrantTypes("password", "refresh_token")

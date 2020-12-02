@@ -43,7 +43,7 @@ public class AuthConstant {
     /**
      * 门户应用client_id
      */
-    public static final String PORTAL_CLIENT_ID = "portal-app";
+    public static final String CLIENT_ID_PORTAL = "portal-app";
 
     /**
      * admin-app接口路径匹配

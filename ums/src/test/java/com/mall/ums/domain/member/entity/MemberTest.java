@@ -1,6 +1,8 @@
 package com.mall.ums.domain.member.entity;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.mall.lib.constant.AuthConstant;
+import com.mall.lib.domain.UserDto;
 import com.mall.lib.ex.BizException;
 import com.mall.lib.ex.ResultCodeEnum;
 import com.mall.ums.BaseTest;
@@ -51,10 +53,11 @@ class MemberTest extends BaseTest {
         loginInfo.setUsername(username);
 
         member.setRegisterInfo(null);
-        member.login(username);
+        UserDto userDto = member.login(username);
 
-        assertEquals(member.getLoginInfo().getPassword(), password);
-        log.warn(">>>>> {}", member);
+        assertEquals(password, userDto.getPassword());
+        assertEquals(AuthConstant.CLIENT_ID_PORTAL, userDto.getClientId());
+        log.warn(">>>>> {}", userDto);
     }
 
     private void registerMember(String username, String password) {
