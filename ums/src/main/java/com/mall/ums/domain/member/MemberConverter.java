@@ -1,7 +1,7 @@
 package com.mall.ums.domain.member;
 
 import com.mall.lib.constant.AuthConstant;
-import com.mall.lib.domain.UserDto;
+import com.mall.ums.dto.MemberInfoDto;
 import com.mall.ums.infrastructure.dataobject.UserDO;
 
 /**
@@ -9,13 +9,13 @@ import com.mall.ums.infrastructure.dataobject.UserDO;
  */
 public class MemberConverter {
 
-    public static UserDto userDo2UserDto(UserDO userDO) {
-        UserDto userDto = new UserDto();
-        userDto.setUsername(userDO.getUsername());
-        userDto.setPassword(userDO.getPassword());
-        userDto.setId(userDO.getId());
-        userDto.setClientId(AuthConstant.CLIENT_ID_PORTAL);
+    public static MemberInfoDto userDo2UserDto(UserDO userDO) {
+        MemberInfoDto memberInfoDto = new MemberInfoDto();
+        memberInfoDto.setUsername(userDO.getUsername());
+        memberInfoDto.setPassword(userDO.getPassword());
+        memberInfoDto.setId(userDO.getId());
+        memberInfoDto.setClientId(AuthConstant.CLIENT_ID_PORTAL);
 
-        return userDto;
+        return memberInfoDto;
     }
 }

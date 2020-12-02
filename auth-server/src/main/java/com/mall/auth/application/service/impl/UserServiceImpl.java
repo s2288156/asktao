@@ -5,6 +5,7 @@ import com.mall.lib.constant.AuthConstant;
 import com.mall.lib.constant.MessageConstant;
 import com.mall.lib.domain.UserDto;
 import com.mall.ums.client.IMemberClient;
+import com.mall.ums.dto.MemberInfoDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AccountExpiredException;
@@ -49,7 +50,8 @@ public class UserServiceImpl implements UserDetailsService {
         if (AuthConstant.ADMIN_CLIENT_ID.equals(clientId)) {
             // TODO: 2020/12/2 后台账户查询待开发
         } else {
-            userDto = memberClient.login(username).getData();
+            MemberInfoDto memberInfoDto = memberClient.login(username).getData();
+            userDto = memberInfoDto.convert2UserDto();
         }
         if (userDto == null) {
             throw new UsernameNotFoundException(MessageConstant.USERNAME_PASSWORD_ERROR);

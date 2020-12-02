@@ -5,6 +5,7 @@ import com.mall.lib.domain.UserDto;
 import com.mall.lib.ex.BizException;
 import com.mall.lib.ex.ResultCodeEnum;
 import com.mall.ums.domain.member.MemberConverter;
+import com.mall.ums.dto.MemberInfoDto;
 import com.mall.ums.infrastructure.dataobject.UserDO;
 import com.mall.ums.infrastructure.enums.AccountTypeEnum;
 import com.mall.ums.infrastructure.mapper.UserMapper;
@@ -94,7 +95,7 @@ public class Member {
         }
     }
 
-    public UserDto login(String username) {
+    public MemberInfoDto login(String username) {
         Optional<UserDO> userDOOptional = userMapper.selectByUsername(username);
         UserDO userDO = userDOOptional.orElseThrow(() -> {
             log.warn("用户[{}]不存在", loginInfo.getUsername());

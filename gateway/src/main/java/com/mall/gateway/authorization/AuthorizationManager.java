@@ -107,18 +107,6 @@ public class AuthorizationManager implements ReactiveAuthorizationManager<Author
                 .collect(Collectors.toSet());
     }
 
-    public static void main(String[] args) {
-        Set<String> roles = new HashSet<>();
-
-        roles.add("ROLE");
-        roles.add("ADMIN");
-        roles.add("MALL");
-        roles.add("ROLE");
-        roles.add("ROLE");
-
-        System.out.println(roles);
-    }
-
     /**
      * 判断用户是否属于请求的系统，不同用户体系登录不允许互相访问
      *

@@ -2,6 +2,7 @@ package com.mall.ums.application.service;
 
 import com.mall.lib.domain.UserDto;
 import com.mall.ums.application.dto.MemberRegisterDTO;
+import com.mall.ums.dto.MemberInfoDto;
 
 /**
  * 账户相关
@@ -23,5 +24,5 @@ public interface IAccountService {
      * @param username 用户名
      * @return 用户信息
      */
-    UserDto memberLogin(String username);
+    MemberInfoDto memberLogin(String username);
 }

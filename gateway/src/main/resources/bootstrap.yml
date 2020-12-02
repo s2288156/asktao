@@ -33,4 +33,5 @@ secure:
       - "/auth/oauth/token"
       - "/auth/rsa/publicKey"
       - "/auth/account/member_register"
-      - "/ums/member/register"
+      - "/ums/member_register"
+      - "/ums/member_login"

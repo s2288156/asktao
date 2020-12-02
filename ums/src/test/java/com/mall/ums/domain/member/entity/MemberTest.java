@@ -6,6 +6,7 @@ import com.mall.lib.domain.UserDto;
 import com.mall.lib.ex.BizException;
 import com.mall.lib.ex.ResultCodeEnum;
 import com.mall.ums.BaseTest;
+import com.mall.ums.dto.MemberInfoDto;
 import com.mall.ums.infrastructure.dataobject.UserDO;
 import com.mall.ums.infrastructure.mapper.UserMapper;
 import lombok.extern.slf4j.Slf4j;
@@ -53,11 +54,11 @@ class MemberTest extends BaseTest {
         loginInfo.setUsername(username);
 
         member.setRegisterInfo(null);
-        UserDto userDto = member.login(username);
+        MemberInfoDto memberInfoDto = member.login(username);
 
-        assertEquals(password, userDto.getPassword());
-        assertEquals(AuthConstant.CLIENT_ID_PORTAL, userDto.getClientId());
-        log.warn(">>>>> {}", userDto);
+        assertEquals(password, memberInfoDto.getPassword());
+        assertEquals(AuthConstant.CLIENT_ID_PORTAL, memberInfoDto.getClientId());
+        log.warn(">>>>> {}", memberInfoDto);
     }
 
     private void registerMember(String username, String password) {

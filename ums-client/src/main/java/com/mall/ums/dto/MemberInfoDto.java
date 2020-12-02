@@ -1,0 +1,32 @@
+package com.mall.ums.dto;
+
+import com.mall.lib.domain.UserDto;
+import lombok.Data;
+import org.apache.catalina.User;
+
+import java.io.Serializable;
+
+/**
+ * @author wcy
+ */
+@Data
+public class MemberInfoDto implements Serializable {
+    private static final long serialVersionUID = 8146352744429128683L;
+
+    private String id;
+
+    private String username;
+
+    private String password;
+
+    private String clientId;
+
+    public UserDto convert2UserDto() {
+        UserDto userDto = new UserDto();
+        userDto.setId(getId());
+        userDto.setUsername(getUsername());
+        userDto.setPassword(getPassword());
+        userDto.setClientId(getClientId());
+        return userDto;
+    }
+}
