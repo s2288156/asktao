@@ -7,17 +7,21 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * 登录用户信息
- * Created by macro on 2020/6/19.
+ *
+ * @author wcy
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Data
 @EqualsAndHashCode(callSuper = false)
 @NoArgsConstructor
-public class UserDto {
+public class UserDto implements Serializable {
+    private static final long serialVersionUID = 6294044607064925917L;
+
     private String id;
 
     @JsonProperty(value = "user_name")
