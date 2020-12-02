@@ -19,7 +19,7 @@ public class SecurityUser implements UserDetails {
     /**
      * ID
      */
-    private Long id;
+    private String id;
     /**
      * 用户名
      */

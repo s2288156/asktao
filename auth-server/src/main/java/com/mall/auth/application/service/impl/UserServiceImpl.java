@@ -4,6 +4,7 @@ import com.mall.auth.application.dto.SecurityUser;
 import com.mall.lib.constant.AuthConstant;
 import com.mall.lib.constant.MessageConstant;
 import com.mall.lib.domain.UserDto;
+import com.mall.ums.client.IMemberClient;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AccountExpiredException;
@@ -13,11 +14,9 @@ import org.springframework.security.authentication.LockedException;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.Arrays;
 
 /**
  * @author wcy
@@ -29,36 +28,28 @@ public class UserServiceImpl implements UserDetailsService {
     private HttpServletRequest request;
 
     @Autowired
-    private PasswordEncoder passwordEncoder;
+    private IMemberClient memberClient;
 
-    private static UserDto userDto1;
-    private static UserDto userDto2;
-
-    static {
-        userDto1 = new UserDto();
-        userDto2 = new UserDto();
-        userDto1.setId("1");
-        userDto1.setClientId("admin-app");
-        userDto1.setUsername("admin");
-        userDto1.setRoles(Arrays.asList("ADMIN", "B", "C"));
-
-        userDto2.setId("2");
-        userDto2.setClientId("portal-app");
-        userDto2.setUsername("portal");
-        userDto2.setRoles(Arrays.asList("A1", "B1", "C1"));
-    }
+//        userDto1 = new UserDto();
+//        userDto2 = new UserDto();
+//        userDto1.setId("1");
+//        userDto1.setClientId("admin-app");
+//        userDto1.setUsername("admin");
+//        userDto1.setRoles(Arrays.asList("ADMIN", "B", "C"));
+//
+//        userDto2.setId("2");
+//        userDto2.setClientId("portal-app");
+//        userDto2.setUsername("portal");
+//        userDto2.setRoles(Arrays.asList("A1", "B1", "C1"));
 
     @Override
-    public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
-        String adminPassword = passwordEncoder.encode("admin");
-        userDto1.setPassword(adminPassword);
-        userDto2.setPassword(adminPassword);
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         String clientId = request.getParameter("client_id");
-        UserDto userDto;
+        UserDto userDto = null;
         if (AuthConstant.ADMIN_CLIENT_ID.equals(clientId)) {
-            userDto = userDto1;
+            // TODO: 2020/12/2 后台账户查询待开发
         } else {
-            userDto = userDto2;
+            userDto = memberClient.login(username).getData();
         }
         if (userDto == null) {
             throw new UsernameNotFoundException(MessageConstant.USERNAME_PASSWORD_ERROR);
