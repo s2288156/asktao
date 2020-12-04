@@ -2,7 +2,6 @@ package com.mall.ums.dto;
 
 import com.mall.lib.domain.UserDto;
 import lombok.Data;
-import org.apache.catalina.User;
 
 import java.io.Serializable;
 

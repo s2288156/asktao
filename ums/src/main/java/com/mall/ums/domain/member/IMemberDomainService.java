@@ -12,4 +12,12 @@ public interface IMemberDomainService {
      * @param registerMember 注册信息
      */
     void register(Member registerMember);
+
+    /**
+     * 会员登录
+     *
+     * @param username 用户名
+     * @return 会员信息
+     */
+    Member login(String username);
 }

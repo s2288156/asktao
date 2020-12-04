@@ -1,30 +1,22 @@
 package com.mall.ums.domain.member.entity;
 
-import com.mall.lib.ex.BizException;
-import com.mall.lib.ex.ResultCodeEnum;
-import com.mall.ums.domain.member.MemberConverter;
-import com.mall.ums.dto.MemberInfoDto;
+import com.mall.lib.constant.AuthConstant;
 import com.mall.ums.infrastructure.dataobject.UserDO;
-import com.mall.ums.infrastructure.enums.AccountTypeEnum;
 import com.mall.ums.infrastructure.mapper.UserMapper;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
-import java.util.Optional;
 
 /**
  * @author wcy
  */
 @Slf4j
 @Data
-@Component
 public class Member {
 
-    @Autowired
-    private UserMapper userMapper;
+    private String id;
 
     /**
      * 名字
@@ -73,17 +65,16 @@ public class Member {
 
     private RegisterInfo registerInfo;
 
-    public static final AccountTypeEnum ACCOUNT_TYPE = AccountTypeEnum.MEMBER;
+    private static final String CLIENT_ID = AuthConstant.CLIENT_ID_PORTAL;
 
-    public MemberInfoDto login(String username) {
-        Optional<UserDO> userDOOptional = userMapper.selectByUsername(username);
-        UserDO userDO = userDOOptional.orElseThrow(() -> {
-            log.warn("用户[{}]不存在", loginInfo.getUsername());
-            throw new BizException(ResultCodeEnum.USER_LOGIN_ERROR);
-        });
-
-        return MemberConverter.userDo2UserDto(userDO);
+    public String clientId() {
+        return CLIENT_ID;
     }
 
-
+    public static Member loginDetailAssemble(UserDO userDO) {
+        Member member = new Member();
+        member.setLoginInfo(new LoginInfo(userDO.getUsername(), userDO.getPassword()));
+        member.setId(userDO.getId());
+        return member;
+    }
 }
