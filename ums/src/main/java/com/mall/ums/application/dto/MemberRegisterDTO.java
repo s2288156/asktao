@@ -13,6 +13,14 @@ public class MemberRegisterDTO {
 
     private String password;
 
+    public MemberRegisterDTO() {
+    }
+
+    public MemberRegisterDTO(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
+
     public RegisterInfo getRegisterInfo() {
         RegisterInfo registerInfo = new RegisterInfo();
         registerInfo.setUsername(getUsername());
