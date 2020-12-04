@@ -24,4 +24,9 @@ public class MemberController {
         accountService.registerMember(memberRegister.convert2Dto());
         return RestResult.success();
     }
+
+    @PostMapping("/list")
+    public RestResult<?> list() {
+        return RestResult.success();
+    }
 }

@@ -1,7 +1,5 @@
 package com.mall.ums.domain.member.entity;
 
-import com.mall.lib.constant.AuthConstant;
-import com.mall.lib.domain.UserDto;
 import com.mall.lib.ex.BizException;
 import com.mall.lib.ex.ResultCodeEnum;
 import com.mall.ums.domain.member.MemberConverter;
