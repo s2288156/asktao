@@ -12,7 +12,7 @@ public class RegisterInfo {
 
     private String password;
 
-    UserDO convert2Do() {
+    public UserDO convert2Do() {
         UserDO userDO = new UserDO();
         userDO.setUsername(this.getUsername());
         userDO.setPassword(this.getPassword());

@@ -73,7 +73,7 @@ public class Member {
 
     private RegisterInfo registerInfo;
 
-    private static final AccountTypeEnum ACCOUNT_TYPE = AccountTypeEnum.MEMBER;
+    public static final AccountTypeEnum ACCOUNT_TYPE = AccountTypeEnum.MEMBER;
 
     public void register() {
         if (registerInfo == null) {
