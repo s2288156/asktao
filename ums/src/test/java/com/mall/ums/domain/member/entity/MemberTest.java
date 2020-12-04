@@ -24,24 +24,6 @@ class MemberTest extends BaseTest {
     @Autowired
     private Member member;
 
-    @Autowired
-    private UserMapper userMapper;
-
-    @Test
-    @Transactional
-    void testRegister() {
-        String username = "loaaaaaaa";
-        String password = "1123455";
-        registerMember(username, password);
-
-        UserDO userDO = userMapper.selectOne(new LambdaQueryWrapper<UserDO>().eq(UserDO::getUsername, username));
-        assertNotNull(userDO);
-        log.warn("userDO = {}", userDO);
-
-        BizException bizException = assertThrows(BizException.class, () -> member.register());
-        assertEquals(ResultCodeEnum.USERNAME_EXISTS.code(), bizException.getCode());
-    }
-
     @Test
     @Transactional
     void testLogin() {
@@ -67,6 +49,6 @@ class MemberTest extends BaseTest {
         registerInfo.setPassword(password);
 
         member.setRegisterInfo(registerInfo);
-        member.register();
+//        member.register();
     }
 }

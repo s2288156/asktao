@@ -75,24 +75,6 @@ public class Member {
 
     public static final AccountTypeEnum ACCOUNT_TYPE = AccountTypeEnum.MEMBER;
 
-    public void register() {
-        if (registerInfo == null) {
-            throw new BizException(ResultCodeEnum.USER_REGISTER_ERROR);
-        }
-        checkUsernameNotExisted(registerInfo.getUsername());
-
-        UserDO userDO = registerInfo.convert2Do();
-        userDO.setAccountType(ACCOUNT_TYPE);
-        userMapper.insert(userDO);
-    }
-
-    private void checkUsernameNotExisted(String username) {
-        Optional<UserDO> optionalUserDO = userMapper.selectByUsername(username);
-        if (optionalUserDO.isPresent()) {
-            throw new BizException(ResultCodeEnum.USERNAME_EXISTS);
-        }
-    }
-
     public MemberInfoDto login(String username) {
         Optional<UserDO> userDOOptional = userMapper.selectByUsername(username);
         UserDO userDO = userDOOptional.orElseThrow(() -> {
