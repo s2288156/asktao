@@ -1,6 +1,5 @@
 package com.mall.ums.application.service;
 
-import com.mall.lib.domain.UserDto;
 import com.mall.ums.application.dto.MemberRegisterDTO;
 import com.mall.ums.dto.MemberInfoDto;
 
@@ -25,4 +24,5 @@ public interface IAccountService {
      * @return 用户信息
      */
     MemberInfoDto memberLogin(String username);
+
 }

@@ -3,6 +3,7 @@ package com.mall.ums.interfaces.controller;
 import com.mall.lib.domain.RestResult;
 import com.mall.ums.application.service.IAccountService;
 import com.mall.ums.interfaces.form.MemberRegisterForm;
+import com.mall.web.domain.PageForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -26,7 +27,7 @@ public class MemberController {
     }
 
     @PostMapping("/list")
-    public RestResult<?> list() {
+    public RestResult<?> list(PageForm pageForm) {
         return RestResult.success();
     }
 }
