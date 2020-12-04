@@ -1,5 +1,6 @@
 package com.mall.ums.application.service.impl;
 
+import com.mall.lib.ex.BizException;
 import com.mall.ums.BaseTest;
 import com.mall.ums.application.dto.MemberRegisterDTO;
 import com.mall.ums.domain.member.entity.Member;
@@ -8,8 +9,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
-import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * @author wcy
@@ -41,5 +41,7 @@ class AccountServiceImplTest extends BaseTest {
         accountService.registerMember(memberRegisterDTO);
         Member member = accountService.memberLogin(username);
         assertEquals(password, member.getLoginInfo().getPassword());
+
+        assertThrows(BizException.class, () -> accountService.memberLogin("error"));
     }
 }
