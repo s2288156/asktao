@@ -2,6 +2,7 @@ package com.mall.ums.interfaces.controller;
 
 import com.mall.lib.domain.RestResult;
 import com.mall.ums.application.service.IAccountService;
+import com.mall.ums.domain.member.entity.Member;
 import com.mall.ums.interfaces.form.MemberRegisterForm;
 import com.mall.ums.interfaces.vo.MemberDetailVO;
 import com.mall.web.domain.PageForm;
@@ -27,7 +28,8 @@ public class MemberController {
 
     @GetMapping("/detail")
     public RestResult<MemberDetailVO> detail(@RequestHeader String uid) {
+        Member member = accountService.detailForUid(uid);
 
-        return RestResult.success();
+        return RestResult.success(MemberDetailVO.assembleFor(member));
     }
 }

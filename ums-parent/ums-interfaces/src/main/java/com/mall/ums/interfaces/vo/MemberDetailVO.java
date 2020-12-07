@@ -1,6 +1,8 @@
 package com.mall.ums.interfaces.vo;
 
+import com.mall.ums.domain.member.entity.Member;
 import lombok.Data;
+import org.springframework.beans.BeanUtils;
 
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -47,4 +49,10 @@ public class MemberDetailVO implements Serializable {
      * 手机号
      **/
     private String phone;
+
+    public static MemberDetailVO assembleFor(Member member) {
+        MemberDetailVO memberDetailVO = new MemberDetailVO();
+        BeanUtils.copyProperties(member, memberDetailVO);
+        return memberDetailVO;
+    }
 }
