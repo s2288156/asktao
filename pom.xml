@@ -5,7 +5,6 @@
     <modelVersion>4.0.0</modelVersion>
     <packaging>pom</packaging>
     <modules>
-        <module>ums</module>
         <module>common-web</module>
         <module>common-lib</module>
         <module>common-mybatis</module>
