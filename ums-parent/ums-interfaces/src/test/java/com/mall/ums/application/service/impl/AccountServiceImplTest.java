@@ -55,6 +55,7 @@ class AccountServiceImplTest extends BaseTest {
 
     @Test
     void testDetailForUid() {
+        testMemberRegister();
         Optional<UserDO> userDO = userMapper.selectByUsername(username);
         uid = userDO.get().getId();
         Member member = accountService.detailForUid(uid);

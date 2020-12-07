@@ -20,4 +20,6 @@ public interface IMemberDomainService {
      * @return 会员信息
      */
     Member login(String username);
+
+    Member detail(String uid);
 }

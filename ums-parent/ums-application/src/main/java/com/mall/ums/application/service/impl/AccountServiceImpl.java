@@ -30,6 +30,6 @@ public class AccountServiceImpl implements IAccountService {
 
     @Override
     public Member detailForUid(String uid) {
-        return null;
+        return memberDomainService.detail(uid);
     }
 }

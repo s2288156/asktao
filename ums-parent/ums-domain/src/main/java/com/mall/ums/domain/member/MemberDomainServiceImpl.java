@@ -44,6 +44,13 @@ public class MemberDomainServiceImpl implements IMemberDomainService {
         return Member.loginDetailAssemble(userDO);
     }
 
+    @Override
+    public Member detail(String uid) {
+        UserDO userDO = userMapper.selectById(uid);
+
+        return Member.detailAssemble(userDO);
+    }
+
     private void checkUsernameNotExisted(String username) {
         Optional<UserDO> optionalUserDO = userMapper.selectByUsername(username);
         if (optionalUserDO.isPresent()) {
