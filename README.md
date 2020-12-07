@@ -6,7 +6,7 @@
 #### 软件架构
 软件架构说明
 
-![](https://app.yinxiang.com/FileSharing.action?hash=1/491d7a3072406accbac9992d67aa85ef-347581)
+![](https://app.yinxiang.com/FileSharing.action?hash=1/13f6f64b05596e9d87214956eb59f3f3-33762)
 
 #### 安装教程
 

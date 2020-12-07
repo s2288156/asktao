@@ -20,7 +20,7 @@
 
         <dependency>
             <groupId>com.mall</groupId>
-            <artifactId>ums-infrastructure</artifactId>
+            <artifactId>ums-domain</artifactId>
             <version>1.0.0</version>
         </dependency>
     </dependencies>
