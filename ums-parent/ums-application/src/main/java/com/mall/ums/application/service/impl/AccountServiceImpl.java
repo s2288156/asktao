@@ -27,4 +27,9 @@ public class AccountServiceImpl implements IAccountService {
     public Member memberLogin(String username) {
         return memberDomainService.login(username);
     }
+
+    @Override
+    public Member detailForUid(String uid) {
+        return null;
+    }
 }

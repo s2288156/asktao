@@ -3,12 +3,11 @@ package com.mall.ums.interfaces.controller;
 import com.mall.lib.domain.RestResult;
 import com.mall.ums.application.service.IAccountService;
 import com.mall.ums.interfaces.form.MemberRegisterForm;
+import com.mall.ums.interfaces.vo.MemberDetailVO;
 import com.mall.web.domain.PageForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author wcy
@@ -26,8 +25,9 @@ public class MemberController {
         return RestResult.success();
     }
 
-    @PostMapping("/list")
-    public RestResult<?> list(PageForm pageForm) {
+    @GetMapping("/detail")
+    public RestResult<MemberDetailVO> detail(@RequestHeader String uid) {
+
         return RestResult.success();
     }
 }

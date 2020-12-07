@@ -25,4 +25,12 @@ public interface IAccountService {
      */
     Member memberLogin(String username);
 
+    /**
+     * 查询会员详细信息
+     *
+     * @param uid 用户id
+     * @return 用户信息
+     */
+    Member detailForUid(String uid);
+
 }
