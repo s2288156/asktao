@@ -1,6 +1,5 @@
 package com.mall.ums.domain.member.entity;
 
-import com.mall.ums.infrastructure.dataobject.UserDO;
 import lombok.Data;
 
 /**
@@ -11,11 +10,4 @@ public class RegisterInfo {
     private String username;
 
     private String password;
-
-    public UserDO convert2Do() {
-        UserDO userDO = new UserDO();
-        userDO.setUsername(this.getUsername());
-        userDO.setPassword(this.getPassword());
-        return userDO;
-    }
 }

@@ -2,16 +2,12 @@ package com.mall.ums.domain.member;
 
 import com.mall.lib.ex.BizException;
 import com.mall.lib.ex.ResultCodeEnum;
+import com.mall.ums.domain.gateway.MemberGateway;
 import com.mall.ums.domain.member.entity.Member;
 import com.mall.ums.domain.member.entity.RegisterInfo;
-import com.mall.ums.infrastructure.dataobject.UserDO;
-import com.mall.ums.infrastructure.enums.AccountTypeEnum;
-import com.mall.ums.infrastructure.mapper.UserMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.Optional;
 
 /**
  * @author wcy
@@ -19,8 +15,9 @@ import java.util.Optional;
 @Slf4j
 @Service
 public class MemberDomainServiceImpl implements IMemberDomainService {
+
     @Autowired
-    private UserMapper userMapper;
+    private MemberGateway memberGateway;
 
     @Override
     public void register(Member registerMember) {
@@ -29,31 +26,27 @@ public class MemberDomainServiceImpl implements IMemberDomainService {
             throw new BizException(ResultCodeEnum.USER_REGISTER_ERROR);
         }
         checkUsernameNotExisted(registerInfo.getUsername());
-        UserDO userDO = registerInfo.convert2Do();
-        userDO.setAccountType(AccountTypeEnum.MEMBER);
-        userMapper.insert(userDO);
+        memberGateway.insertUser(registerMember);
     }
 
     @Override
     public Member login(String username) {
-        Optional<UserDO> userDOOptional = userMapper.selectByUsername(username);
-        UserDO userDO = userDOOptional.orElseThrow(() -> {
+        Member member = memberGateway.selectByUsername(username);
+        if (member == null) {
             log.warn("用户[{}]不存在", username);
             throw new BizException(ResultCodeEnum.USER_NOT_EXISTS);
-        });
-        return Member.loginDetailAssemble(userDO);
+        }
+        return member;
     }
 
     @Override
     public Member detail(String uid) {
-        UserDO userDO = userMapper.selectById(uid);
-
-        return Member.detailAssemble(userDO);
+        return memberGateway.selectById(uid);
     }
 
     private void checkUsernameNotExisted(String username) {
-        Optional<UserDO> optionalUserDO = userMapper.selectByUsername(username);
-        if (optionalUserDO.isPresent()) {
+        Member member = memberGateway.selectByUsername(username);
+        if (member == null) {
             throw new BizException(ResultCodeEnum.USERNAME_EXISTS);
         }
     }

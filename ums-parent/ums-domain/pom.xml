@@ -18,10 +18,10 @@
             <version>1.0.0</version>
         </dependency>
 
-        <dependency>
-            <groupId>com.mall</groupId>
-            <artifactId>ums-infrastructure</artifactId>
-            <version>1.0.0</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>com.mall</groupId>-->
+<!--            <artifactId>ums-infrastructure</artifactId>-->
+<!--            <version>1.0.0</version>-->
+<!--        </dependency>-->
     </dependencies>
 </project>

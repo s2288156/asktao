@@ -1,10 +1,8 @@
 package com.mall.ums.domain.member.entity;
 
 import com.mall.lib.constant.AuthConstant;
-import com.mall.ums.infrastructure.dataobject.UserDO;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.BeanUtils;
 
 import java.time.LocalDate;
 
@@ -68,18 +66,5 @@ public class Member {
 
     public String clientId() {
         return CLIENT_ID;
-    }
-
-    public static Member loginDetailAssemble(UserDO userDO) {
-        Member member = new Member();
-        member.setLoginInfo(new LoginInfo(userDO.getUsername(), userDO.getPassword()));
-        member.setId(userDO.getId());
-        return member;
-    }
-
-    public static Member detailAssemble(UserDO userDO) {
-        Member member = new Member();
-        BeanUtils.copyProperties(userDO, member);
-        return member;
     }
 }
