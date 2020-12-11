@@ -48,6 +48,11 @@
         </dependency>
 
         <dependency>
+            <groupId>de.codecentric</groupId>
+            <artifactId>spring-boot-admin-starter-client</artifactId>
+        </dependency>
+
+        <dependency>
             <groupId>com.mall</groupId>
             <artifactId>common-lib</artifactId>
             <version>1.0.0</version>

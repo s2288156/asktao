@@ -11,6 +11,7 @@
         <module>auth-server</module>
         <module>gateway</module>
         <module>ums-parent</module>
+        <module>boot-admin-server</module>
     </modules>
 
     <parent>
@@ -33,6 +34,7 @@
         <spring-cloud-alibaba.version>2.2.3.RELEASE</spring-cloud-alibaba.version>
         <nimbus-jsse-jwt.version>8.19</nimbus-jsse-jwt.version>
         <mybatis-plus.version>3.3.2</mybatis-plus.version>
+        <spring-boot-admin.version>2.3.1</spring-boot-admin.version>
     </properties>
 
     <dependencies>
@@ -85,6 +87,14 @@
                         <groupId>org.apache.zookeeper</groupId>
                     </exclusion>
                 </exclusions>
+            </dependency>
+
+            <dependency>
+                <groupId>de.codecentric</groupId>
+                <artifactId>spring-boot-admin-dependencies</artifactId>
+                <version>${spring-boot-admin.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
             </dependency>
 
             <dependency>
