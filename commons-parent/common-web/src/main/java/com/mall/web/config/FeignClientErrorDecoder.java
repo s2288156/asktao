@@ -25,7 +25,7 @@ public class FeignClientErrorDecoder implements ErrorDecoder {
             String result = Util.toString(response.body().asReader(StandardCharsets.UTF_8));
             log.error("feignClient = {}, errorMsg = {}", s, result);
             ReturnCodeMsg restResult = JsonUtils.fromJson(result, ReturnCodeMsg.class);
-            bizException = new BizException(restResult.getReturnMsg(), restResult.getReturnCode());
+            bizException = new BizException(restResult.getReturnCode(), restResult.getReturnMsg());
         } catch (IOException e) {
             log.error("errorMsg toString ex:", e);
         }

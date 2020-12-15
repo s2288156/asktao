@@ -2,29 +2,22 @@ package com.mall.lib.ex;
 
 import lombok.Getter;
 
-import java.io.Serializable;
-
 /**
  * @author wcy
  */
 @Getter
-public class BizException extends RuntimeException implements Serializable {
+public class BizException extends BaseException {
     private static final long serialVersionUID = -5496308092178328679L;
 
-    private final String code;
-
     public BizException(ICode<String, String> errorEnum) {
-        super(errorEnum.msg());
-        this.code = errorEnum.code();
+        super(errorEnum);
     }
 
     public BizException(ICode<String, String> errorEnum, String msg) {
-        super(msg);
-        this.code = errorEnum.code();
+        super(errorEnum, msg);
     }
 
-    public BizException(String message, String code) {
-        super(message);
-        this.code = code;
+    public BizException(String code, String message) {
+        super(code, message);
     }
 }
