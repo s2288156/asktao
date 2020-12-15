@@ -1,5 +1,6 @@
 package com.mall.ums.application.service;
 
+import com.mall.ums.application.dto.MemberLoginCmd;
 import com.mall.ums.application.dto.MemberRegisterDTO;
 import com.mall.ums.domain.member.entity.Member;
 import org.springframework.http.ResponseEntity;
@@ -34,5 +35,5 @@ public interface IAccountService {
      */
     Member detailForUid(String uid);
 
-    ResponseEntity<?> login(String username, String password);
+    ResponseEntity<?> login(MemberLoginCmd loginCmd);
 }

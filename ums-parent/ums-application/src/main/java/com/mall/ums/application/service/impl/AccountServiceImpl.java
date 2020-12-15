@@ -1,6 +1,7 @@
 package com.mall.ums.application.service.impl;
 
 import com.mall.lib.constant.AuthConstant;
+import com.mall.ums.application.dto.MemberLoginCmd;
 import com.mall.ums.application.dto.MemberRegisterDTO;
 import com.mall.ums.application.service.AuthClient;
 import com.mall.ums.application.service.IAccountService;
@@ -43,13 +44,13 @@ public class AccountServiceImpl implements IAccountService {
     }
 
     @Override
-    public ResponseEntity<?> login(String username, String password) {
+    public ResponseEntity<?> login(MemberLoginCmd loginCmd) {
         Map<String, String> params = new HashMap<>(16);
         params.put("client_id", AuthConstant.CLIENT_ID_PORTAL);
         params.put("client_secret", "123456");
         params.put("grant_type", "password");
-        params.put("username", username);
-        params.put("password", password);
+        params.put("username", loginCmd.getUsername());
+        params.put("password", loginCmd.getPassword());
         return authClient.oauthToken(params);
     }
 }

@@ -3,6 +3,7 @@ package com.mall.ums.interfaces.controller;
 import com.mall.lib.domain.RestResponse;
 import com.mall.ums.application.service.IAccountService;
 import com.mall.ums.domain.member.entity.Member;
+import com.mall.ums.application.dto.MemberLoginCmd;
 import com.mall.ums.interfaces.form.MemberRegisterForm;
 import com.mall.ums.interfaces.vo.MemberDetailVO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +34,7 @@ public class MemberController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<?> login(String username, String password) {
-        return accountService.login(username, password);
+    public ResponseEntity<?> login(@Validated MemberLoginCmd loginCmd) {
+        return accountService.login(loginCmd);
     }
 }
