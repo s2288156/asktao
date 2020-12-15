@@ -2,6 +2,7 @@ package com.mall.ums.application.service;
 
 import com.mall.ums.application.dto.MemberRegisterDTO;
 import com.mall.ums.domain.member.entity.Member;
+import org.springframework.http.ResponseEntity;
 
 /**
  * 账户相关
@@ -33,4 +34,5 @@ public interface IAccountService {
      */
     Member detailForUid(String uid);
 
+    ResponseEntity<?> login(String username, String password);
 }

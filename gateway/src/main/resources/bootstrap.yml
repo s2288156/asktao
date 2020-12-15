@@ -35,3 +35,4 @@ secure:
       - "/auth/rsa/publicKey"
       - "/ums/member/register"
       - "/ums/member_login"
+      - "/ums/member/login"

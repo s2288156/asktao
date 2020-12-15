@@ -1,11 +1,14 @@
 package com.mall.lib.ex;
 
+import lombok.Getter;
+
 /**
  * @author wcy
  */
 public abstract class BaseException extends RuntimeException {
     private static final long serialVersionUID = 4911360448556404699L;
 
+    @Getter
     private String errCode;
 
     public BaseException(String message) {

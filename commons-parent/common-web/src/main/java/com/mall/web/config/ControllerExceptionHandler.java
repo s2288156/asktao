@@ -29,13 +29,13 @@ public class ControllerExceptionHandler {
     @ExceptionHandler(BizException.class)
     public ResponseEntity<?> handleBizException(BizException ex) {
         log.warn("[BizException]: {}", ex.getMessage());
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(RestResponse.failed(ex.getCode(), ex.getMessage()));
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(RestResponse.failed(ex.getErrCode(), ex.getMessage()));
     }
 
     @ExceptionHandler(SysException.class)
     public ResponseEntity<?> handleBizException(SysException ex) {
         log.error("[SysException]: {}", ex.getMessage());
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(RestResponse.failed(ex.getCode(), ex.getMessage()));
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(RestResponse.failed(ex.getErrCode(), ex.getMessage()));
     }
 
     @ExceptionHandler(value = BindException.class)

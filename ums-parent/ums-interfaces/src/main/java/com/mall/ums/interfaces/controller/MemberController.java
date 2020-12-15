@@ -6,6 +6,7 @@ import com.mall.ums.domain.member.entity.Member;
 import com.mall.ums.interfaces.form.MemberRegisterForm;
 import com.mall.ums.interfaces.vo.MemberDetailVO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,7 +29,11 @@ public class MemberController {
     @GetMapping("/detail")
     public RestResponse<MemberDetailVO> detail(@RequestHeader String uid) {
         Member member = accountService.detailForUid(uid);
-
         return RestResponse.success(MemberDetailVO.assembleFor(member));
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<?> login(String username, String password) {
+        return accountService.login(username, password);
     }
 }
