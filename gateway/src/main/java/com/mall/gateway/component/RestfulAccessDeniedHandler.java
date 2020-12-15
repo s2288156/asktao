@@ -1,6 +1,6 @@
 package com.mall.gateway.component;
 
-import com.mall.lib.domain.RestResult;
+import com.mall.lib.domain.RestResponse;
 import com.mall.lib.util.JsonUtils;
 import org.springframework.core.io.buffer.DataBuffer;
 import org.springframework.http.HttpHeaders;
@@ -30,7 +30,7 @@ public class RestfulAccessDeniedHandler implements ServerAccessDeniedHandler {
         response.getHeaders().set(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE);
         response.getHeaders().set(HttpHeaders.ACCESS_CONTROL_ALLOW_ORIGIN, "*");
         response.getHeaders().set(HttpHeaders.CACHE_CONTROL, "no-cache");
-        String body = JsonUtils.toJson(RestResult.forbidden(e.getMessage()));
+        String body = JsonUtils.toJson(RestResponse.forbidden(e.getMessage()));
         DataBuffer wrap = response.bufferFactory().wrap(body.getBytes(StandardCharsets.UTF_8));
         return response.writeWith(Mono.just(wrap));
     }

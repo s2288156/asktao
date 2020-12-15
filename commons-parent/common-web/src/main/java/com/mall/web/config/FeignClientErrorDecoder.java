@@ -1,6 +1,5 @@
 package com.mall.web.config;
 
-import com.mall.lib.domain.RestResult;
 import com.mall.lib.domain.ReturnCodeMsg;
 import com.mall.lib.ex.BizException;
 import com.mall.lib.util.JsonUtils;

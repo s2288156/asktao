@@ -3,7 +3,7 @@ package com.mall.lib.ex;
 /**
  * @author wcy
  */
-public interface IResultCode<C, M> {
+public interface ICode<C, M> {
 
     /**
      * 获取枚举code

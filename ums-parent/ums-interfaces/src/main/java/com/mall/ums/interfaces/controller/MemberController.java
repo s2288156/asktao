@@ -1,6 +1,6 @@
 package com.mall.ums.interfaces.controller;
 
-import com.mall.lib.domain.RestResult;
+import com.mall.lib.domain.RestResponse;
 import com.mall.ums.application.service.IAccountService;
 import com.mall.ums.domain.member.entity.Member;
 import com.mall.ums.interfaces.form.MemberRegisterForm;
@@ -20,15 +20,15 @@ public class MemberController {
     private IAccountService accountService;
 
     @PostMapping("/register")
-    public RestResult<?> register(@Validated MemberRegisterForm memberRegister) {
+    public RestResponse<?> register(@Validated MemberRegisterForm memberRegister) {
         accountService.registerMember(memberRegister.convert2Dto());
-        return RestResult.success();
+        return RestResponse.success();
     }
 
     @GetMapping("/detail")
-    public RestResult<MemberDetailVO> detail(@RequestHeader String uid) {
+    public RestResponse<MemberDetailVO> detail(@RequestHeader String uid) {
         Member member = accountService.detailForUid(uid);
 
-        return RestResult.success(MemberDetailVO.assembleFor(member));
+        return RestResponse.success(MemberDetailVO.assembleFor(member));
     }
 }
