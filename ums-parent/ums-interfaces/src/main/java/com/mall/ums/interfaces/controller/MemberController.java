@@ -5,7 +5,6 @@ import com.mall.ums.application.service.IAccountService;
 import com.mall.ums.domain.member.entity.Member;
 import com.mall.ums.interfaces.form.MemberRegisterForm;
 import com.mall.ums.interfaces.vo.MemberDetailVO;
-import com.mall.web.domain.PageForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
