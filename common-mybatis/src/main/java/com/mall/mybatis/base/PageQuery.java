@@ -11,7 +11,7 @@ import java.util.List;
  * @author wcy
  */
 @Data
-public class PageInfo implements Serializable {
+public class PageQuery implements Serializable {
 
     private static final long serialVersionUID = 8479778172024555395L;
 
