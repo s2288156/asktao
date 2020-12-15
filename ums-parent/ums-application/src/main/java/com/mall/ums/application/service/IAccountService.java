@@ -24,7 +24,7 @@ public interface IAccountService {
      * @param username 用户名
      * @return 用户信息
      */
-    Member memberLogin(String username);
+    Member memberLoginSelect(String username);
 
     /**
      * 查询会员详细信息

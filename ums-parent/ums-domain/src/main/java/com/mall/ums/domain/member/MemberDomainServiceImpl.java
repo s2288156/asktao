@@ -30,7 +30,7 @@ public class MemberDomainServiceImpl implements IMemberDomainService {
     }
 
     @Override
-    public Member login(String username) {
+    public Member loginSelect(String username) {
         Member member = memberGateway.selectByUsername(username);
         if (member == null) {
             log.warn("用户[{}]不存在", username);

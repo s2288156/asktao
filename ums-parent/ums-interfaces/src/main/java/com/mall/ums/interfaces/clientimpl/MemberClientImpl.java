@@ -18,8 +18,8 @@ public class MemberClientImpl implements IMemberClient {
     private IAccountService accountService;
 
     @Override
-    public RestResponse<MemberInfoDto> login(String username) {
-        Member member = accountService.memberLogin(username);
+    public RestResponse<MemberInfoDto> loginSelect(String username) {
+        Member member = accountService.memberLoginSelect(username);
         MemberInfoDto memberInfoDto = assembleMemberInfoFor(member);
         return RestResponse.success(memberInfoDto);
     }

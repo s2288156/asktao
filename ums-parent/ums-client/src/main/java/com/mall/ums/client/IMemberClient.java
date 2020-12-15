@@ -12,6 +12,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 @FeignClient(value = "ums", path = "/ums")
 public interface IMemberClient {
 
-    @PostMapping("/member_login")
-    RestResponse<MemberInfoDto> login(@RequestParam String username);
+    @PostMapping("/client/member/login_select")
+    RestResponse<MemberInfoDto> loginSelect(@RequestParam String username);
 }

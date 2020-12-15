@@ -33,8 +33,8 @@ public class AccountServiceImpl implements IAccountService {
     }
 
     @Override
-    public Member memberLogin(String username) {
-        return memberDomainService.login(username);
+    public Member memberLoginSelect(String username) {
+        return memberDomainService.loginSelect(username);
     }
 
     @Override

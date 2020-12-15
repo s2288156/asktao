@@ -47,10 +47,10 @@ class AccountServiceImplTest extends BaseTest {
     @Test
     void testLogin() {
         accountService.registerMember(memberRegisterDTO);
-        Member member = accountService.memberLogin(username);
+        Member member = accountService.memberLoginSelect(username);
         assertEquals(password, member.getLoginInfo().getPassword());
 
-        assertThrows(BizException.class, () -> accountService.memberLogin("error"));
+        assertThrows(BizException.class, () -> accountService.memberLoginSelect("error"));
     }
 
     @Test

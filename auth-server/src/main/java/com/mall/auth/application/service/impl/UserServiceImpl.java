@@ -50,7 +50,7 @@ public class UserServiceImpl implements UserDetailsService {
         if (AuthConstant.ADMIN_CLIENT_ID.equals(clientId)) {
             // TODO: 2020/12/2 后台账户查询待开发
         } else {
-            MemberInfoDto memberInfoDto = memberClient.login(username).getData();
+            MemberInfoDto memberInfoDto = memberClient.loginSelect(username).getData();
             userDto = memberInfoDto.convert2UserDto();
         }
         if (userDto == null) {
