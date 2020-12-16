@@ -37,9 +37,4 @@ public class FeignClientErrorDecoder implements ErrorDecoder {
         }
     }
 
-    public static void main(String[] args) {
-        String s = "{\"error\":\"invalid_grant\",\"error_description\":\"用户名或密码错误\"}";
-        ReturnCodeMsg returnCodeMsg = JsonUtils.fromJson(s, ReturnCodeMsg.class);
-        System.out.println(returnCodeMsg);
-    }
 }
