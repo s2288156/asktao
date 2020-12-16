@@ -26,11 +26,20 @@ public class FeignClientErrorDecoder implements ErrorDecoder {
             result = Util.toString(response.body().asReader(StandardCharsets.UTF_8));
             log.error("feignClient = {}, errorMsg = {}", s, result);
             ReturnCodeMsg restResult = JsonUtils.fromJson(result, ReturnCodeMsg.class);
+            if (restResult.getReturnMsg() == null || restResult.getReturnCode() == null) {
+                return new BizException(ResultCodeEnum.SYS_EXECUTE_ERROR,
+                        JsonUtils.fromJson(result, FeignErrorBody.class).getErrorDescription());
+            }
             return new BizException(restResult.getReturnCode(), restResult.getReturnMsg());
         } catch (Exception e) {
-            log.error("errorMsg toString ex: {}", e.getLocalizedMessage());
-            return new BizException(ResultCodeEnum.SYS_EXECUTE_ERROR, JsonUtils.fromJson(result, FeignErrorBody.class).getErrorDescription());
+            log.error("errorMsg toString ex: ", e);
+            return new SysException(ResultCodeEnum.SYS_EXECUTE_ERROR, e.getLocalizedMessage());
         }
     }
 
+    public static void main(String[] args) {
+        String s = "{\"error\":\"invalid_grant\",\"error_description\":\"用户名或密码错误\"}";
+        ReturnCodeMsg returnCodeMsg = JsonUtils.fromJson(s, ReturnCodeMsg.class);
+        System.out.println(returnCodeMsg);
+    }
 }
