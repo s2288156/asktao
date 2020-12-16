@@ -25,7 +25,7 @@ public class JsonUtils {
         try {
             return objectMapper.readValue(json, valueType);
         } catch (Exception e) {
-            log.error("error json: {}", json, e);
+            log.error("error json: {}, {}", json, e.getLocalizedMessage());
             throw new IllegalStateException("json转换异常");
         }
     }

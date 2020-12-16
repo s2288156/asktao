@@ -2,6 +2,8 @@ package com.mall.web.config;
 
 import com.mall.lib.domain.ReturnCodeMsg;
 import com.mall.lib.ex.BizException;
+import com.mall.lib.ex.ResultCodeEnum;
+import com.mall.lib.ex.SysException;
 import com.mall.lib.util.JsonUtils;
 import feign.Response;
 import feign.Util;
@@ -9,7 +11,6 @@ import feign.codec.ErrorDecoder;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Configuration;
 
-import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
 /**
@@ -20,15 +21,16 @@ import java.nio.charset.StandardCharsets;
 public class FeignClientErrorDecoder implements ErrorDecoder {
     @Override
     public Exception decode(String s, Response response) {
-        BizException bizException = null;
+        String result = "{}";
         try {
-            String result = Util.toString(response.body().asReader(StandardCharsets.UTF_8));
+            result = Util.toString(response.body().asReader(StandardCharsets.UTF_8));
             log.error("feignClient = {}, errorMsg = {}", s, result);
             ReturnCodeMsg restResult = JsonUtils.fromJson(result, ReturnCodeMsg.class);
-            bizException = new BizException(restResult.getReturnCode(), restResult.getReturnMsg());
-        } catch (IOException e) {
-            log.error("errorMsg toString ex:", e);
+            return new BizException(restResult.getReturnCode(), restResult.getReturnMsg());
+        } catch (Exception e) {
+            log.error("errorMsg toString ex: {}", e.getLocalizedMessage());
+            return new BizException(ResultCodeEnum.SYS_EXECUTE_ERROR, JsonUtils.fromJson(result, FeignErrorBody.class).getErrorDescription());
         }
-        return bizException;
     }
+
 }

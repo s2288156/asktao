@@ -29,19 +29,19 @@ public class ControllerExceptionHandler {
     @ExceptionHandler(BizException.class)
     public ResponseEntity<?> handleBizException(BizException ex) {
         log.warn("[BizException]: {}", ex.getMessage());
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(RestResponse.failed(ex.getErrCode(), ex.getMessage()));
+        return ResponseEntity.ok(RestResponse.failed(ex.getErrCode(), ex.getMessage()));
     }
 
     @ExceptionHandler(SysException.class)
     public ResponseEntity<?> handleBizException(SysException ex) {
         log.error("[SysException]: {}", ex.getMessage());
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(RestResponse.failed(ex.getErrCode(), ex.getMessage()));
+        return ResponseEntity.ok(RestResponse.failed(ex.getErrCode(), ex.getMessage()));
     }
 
     @ExceptionHandler(value = BindException.class)
     public ResponseEntity<?> bingEx(BindException e) {
         log.warn("校验异常字段filedName: {}", e.getFieldError().getField());
-        return ResponseEntity.badRequest().body(RestResponse.failed(ResultCodeEnum.USER_ERROR.code(),
+        return ResponseEntity.ok(RestResponse.failed(ResultCodeEnum.USER_ERROR.code(),
                 e.getFieldError().getDefaultMessage()));
     }
 
