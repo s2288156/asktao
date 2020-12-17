@@ -19,8 +19,8 @@
         <relativePath/> <!-- lookup parent  from repository -->
     </parent>
 
-    <groupId>com.mall</groupId>
-    <artifactId>mall-micro</artifactId>
+    <groupId>com.asktao</groupId>
+    <artifactId>asktao</artifactId>
     <version>1.0.0</version>
     <name>Mall Micro Service</name>
     <description>基于oauth2安全框架的微服务架构商城</description>

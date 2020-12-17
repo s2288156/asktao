@@ -3,8 +3,8 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>mall-micro</artifactId>
-        <groupId>com.mall</groupId>
+        <artifactId>asktao</artifactId>
+        <groupId>com.asktao</groupId>
         <version>1.0.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
@@ -13,19 +13,19 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.mall</groupId>
+            <groupId>com.asktao</groupId>
             <artifactId>common-web</artifactId>
             <version>1.0.0</version>
         </dependency>
 
         <dependency>
-            <groupId>com.mall</groupId>
+            <groupId>com.asktao</groupId>
             <artifactId>common-lib</artifactId>
             <version>1.0.0</version>
         </dependency>
 
         <dependency>
-            <groupId>com.mall</groupId>
+            <groupId>com.asktao</groupId>
             <artifactId>ums-client</artifactId>
             <version>1.0.0</version>
         </dependency>
@@ -50,7 +50,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>com.mall.AuthApplication</mainClass>
+                    <mainClass>com.asktao.AuthApplication</mainClass>
                 </configuration>
             </plugin>
         </plugins>
