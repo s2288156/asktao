@@ -1,20 +1,24 @@
-# mall-micro
+# asktao(问道)
 
-#### 介绍
+> 持续学习，探寻技术生涯中的道
+
+## mall
+
+### 介绍
 商城oauth2，微服务实现方案
 
-#### 软件架构
+### 软件架构
 软件架构说明
 
 ![](https://app.yinxiang.com/FileSharing.action?hash=1/13f6f64b05596e9d87214956eb59f3f3-33762)
 
-#### 安装教程
+### 安装教程
 
 1.  xxxx
 2.  xxxx
 3.  xxxx
 
-#### 使用说明
+### 使用说明
 
 1. 获取jwt，`localhost:8200/auth/oauth/token`接口为框架实现，可以参考TokenEndpoint中的代码，参数：
     - grant_type(必传): password - 密码模式; refresh_token - 刷新access_token; authorization_code - 授权码模式; client_credentials; implicit;
@@ -24,7 +28,7 @@
     - password: 密码，数据库存储t_member表或t_manager表
     - refresh_token: 刷新token
 
-#### 命名规范
+## 命名规范
 
 | 规范 | 用途 | 解释 |
 | --- | --- | --- |
@@ -48,7 +52,7 @@
 | xxxConfig.java | Configuration class | 配置类 |
 | xxxUtil.java | Utility class | 工具类（尽量少使用util的命名，太通用，不够显性化） |
 
-#### 参与贡献
+## 参与贡献
 
 1.  Fork 本仓库
 2.  新建 Feat_xxx 分支
