@@ -4,7 +4,7 @@ import com.asktao.lib.domain.RestResponse;
 import com.asktao.ums.application.dto.MemberLoginCmd;
 import com.asktao.ums.application.service.IAccountService;
 import com.asktao.ums.domain.member.entity.Member;
-import com.asktao.ums.interfaces.form.MemberRegisterForm;
+import com.asktao.ums.interfaces.form.MemberRegisterCmd;
 import com.asktao.ums.interfaces.vo.MemberDetailVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
@@ -21,7 +21,7 @@ public class MemberController {
     private IAccountService accountService;
 
     @PostMapping("/register")
-    public RestResponse<?> register(@Validated MemberRegisterForm memberRegister) {
+    public RestResponse<?> register(@Validated MemberRegisterCmd memberRegister) {
         accountService.registerMember(memberRegister.convert2Dto());
         return RestResponse.success();
     }
