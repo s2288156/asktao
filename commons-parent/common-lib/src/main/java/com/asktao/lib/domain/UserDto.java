@@ -35,7 +35,7 @@ public class UserDto implements Serializable {
     private List<String> roles;
 
     public boolean isAdminClientId() {
-        return AuthConstant.ADMIN_CLIENT_ID.equals(this.clientId);
+        return AuthConstant.CLIENT_ID_ADMIN.equals(this.clientId);
     }
 
     public boolean isPortalClientId() {

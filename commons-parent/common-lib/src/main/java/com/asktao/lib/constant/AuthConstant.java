@@ -38,7 +38,7 @@ public class AuthConstant {
     /**
      * 后台管理client_id
      */
-    public static final String ADMIN_CLIENT_ID = "admin-app";
+    public static final String CLIENT_ID_ADMIN = "admin-app";
 
     /**
      * 门户应用client_id

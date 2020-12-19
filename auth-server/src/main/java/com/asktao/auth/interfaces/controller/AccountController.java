@@ -1,6 +1,6 @@
 package com.asktao.auth.interfaces.controller;
 
-import com.asktao.ums.client.IMemberClient;
+import com.asktao.ums.client.IUmsClient;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -19,6 +19,6 @@ public class AccountController {
     private PasswordEncoder passwordEncoder;
 
     @Autowired
-    private IMemberClient memberClient;
+    private IUmsClient memberClient;
 
 }

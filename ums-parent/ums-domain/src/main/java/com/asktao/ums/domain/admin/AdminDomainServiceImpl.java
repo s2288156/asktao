@@ -24,4 +24,13 @@ public class AdminDomainServiceImpl implements IAdminDomainService{
         }
         adminGateway.insert(admin);
     }
+
+    @Override
+    public Admin loginSelect(String username) {
+        Admin admin = adminGateway.selectByUsername(username);
+        if (admin == null) {
+            throw new BizException(ResultCodeEnum.USER_NOT_EXISTS);
+        }
+        return admin;
+    }
 }

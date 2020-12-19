@@ -4,7 +4,7 @@ import com.asktao.auth.application.dto.SecurityUser;
 import com.asktao.lib.constant.AuthConstant;
 import com.asktao.lib.constant.MessageConstant;
 import com.asktao.lib.domain.UserDto;
-import com.asktao.ums.client.IMemberClient;
+import com.asktao.ums.client.IUmsClient;
 import com.asktao.ums.dto.MemberInfoDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +29,7 @@ public class UserServiceImpl implements UserDetailsService {
     private HttpServletRequest request;
 
     @Autowired
-    private IMemberClient memberClient;
+    private IUmsClient umsClient;
 
 //        userDto1 = new UserDto();
 //        userDto2 = new UserDto();
@@ -37,20 +37,15 @@ public class UserServiceImpl implements UserDetailsService {
 //        userDto1.setClientId("admin-app");
 //        userDto1.setUsername("admin");
 //        userDto1.setRoles(Arrays.asList("ADMIN", "B", "C"));
-//
-//        userDto2.setId("2");
-//        userDto2.setClientId("portal-app");
-//        userDto2.setUsername("portal");
-//        userDto2.setRoles(Arrays.asList("A1", "B1", "C1"));
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         String clientId = request.getParameter("client_id");
-        UserDto userDto = null;
-        if (AuthConstant.ADMIN_CLIENT_ID.equals(clientId)) {
-            // TODO: 2020/12/2 后台账户查询待开发
+        UserDto userDto;
+        if (AuthConstant.CLIENT_ID_ADMIN.equals(clientId)) {
+            userDto = umsClient.adminLoginSelect(username).getData();
         } else {
-            MemberInfoDto memberInfoDto = memberClient.loginSelect(username).getData();
+            MemberInfoDto memberInfoDto = umsClient.memberLoginSelect(username).getData();
             userDto = memberInfoDto.convert2UserDto();
         }
         if (userDto == null) {

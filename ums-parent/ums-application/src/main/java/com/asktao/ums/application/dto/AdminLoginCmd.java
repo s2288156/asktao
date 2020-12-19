@@ -2,7 +2,6 @@ package com.asktao.ums.application.dto;
 
 import com.asktao.lib.constant.AuthConstant;
 import com.asktao.lib.dto.Command;
-import com.asktao.ums.application.service.AuthClient;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.hibernate.validator.constraints.Length;
@@ -14,7 +13,7 @@ import javax.validation.constraints.NotBlank;
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class MemberLoginCmd extends Command implements LoginCmd{
+public class AdminLoginCmd extends Command implements LoginCmd{
     @NotBlank(message = "用户名不能为空")
     private String username;
 
@@ -24,7 +23,6 @@ public class MemberLoginCmd extends Command implements LoginCmd{
 
     @Override
     public String getClientId() {
-        return AuthConstant.CLIENT_ID_PORTAL;
+        return AuthConstant.CLIENT_ID_ADMIN;
     }
-
 }

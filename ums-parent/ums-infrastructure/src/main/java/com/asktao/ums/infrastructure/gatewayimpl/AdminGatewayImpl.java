@@ -2,6 +2,7 @@ package com.asktao.ums.infrastructure.gatewayimpl;
 
 import com.asktao.ums.domain.admin.entity.Admin;
 import com.asktao.ums.domain.gateway.AdminGateway;
+import com.asktao.ums.infrastructure.convertor.AdminConvertor;
 import com.asktao.ums.infrastructure.dataobject.UserDO;
 import com.asktao.ums.infrastructure.enums.AccountTypeEnum;
 import com.asktao.ums.infrastructure.mapper.UserMapper;
@@ -32,6 +33,12 @@ public class AdminGatewayImpl implements AdminGateway {
     public boolean existForUsername(String username) {
         Optional<UserDO> optionalUserDO = userMapper.selectByUsername(username);
         return optionalUserDO.isPresent();
+    }
+
+    @Override
+    public Admin selectByUsername(String username) {
+        Optional<UserDO> optional = userMapper.selectByUsername(username);
+        return optional.map(AdminConvertor::loginDetailAssemble).orElse(null);
     }
 
 

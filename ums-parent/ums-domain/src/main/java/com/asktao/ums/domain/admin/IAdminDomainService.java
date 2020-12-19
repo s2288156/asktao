@@ -13,4 +13,6 @@ public interface IAdminDomainService {
      * @param admin 管理端用户信息
      */
     void register(Admin admin);
+
+    Admin loginSelect(String username);
 }

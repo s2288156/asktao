@@ -1,6 +1,7 @@
 package com.asktao.ums.interfaces.controller.admin;
 
 import com.asktao.lib.domain.RestResponse;
+import com.asktao.ums.application.dto.AdminLoginCmd;
 import com.asktao.ums.application.service.IAccountService;
 import com.asktao.ums.dto.AdminAccountRegisterCmd;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,4 +28,10 @@ public class AdminController {
         accountService.registerAdmin(registerCmd);
         return RestResponse.success();
     }
+
+    @PostMapping("/login")
+    public RestResponse<?> login(AdminLoginCmd loginCmd) {
+        return RestResponse.success(accountService.login(loginCmd));
+    }
+
 }

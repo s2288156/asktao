@@ -41,7 +41,7 @@ public class Oauth2ServerConfig extends AuthorizationServerConfigurerAdapter {
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
         clients.inMemory()
-                .withClient(AuthConstant.ADMIN_CLIENT_ID)
+                .withClient(AuthConstant.CLIENT_ID_ADMIN)
                 .secret(passwordEncoder.encode("123456"))
                 .scopes("all")
                 .authorizedGrantTypes("password", "refresh_token")

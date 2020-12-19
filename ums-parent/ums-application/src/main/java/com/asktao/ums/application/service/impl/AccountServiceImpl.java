@@ -1,6 +1,7 @@
 package com.asktao.ums.application.service.impl;
 
 import com.asktao.lib.constant.AuthConstant;
+import com.asktao.ums.application.dto.LoginCmd;
 import com.asktao.ums.application.dto.MemberLoginCmd;
 import com.asktao.ums.application.dto.MemberRegisterDTO;
 import com.asktao.ums.application.service.AuthClient;
@@ -51,9 +52,9 @@ public class AccountServiceImpl implements IAccountService {
     }
 
     @Override
-    public ResponseEntity<?> login(MemberLoginCmd loginCmd) {
+    public ResponseEntity<?> login(LoginCmd loginCmd) {
         Map<String, String> params = new HashMap<>(16);
-        params.put("client_id", AuthConstant.CLIENT_ID_PORTAL);
+        params.put("client_id", loginCmd.getClientId());
         params.put("client_secret", "123456");
         params.put("grant_type", "password");
         params.put("username", loginCmd.getUsername());
@@ -67,6 +68,11 @@ public class AccountServiceImpl implements IAccountService {
         BeanUtils.copyProperties(accountRegisterCmd, admin);
         admin.setPassword(accountRegisterCmd.encodePwd());
         adminDomainService.register(admin);
+    }
+
+    @Override
+    public Admin adminLoginSelect(String username) {
+        return adminDomainService.loginSelect(username);
     }
 
 }
