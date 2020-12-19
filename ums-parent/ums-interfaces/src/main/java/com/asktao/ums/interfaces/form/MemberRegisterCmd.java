@@ -1,6 +1,7 @@
 package com.asktao.ums.interfaces.form;
 
 import com.asktao.ums.application.dto.MemberRegisterDTO;
+import com.asktao.ums.dto.RegisterCmd;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;

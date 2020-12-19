@@ -5,8 +5,12 @@ import com.asktao.ums.application.dto.MemberLoginCmd;
 import com.asktao.ums.application.dto.MemberRegisterDTO;
 import com.asktao.ums.application.service.AuthClient;
 import com.asktao.ums.application.service.IAccountService;
+import com.asktao.ums.domain.admin.IAdminDomainService;
+import com.asktao.ums.domain.admin.entity.Admin;
 import com.asktao.ums.domain.member.IMemberDomainService;
 import com.asktao.ums.domain.member.entity.Member;
+import com.asktao.ums.dto.AdminAccountRegisterCmd;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -22,6 +26,9 @@ public class AccountServiceImpl implements IAccountService {
 
     @Autowired
     private IMemberDomainService memberDomainService;
+
+    @Autowired
+    private IAdminDomainService adminDomainService;
 
     @Autowired
     private AuthClient authClient;
@@ -53,4 +60,12 @@ public class AccountServiceImpl implements IAccountService {
         params.put("password", loginCmd.getPassword());
         return authClient.oauthToken(params);
     }
+
+    @Override
+    public void registerAdmin(AdminAccountRegisterCmd accountRegisterCmd) {
+        Admin admin = new Admin();
+        BeanUtils.copyProperties(accountRegisterCmd, admin);
+        adminDomainService.register(admin);
+    }
+
 }

@@ -1,7 +1,9 @@
 package com.asktao.ums.interfaces.controller.admin;
 
 import com.asktao.lib.domain.RestResponse;
-import com.asktao.ums.interfaces.form.AdminAccountRegisterCmd;
+import com.asktao.ums.application.service.IAccountService;
+import com.asktao.ums.dto.AdminAccountRegisterCmd;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,9 +19,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class AdminController {
 
+    @Autowired
+    private IAccountService accountService;
+
     @PostMapping("/register")
     public RestResponse<?> register(AdminAccountRegisterCmd registerCmd) {
-
+        accountService.registerAdmin(registerCmd);
         return RestResponse.success();
     }
 }

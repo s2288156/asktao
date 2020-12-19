@@ -1,4 +1,4 @@
-package com.asktao.ums.interfaces.form;
+package com.asktao.ums.dto;
 
 import com.asktao.lib.dto.Command;
 import lombok.Data;

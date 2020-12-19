@@ -1,4 +1,4 @@
-package com.asktao.ums.interfaces.form;
+package com.asktao.ums.dto;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -8,6 +8,7 @@ import lombok.EqualsAndHashCode;
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class AdminAccountRegisterCmd extends RegisterCmd{
+public class AdminAccountRegisterCmd extends RegisterCmd {
+
 
 }

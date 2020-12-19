@@ -3,6 +3,7 @@ package com.asktao.ums.application.service;
 import com.asktao.ums.application.dto.MemberLoginCmd;
 import com.asktao.ums.application.dto.MemberRegisterDTO;
 import com.asktao.ums.domain.member.entity.Member;
+import com.asktao.ums.dto.AdminAccountRegisterCmd;
 import org.springframework.http.ResponseEntity;
 
 /**
@@ -36,4 +37,6 @@ public interface IAccountService {
     Member detailForUid(String uid);
 
     ResponseEntity<?> login(MemberLoginCmd loginCmd);
+
+    void registerAdmin(AdminAccountRegisterCmd accountRegisterCmd);
 }
