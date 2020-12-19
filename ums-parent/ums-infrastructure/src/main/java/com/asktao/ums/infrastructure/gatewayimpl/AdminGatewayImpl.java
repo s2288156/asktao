@@ -7,6 +7,8 @@ import com.asktao.ums.infrastructure.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 /**
  * @author wcy
  */
@@ -23,4 +25,12 @@ public class AdminGatewayImpl implements AdminGateway {
         userDO.setPassword(admin.getPassword());
         userMapper.insert(userDO);
     }
+
+    @Override
+    public boolean existForUsername(String username) {
+        Optional<UserDO> optionalUserDO = userMapper.selectByUsername(username);
+        return optionalUserDO.isPresent();
+    }
+
+
 }
