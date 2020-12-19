@@ -36,4 +36,4 @@ secure:
       - "/ums/member/register"
       - "/ums/client/member/login_select"
       - "/ums/member/login"
-      - "/ums/admin/login"
+      - "/ums/admin/register"

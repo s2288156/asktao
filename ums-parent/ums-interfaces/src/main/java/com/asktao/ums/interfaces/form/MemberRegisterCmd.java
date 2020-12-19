@@ -4,7 +4,6 @@ import com.asktao.ums.application.dto.MemberRegisterDTO;
 import com.asktao.ums.dto.RegisterCmd;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 /**
  * @author wcy
@@ -16,7 +15,7 @@ public class MemberRegisterCmd extends RegisterCmd {
     public MemberRegisterDTO convert2Dto() {
         MemberRegisterDTO memberRegisterDTO = new MemberRegisterDTO();
         memberRegisterDTO.setUsername(getUsername());
-        memberRegisterDTO.setPassword(new BCryptPasswordEncoder().encode(getPassword()));
+        memberRegisterDTO.setPassword(encodePwd());
         return memberRegisterDTO;
     }
 }

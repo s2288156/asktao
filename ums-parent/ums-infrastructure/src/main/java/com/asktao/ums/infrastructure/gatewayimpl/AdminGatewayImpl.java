@@ -3,6 +3,7 @@ package com.asktao.ums.infrastructure.gatewayimpl;
 import com.asktao.ums.domain.admin.entity.Admin;
 import com.asktao.ums.domain.gateway.AdminGateway;
 import com.asktao.ums.infrastructure.dataobject.UserDO;
+import com.asktao.ums.infrastructure.enums.AccountTypeEnum;
 import com.asktao.ums.infrastructure.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,6 +24,7 @@ public class AdminGatewayImpl implements AdminGateway {
         UserDO userDO = new UserDO();
         userDO.setUsername(admin.getUsername());
         userDO.setPassword(admin.getPassword());
+        userDO.setAccountType(AccountTypeEnum.ADMIN);
         userMapper.insert(userDO);
     }
 

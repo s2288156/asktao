@@ -46,7 +46,7 @@ public class MemberDomainServiceImpl implements IMemberDomainService {
 
     private void checkUsernameNotExisted(String username) {
         Member member = memberGateway.selectByUsername(username);
-        if (member == null) {
+        if (member != null) {
             throw new BizException(ResultCodeEnum.USERNAME_EXISTS);
         }
     }

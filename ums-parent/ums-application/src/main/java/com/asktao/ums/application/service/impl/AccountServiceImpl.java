@@ -65,6 +65,7 @@ public class AccountServiceImpl implements IAccountService {
     public void registerAdmin(AdminAccountRegisterCmd accountRegisterCmd) {
         Admin admin = new Admin();
         BeanUtils.copyProperties(accountRegisterCmd, admin);
+        admin.setPassword(accountRegisterCmd.encodePwd());
         adminDomainService.register(admin);
     }
 
