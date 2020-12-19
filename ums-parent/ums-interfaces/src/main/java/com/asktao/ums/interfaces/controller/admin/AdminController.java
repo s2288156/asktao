@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.RestController;
  * @author wcy
  */
 @Validated
-@RequestMapping("/admin/account")
+@RequestMapping("/admin")
 @RestController
-public class AccountController {
+public class AdminController {
 
     @PostMapping("/register")
     public RestResponse<?> register(AdminAccountRegisterCmd registerCmd) {
