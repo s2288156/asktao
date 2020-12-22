@@ -30,7 +30,7 @@ spring:
 secure:
   ignore:
     urls:
-      - "/actuator/**"
+      - "/*/actuator/**"
       - "/auth/oauth/token"
       - "/auth/rsa/publicKey"
       - "/ums/member/register"
