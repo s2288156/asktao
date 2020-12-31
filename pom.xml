@@ -10,6 +10,7 @@
         <module>ums-parent</module>
         <module>boot-admin-server</module>
         <module>commons-parent</module>
+        <module>springboot24x</module>
     </modules>
 
     <parent>
