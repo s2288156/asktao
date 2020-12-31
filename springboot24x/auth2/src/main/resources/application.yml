@@ -1,6 +1,14 @@
 spring:
   application:
     name: auth2
+  security:
+    oauth2:
+      client:
+        registration:
+          my-client-1:
+            client-id: "aaaa"
+            client-secret: "password"
+            client-name: "Client for user scope"
 
 server:
   port: 21000
