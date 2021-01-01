@@ -61,8 +61,4 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
         return keyStoreKeyFactory.getKeyPair("jwt", "123456".toCharArray());
     }
 
-    @Bean
-    public BCryptPasswordEncoder bCryptPasswordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
 }
