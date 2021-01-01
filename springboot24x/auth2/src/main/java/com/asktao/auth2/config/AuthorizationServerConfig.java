@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
@@ -36,6 +37,9 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     private ClientDetailsService clientDetailsService;
 
     @Autowired
+    private UserDetailsService userDetailsService;
+
+    @Autowired
     private AuthenticationManager authenticationManager;
 
     @Autowired
@@ -58,19 +62,20 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
                 .authenticationManager(authenticationManager)
                 .tokenStore(tokenStore())
                 .userApprovalHandler(userApprovalHandler())
-                .accessTokenConverter(accessTokenConverter());
+                .accessTokenConverter(accessTokenConverter())
+                .userDetailsService(userDetailsService);
     }
 
     @Override
     public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
-        super.configure(security);
+        security.allowFormAuthenticationForClients();
     }
 
     @Bean
     public UserApprovalHandler userApprovalHandler() {
         ApprovalStoreUserApprovalHandler approvalHandler = new ApprovalStoreUserApprovalHandler();
         approvalHandler.setApprovalStore(approvalStore());
-        approvalHandler.setClientDetailsService(this.clientDetailsService);
+//        approvalHandler.setClientDetailsService(this.clientDetailsService);
         approvalHandler.setRequestFactory(new DefaultOAuth2RequestFactory(this.clientDetailsService));
         return approvalHandler;
     }
