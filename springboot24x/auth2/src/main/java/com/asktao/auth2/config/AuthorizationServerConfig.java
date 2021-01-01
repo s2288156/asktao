@@ -13,6 +13,14 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
 import org.springframework.security.oauth2.provider.ClientDetailsService;
+import org.springframework.security.oauth2.provider.approval.ApprovalStore;
+import org.springframework.security.oauth2.provider.approval.ApprovalStoreUserApprovalHandler;
+import org.springframework.security.oauth2.provider.approval.InMemoryApprovalStore;
+import org.springframework.security.oauth2.provider.approval.UserApprovalHandler;
+import org.springframework.security.oauth2.provider.request.DefaultOAuth2RequestFactory;
+import org.springframework.security.oauth2.provider.token.TokenStore;
+import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
+import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 import org.springframework.security.oauth2.provider.token.store.KeyStoreKeyFactory;
 
 import java.security.KeyPair;
@@ -46,12 +54,44 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
-        super.configure(endpoints);
+        endpoints
+                .authenticationManager(authenticationManager)
+                .tokenStore(tokenStore())
+                .userApprovalHandler(userApprovalHandler())
+                .accessTokenConverter(accessTokenConverter());
     }
 
     @Override
     public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
         super.configure(security);
+    }
+
+    @Bean
+    public UserApprovalHandler userApprovalHandler() {
+        ApprovalStoreUserApprovalHandler approvalHandler = new ApprovalStoreUserApprovalHandler();
+        approvalHandler.setApprovalStore(approvalStore());
+        approvalHandler.setClientDetailsService(this.clientDetailsService);
+        approvalHandler.setRequestFactory(new DefaultOAuth2RequestFactory(this.clientDetailsService));
+        return approvalHandler;
+    }
+
+    @Bean
+    public JwtAccessTokenConverter accessTokenConverter() {
+        JwtAccessTokenConverter jwtAccessTokenConverter = new JwtAccessTokenConverter();
+        jwtAccessTokenConverter.setKeyPair(keyPair());
+        return jwtAccessTokenConverter;
+    }
+
+    @Bean
+    public ApprovalStore approvalStore() {
+        return new InMemoryApprovalStore();
+    }
+
+    @Bean
+    public TokenStore tokenStore() {
+        JwtTokenStore jwtTokenStore = new JwtTokenStore(accessTokenConverter());
+        jwtTokenStore.setApprovalStore(approvalStore());
+        return jwtTokenStore;
     }
 
     @Bean
