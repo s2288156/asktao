@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: client-app
+server:
+  servlet:
+    context-path: client
+  port: 21010
