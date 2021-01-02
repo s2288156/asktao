@@ -3,5 +3,5 @@ spring:
     name: client-app
 server:
   servlet:
-    context-path: client
+    context-path: /client
   port: 21010
