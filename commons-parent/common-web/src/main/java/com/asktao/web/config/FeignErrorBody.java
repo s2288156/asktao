@@ -7,6 +7,8 @@ import lombok.Data;
 import java.io.Serializable;
 
 /**
+ * Feign内部异常数据格式，用来解析后，转换为自定义的数据格式
+ *
  * @author wcy
  */
 @Data

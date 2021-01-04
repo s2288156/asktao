@@ -29,7 +29,7 @@
     <properties>
         <java.version>11</java.version>
         <skipTests>true</skipTests>
-        <spring-cloud.version>Hoxton.SR7</spring-cloud.version>
+        <spring-cloud.version>Hoxton.SR9</spring-cloud.version>
         <spring-cloud-alibaba.version>2.2.3.RELEASE</spring-cloud-alibaba.version>
         <nimbus-jsse-jwt.version>8.19</nimbus-jsse-jwt.version>
         <mybatis-plus.version>3.3.2</mybatis-plus.version>
@@ -111,7 +111,7 @@
     </dependencyManagement>
 
     <build>
-        <finalName>${artifactId}</finalName>
+        <finalName>${project.artifactId}</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
