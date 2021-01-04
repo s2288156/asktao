@@ -1,3 +1,5 @@
+db_name: db_auth
+
 spring:
   profiles:
     active: dev

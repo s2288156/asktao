@@ -14,6 +14,9 @@ spring:
           - data-id: redis.yml
             group: BASE
             refresh: false
+          - data-id: mysql-aws.yml
+            group: BASE
+            refresh: false
 server:
   port: 8400
 logging:

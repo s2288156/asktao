@@ -26,6 +26,12 @@
 
         <dependency>
             <groupId>com.asktao</groupId>
+            <artifactId>common-mybatis</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.asktao</groupId>
             <artifactId>ums-client</artifactId>
             <version>1.0.0</version>
         </dependency>
