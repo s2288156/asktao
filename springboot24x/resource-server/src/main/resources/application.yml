@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: resource
+server:
+  port: 21020
+  servlet:
+    context-path: /resource
