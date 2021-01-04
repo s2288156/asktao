@@ -11,7 +11,7 @@ spring:
           - data-id: base-config.yml
             group: BASE
             refresh: false
-          - data-id: mysql-aws.yml
+          - data-id: mysql.yml
             group: BASE
             refresh: false
           - data-id: redis.yml
