@@ -2,7 +2,6 @@ package com.asktao.ums.application.dto;
 
 import com.asktao.lib.constant.AuthConstant;
 import com.asktao.lib.dto.Command;
-import com.asktao.ums.application.service.AuthClient;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.hibernate.validator.constraints.Length;

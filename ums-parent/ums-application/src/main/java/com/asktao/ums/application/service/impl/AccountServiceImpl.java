@@ -1,10 +1,8 @@
 package com.asktao.ums.application.service.impl;
 
-import com.asktao.lib.constant.AuthConstant;
+import com.asktao.auth.client.IOauthClient;
 import com.asktao.ums.application.dto.LoginCmd;
-import com.asktao.ums.application.dto.MemberLoginCmd;
 import com.asktao.ums.application.dto.MemberRegisterDTO;
-import com.asktao.ums.application.service.AuthClient;
 import com.asktao.ums.application.service.IAccountService;
 import com.asktao.ums.domain.admin.IAdminDomainService;
 import com.asktao.ums.domain.admin.entity.Admin;
@@ -32,7 +30,8 @@ public class AccountServiceImpl implements IAccountService {
     private IAdminDomainService adminDomainService;
 
     @Autowired
-    private AuthClient authClient;
+    private IOauthClient oauthClient;
+
 
     @Override
     public void registerMember(MemberRegisterDTO memberRegister) {
@@ -59,7 +58,7 @@ public class AccountServiceImpl implements IAccountService {
         params.put("grant_type", "password");
         params.put("username", loginCmd.getUsername());
         params.put("password", loginCmd.getPassword());
-        return authClient.oauthToken(params);
+        return oauthClient.oauthToken(params);
     }
 
     @Override

@@ -1,4 +1,4 @@
-package com.asktao.ums.application.service;
+package com.asktao.auth.client;
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
@@ -10,9 +10,8 @@ import java.util.Map;
 /**
  * @author wcy
  */
-@FeignClient(value = "auth")
-public interface AuthClient {
-
+@FeignClient(contextId = "oauthClient", value = "auth")
+public interface IOauthClient {
     @PostMapping("/oauth/token")
     ResponseEntity<?> oauthToken(@RequestParam Map<String, String> params);
 }

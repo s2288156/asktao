@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 /**
  * @author wcy
  */
-//@FeignClient(value = "auth")
+@FeignClient(contextId = "authClient", value = "auth")
 public interface IAuthClient {
 
     @PostMapping("/client/login")

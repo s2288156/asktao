@@ -12,6 +12,13 @@
     <artifactId>ums-application</artifactId>
 
     <dependencies>
+
+        <dependency>
+            <groupId>com.asktao</groupId>
+            <artifactId>auth-client</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+
         <dependency>
             <groupId>com.asktao</groupId>
             <artifactId>ums-client</artifactId>
