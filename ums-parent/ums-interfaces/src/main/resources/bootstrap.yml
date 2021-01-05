@@ -5,6 +5,3 @@ spring:
     active: dev
   application:
     name: ums
-server:
-  servlet:
-    context-path: /ums

@@ -10,7 +10,7 @@ import java.util.Map;
 /**
  * @author wcy
  */
-@FeignClient(value = "auth-server", path = "/auth")
+@FeignClient(value = "auth")
 public interface AuthClient {
 
     @PostMapping("/oauth/token")

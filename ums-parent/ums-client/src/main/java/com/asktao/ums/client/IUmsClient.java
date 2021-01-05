@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 /**
  * @author wcy
  */
-@FeignClient(value = "ums", path = "/ums")
+@FeignClient(value = "ums")
 public interface IUmsClient {
 
     @PostMapping("/client/member/login_select")
