@@ -11,6 +11,7 @@
         <module>boot-admin-server</module>
         <module>commons-parent</module>
         <module>springboot24x</module>
+        <module>auth-client</module>
     </modules>
 
     <parent>
