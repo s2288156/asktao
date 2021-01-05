@@ -1,11 +1,12 @@
 package com.asktao.auth.application.service.impl;
 
 import com.asktao.auth.application.dto.SecurityUser;
+import com.asktao.auth.application.service.IAccountService;
+import com.asktao.auth.infrastructure.dataobject.AccountDO;
 import com.asktao.lib.constant.AuthConstant;
 import com.asktao.lib.constant.MessageConstant;
 import com.asktao.lib.domain.UserDto;
 import com.asktao.ums.client.IUmsClient;
-import com.asktao.ums.dto.MemberInfoDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AccountExpiredException;
@@ -31,6 +32,9 @@ public class UserServiceImpl implements UserDetailsService {
     @Autowired
     private IUmsClient umsClient;
 
+    @Autowired
+    private IAccountService accountService;
+
 //        userDto1 = new UserDto();
 //        userDto2 = new UserDto();
 //        userDto1.setId("1");
@@ -40,16 +44,18 @@ public class UserServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        AccountDO accountDO = accountService.selectByUsername(username);
         String clientId = request.getParameter("client_id");
         UserDto userDto;
         if (AuthConstant.CLIENT_ID_ADMIN.equals(clientId)) {
             userDto = umsClient.adminLoginSelect(username).getData();
         } else {
-            MemberInfoDto memberInfoDto = umsClient.memberLoginSelect(username).getData();
-            userDto = memberInfoDto.convert2UserDto();
-        }
-        if (userDto == null) {
-            throw new UsernameNotFoundException(MessageConstant.USERNAME_PASSWORD_ERROR);
+//            MemberInfoDto memberInfoDto = umsClient.memberLoginSelect(username).getData();
+//            userDto = memberInfoDto.convert2UserDto();
+            userDto = new UserDto();
+            userDto.setUsername(username);
+            userDto.setPassword(accountDO.getPassword());
+            userDto.setId(accountDO.getId());
         }
         userDto.setClientId(clientId);
         SecurityUser securityUser = new SecurityUser(userDto);
