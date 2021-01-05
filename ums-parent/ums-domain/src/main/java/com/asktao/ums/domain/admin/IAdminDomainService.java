@@ -14,5 +14,4 @@ public interface IAdminDomainService {
      */
     void register(Admin admin);
 
-    Admin loginSelect(String username);
 }

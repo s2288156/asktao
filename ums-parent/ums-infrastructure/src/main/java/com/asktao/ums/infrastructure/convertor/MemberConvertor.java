@@ -1,8 +1,7 @@
 package com.asktao.ums.infrastructure.convertor;
 
-import com.asktao.ums.domain.member.entity.LoginInfo;
 import com.asktao.ums.domain.member.entity.Member;
-import com.asktao.ums.infrastructure.dataobject.UserDO;
+import com.asktao.ums.infrastructure.dataobject.MemberDO;
 import org.springframework.beans.BeanUtils;
 
 /**
@@ -10,16 +9,10 @@ import org.springframework.beans.BeanUtils;
  */
 public class MemberConvertor {
 
-    public static Member loginDetailAssemble(UserDO userDO) {
-        Member member = new Member();
-        member.setLoginInfo(new LoginInfo(userDO.getUsername(), userDO.getPassword()));
-        member.setId(userDO.getId());
-        return member;
-    }
 
-    public static Member detailAssemble(UserDO userDO) {
+    public static Member detailAssemble(MemberDO memberDO) {
         Member member = new Member();
-        BeanUtils.copyProperties(userDO, member);
+        BeanUtils.copyProperties(memberDO, member);
         return member;
     }
 }

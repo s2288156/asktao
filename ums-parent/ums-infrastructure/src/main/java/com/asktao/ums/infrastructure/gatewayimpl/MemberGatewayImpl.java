@@ -2,16 +2,12 @@ package com.asktao.ums.infrastructure.gatewayimpl;
 
 import com.asktao.ums.domain.gateway.MemberGateway;
 import com.asktao.ums.domain.member.entity.Member;
-import com.asktao.ums.domain.member.entity.RegisterInfo;
 import com.asktao.ums.infrastructure.convertor.MemberConvertor;
-import com.asktao.ums.infrastructure.dataobject.UserDO;
-import com.asktao.ums.infrastructure.enums.AccountTypeEnum;
-import com.asktao.ums.infrastructure.mapper.UserMapper;
+import com.asktao.ums.infrastructure.dataobject.MemberDO;
+import com.asktao.ums.infrastructure.mapper.MemberMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
-import java.util.Optional;
 
 /**
  * @author wcy
@@ -21,32 +17,20 @@ import java.util.Optional;
 public class MemberGatewayImpl implements MemberGateway {
 
     @Autowired
-    private UserMapper userMapper;
+    private MemberMapper memberMapper;
 
     @Override
     public void insertUser(Member registerMember) {
-        RegisterInfo registerInfo = registerMember.getRegisterInfo();
-        UserDO userDO = new UserDO();
-        userDO.setUsername(registerInfo.getUsername());
-        userDO.setPassword(registerInfo.getPassword());
-        userDO.setAccountType(AccountTypeEnum.MEMBER);
-        userMapper.insert(userDO);
-    }
-
-    @Override
-    public Member selectByUsername(String username) {
-        Optional<UserDO> userOptional = userMapper.selectByUsername(username);
-        if (userOptional.isEmpty()) {
-            return null;
-        }
-        return MemberConvertor.loginDetailAssemble(userOptional.get());
+        MemberDO memberDO = new MemberDO();
+        memberDO.setId(registerMember.getId());
+        memberMapper.insert(memberDO);
     }
 
     @Override
     public Member selectById(String id) {
-        UserDO userDO = userMapper.selectById(id);
-        if (userDO != null) {
-            return MemberConvertor.detailAssemble(userDO);
+        MemberDO memberDO = memberMapper.selectById(id);
+        if (memberDO != null) {
+            return MemberConvertor.detailAssemble(memberDO);
         }
         return null;
     }

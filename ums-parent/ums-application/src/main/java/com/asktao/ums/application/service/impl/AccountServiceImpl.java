@@ -41,11 +41,6 @@ public class AccountServiceImpl implements IAccountService {
     }
 
     @Override
-    public Member memberLoginSelect(String username) {
-        return memberDomainService.loginSelect(username);
-    }
-
-    @Override
     public Member detailForUid(String uid) {
         return memberDomainService.detail(uid);
     }
@@ -67,11 +62,6 @@ public class AccountServiceImpl implements IAccountService {
         BeanUtils.copyProperties(accountRegisterCmd, admin);
         admin.setPassword(accountRegisterCmd.encodePwd());
         adminDomainService.register(admin);
-    }
-
-    @Override
-    public Admin adminLoginSelect(String username) {
-        return adminDomainService.loginSelect(username);
     }
 
 }

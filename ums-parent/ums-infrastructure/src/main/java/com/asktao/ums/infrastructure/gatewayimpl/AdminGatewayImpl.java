@@ -2,14 +2,10 @@ package com.asktao.ums.infrastructure.gatewayimpl;
 
 import com.asktao.ums.domain.admin.entity.Admin;
 import com.asktao.ums.domain.gateway.AdminGateway;
-import com.asktao.ums.infrastructure.convertor.AdminConvertor;
-import com.asktao.ums.infrastructure.dataobject.UserDO;
-import com.asktao.ums.infrastructure.enums.AccountTypeEnum;
-import com.asktao.ums.infrastructure.mapper.UserMapper;
+import com.asktao.ums.infrastructure.dataobject.AdminDO;
+import com.asktao.ums.infrastructure.mapper.AdminMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.Optional;
 
 /**
  * @author wcy
@@ -18,28 +14,12 @@ import java.util.Optional;
 public class AdminGatewayImpl implements AdminGateway {
 
     @Autowired
-    private UserMapper userMapper;
+    private AdminMapper adminMapper;
 
     @Override
     public void insert(Admin admin) {
-        UserDO userDO = new UserDO();
-        userDO.setUsername(admin.getUsername());
-        userDO.setPassword(admin.getPassword());
-        userDO.setAccountType(AccountTypeEnum.ADMIN);
-        userMapper.insert(userDO);
+        AdminDO adminDO = new AdminDO();
+        adminDO.setId(admin.getId());
+        adminMapper.insert(adminDO);
     }
-
-    @Override
-    public boolean existForUsername(String username) {
-        Optional<UserDO> optionalUserDO = userMapper.selectByUsername(username);
-        return optionalUserDO.isPresent();
-    }
-
-    @Override
-    public Admin selectByUsername(String username) {
-        Optional<UserDO> optional = userMapper.selectByUsername(username);
-        return optional.map(AdminConvertor::loginDetailAssemble).orElse(null);
-    }
-
-
 }

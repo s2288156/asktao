@@ -22,14 +22,6 @@ public interface IAccountService {
     void registerMember(MemberRegisterDTO memberRegister);
 
     /**
-     * 用户登录，根据username查询用户密码信息，交由spring security鉴权
-     *
-     * @param username 用户名
-     * @return 用户信息
-     */
-    Member memberLoginSelect(String username);
-
-    /**
      * 查询会员详细信息
      *
      * @param uid 用户id
@@ -52,5 +44,4 @@ public interface IAccountService {
      */
     void registerAdmin(AdminAccountRegisterCmd accountRegisterCmd);
 
-    Admin adminLoginSelect(String username);
 }

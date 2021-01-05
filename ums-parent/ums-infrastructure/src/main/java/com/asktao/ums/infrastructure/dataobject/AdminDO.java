@@ -1,7 +1,6 @@
 package com.asktao.ums.infrastructure.dataobject;
 
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.asktao.ums.infrastructure.enums.AccountTypeEnum;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,8 +18,8 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Accessors(chain = true)
 @ToString(callSuper = true)
-@TableName(autoResultMap = true, value = "t_user")
-public class UserDO {
+@TableName(autoResultMap = true, value = "t_admin")
+public class AdminDO {
 
     private String id;
 
@@ -30,21 +29,6 @@ public class UserDO {
     private LocalDateTime createTime;
 
     private LocalDateTime updateTime;
-
-    /**
-     * 用户名
-     **/
-    private String username;
-
-    /**
-     * 密码
-     **/
-    private String password;
-
-    /**
-     * 手机号
-     **/
-    private String phone;
 
     /**
      * 名字
@@ -72,18 +56,8 @@ public class UserDO {
     private LocalDate birthday;
 
     /**
-     * 邮箱
-     **/
-    private String email;
-
-    /**
      * 头像
      **/
     private String icon;
-
-    /**
-     * 账号类型，0 - 会员，1 - 商户，2 - 系统管理人员
-     **/
-    private AccountTypeEnum accountType;
 
 }

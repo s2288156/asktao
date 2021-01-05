@@ -13,13 +13,5 @@ public interface IMemberDomainService {
      */
     void register(Member registerMember);
 
-    /**
-     * 会员登录查询
-     *
-     * @param username 用户名
-     * @return 会员信息
-     */
-    Member loginSelect(String username);
-
     Member detail(String uid);
 }

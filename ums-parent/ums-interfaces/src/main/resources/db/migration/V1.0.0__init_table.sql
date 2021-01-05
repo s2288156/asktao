@@ -32,7 +32,7 @@ CREATE TABLE `t_member`
     `birthday`    date             NULL DEFAULT NULL COMMENT '生日',
     `icon`        varchar(255)     NULL DEFAULT NULL COMMENT '头像',
     PRIMARY KEY (`id`) USING BTREE
-) COMMENT = '后台管理人员表';
+) COMMENT = '商城会员表';
 
 CREATE TABLE `t_resource`
 (

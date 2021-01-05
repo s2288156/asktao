@@ -9,7 +9,5 @@ public interface MemberGateway {
 
     void insertUser(Member registerMember);
 
-    Member selectByUsername(String username);
-
     Member selectById(String id);
 }

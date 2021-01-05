@@ -25,18 +25,8 @@ public class MemberDomainServiceImpl implements IMemberDomainService {
         if (registerInfo == null) {
             throw new BizException(ResultCodeEnum.USER_REGISTER_ERROR);
         }
-        checkUsernameNotExisted(registerInfo.getUsername());
-        memberGateway.insertUser(registerMember);
-    }
-
-    @Override
-    public Member loginSelect(String username) {
-        Member member = memberGateway.selectByUsername(username);
-        if (member == null) {
-            log.warn("用户[{}]不存在", username);
-            throw new BizException(ResultCodeEnum.USER_NOT_EXISTS);
-        }
-        return member;
+        // TODO: 2021/1/5 修改，补充注册逻辑
+//        memberGateway.insertUser(registerMember);
     }
 
     @Override
@@ -44,10 +34,4 @@ public class MemberDomainServiceImpl implements IMemberDomainService {
         return memberGateway.selectById(uid);
     }
 
-    private void checkUsernameNotExisted(String username) {
-        Member member = memberGateway.selectByUsername(username);
-        if (member != null) {
-            throw new BizException(ResultCodeEnum.USERNAME_EXISTS);
-        }
-    }
 }

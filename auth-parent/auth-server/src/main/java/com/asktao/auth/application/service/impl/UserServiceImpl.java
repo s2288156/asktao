@@ -26,6 +26,7 @@ import javax.servlet.http.HttpServletRequest;
 @Slf4j
 @Service
 public class UserServiceImpl implements UserDetailsService {
+    @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
     @Autowired
     private HttpServletRequest request;
 
@@ -48,10 +49,10 @@ public class UserServiceImpl implements UserDetailsService {
         String clientId = request.getParameter("client_id");
         UserDto userDto;
         if (AuthConstant.CLIENT_ID_ADMIN.equals(clientId)) {
-            userDto = umsClient.adminLoginSelect(username).getData();
+            // TODO: 2021/1/5 补充admin用户登录逻辑，需要查询权限信息
+//            userDto = umsClient.adminLoginSelect(username).getData();
+            userDto = new UserDto();
         } else {
-//            MemberInfoDto memberInfoDto = umsClient.memberLoginSelect(username).getData();
-//            userDto = memberInfoDto.convert2UserDto();
             userDto = new UserDto();
             userDto.setUsername(username);
             userDto.setPassword(accountDO.getPassword());

@@ -12,6 +12,4 @@ import org.springframework.web.bind.annotation.RequestParam;
 @FeignClient(value = "ums")
 public interface IUmsClient {
 
-    @PostMapping("/client/admin/login_select")
-    RestResponse<UserDto> adminLoginSelect(@RequestParam String username);
 }
