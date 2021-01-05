@@ -2,7 +2,7 @@ package com.asktao.ums.application.service.impl;
 
 import com.asktao.auth.client.IOauthClient;
 import com.asktao.ums.application.dto.LoginCmd;
-import com.asktao.ums.application.dto.MemberRegisterDTO;
+import com.asktao.ums.application.dto.MemberRegisterCmd;
 import com.asktao.ums.application.service.IAccountService;
 import com.asktao.ums.domain.admin.IAdminDomainService;
 import com.asktao.ums.domain.admin.entity.Admin;
@@ -13,6 +13,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -33,11 +34,10 @@ public class AccountServiceImpl implements IAccountService {
     private IOauthClient oauthClient;
 
 
+    @Transactional(rollbackFor = Exception.class)
     @Override
-    public void registerMember(MemberRegisterDTO memberRegister) {
-        Member registerMember = new Member();
-        registerMember.setRegisterInfo(memberRegister.getRegisterInfo());
-        memberDomainService.register(registerMember);
+    public void registerMember(MemberRegisterCmd memberRegister) {
+        memberDomainService.register();
     }
 
     @Override

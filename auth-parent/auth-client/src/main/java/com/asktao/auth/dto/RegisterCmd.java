@@ -1,4 +1,4 @@
-package com.asktao.ums.dto;
+package com.asktao.auth.dto;
 
 import com.asktao.lib.dto.Command;
 import lombok.Data;

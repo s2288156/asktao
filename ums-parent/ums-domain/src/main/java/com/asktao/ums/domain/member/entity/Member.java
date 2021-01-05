@@ -55,13 +55,6 @@ public class Member {
      **/
     private String phone;
 
-    /**
-     * 登录信息
-     */
-    private LoginInfo loginInfo;
-
-    private RegisterInfo registerInfo;
-
     private static final String CLIENT_ID = AuthConstant.CLIENT_ID_PORTAL;
 
     public String clientId() {

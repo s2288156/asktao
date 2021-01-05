@@ -9,9 +9,9 @@ public interface IMemberDomainService {
     /**
      * 会员注册
      *
-     * @param registerMember 注册信息
+     * @return
      */
-    void register(Member registerMember);
+    String register();
 
     Member detail(String uid);
 }

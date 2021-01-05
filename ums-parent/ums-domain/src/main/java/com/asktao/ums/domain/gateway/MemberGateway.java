@@ -7,7 +7,7 @@ import com.asktao.ums.domain.member.entity.Member;
  */
 public interface MemberGateway {
 
-    void insertUser(Member registerMember);
+    String insertUser();
 
     Member selectById(String id);
 }

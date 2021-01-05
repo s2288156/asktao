@@ -1,10 +1,7 @@
 package com.asktao.auth.client;
 
-import com.asktao.auth.dto.LoginCmd;
-import com.asktao.lib.domain.RestResponse;
+import com.asktao.auth.dto.RegisterCmd;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 
 /**
  * @author wcy
@@ -12,7 +9,5 @@ import org.springframework.web.bind.annotation.RequestBody;
 @FeignClient(contextId = "authClient", value = "auth")
 public interface IAuthClient {
 
-    @PostMapping("/client/login")
-    RestResponse<?> login(@RequestBody LoginCmd loginCmd);
-
+    void register(RegisterCmd registerCmd);
 }

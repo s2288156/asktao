@@ -20,10 +20,10 @@ public class MemberGatewayImpl implements MemberGateway {
     private MemberMapper memberMapper;
 
     @Override
-    public void insertUser(Member registerMember) {
+    public String insertUser() {
         MemberDO memberDO = new MemberDO();
-        memberDO.setId(registerMember.getId());
         memberMapper.insert(memberDO);
+        return memberDO.getId();
     }
 
     @Override

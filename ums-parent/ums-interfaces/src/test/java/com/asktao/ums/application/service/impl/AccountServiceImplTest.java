@@ -30,9 +30,4 @@ class AccountServiceImplTest extends BaseTest {
         memberRegisterDTO = new MemberRegisterDTO(username, password);
     }
 
-    @Test
-    void testMemberRegister() {
-        assertDoesNotThrow(() -> accountService.registerMember(memberRegisterDTO));
-    }
-
 }

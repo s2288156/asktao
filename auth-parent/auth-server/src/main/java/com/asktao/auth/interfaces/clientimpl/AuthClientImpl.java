@@ -1,11 +1,8 @@
 package com.asktao.auth.interfaces.clientimpl;
 
 import com.asktao.auth.client.IAuthClient;
-import com.asktao.auth.dto.LoginCmd;
-import com.asktao.lib.domain.RestResponse;
+import com.asktao.auth.dto.RegisterCmd;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.oauth2.provider.endpoint.TokenEndpoint;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -15,11 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class AuthClientImpl implements IAuthClient {
 
-    @Autowired
-    private TokenEndpoint tokenEndpoint;
-
     @Override
-    public RestResponse<?> login(LoginCmd loginCmd) {
-        return null;
+    public void register(RegisterCmd registerCmd) {
+
     }
 }

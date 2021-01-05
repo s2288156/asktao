@@ -1,8 +1,7 @@
 package com.asktao.ums.application.service;
 
 import com.asktao.ums.application.dto.LoginCmd;
-import com.asktao.ums.application.dto.MemberRegisterDTO;
-import com.asktao.ums.domain.admin.entity.Admin;
+import com.asktao.ums.application.dto.MemberRegisterCmd;
 import com.asktao.ums.domain.member.entity.Member;
 import com.asktao.ums.dto.AdminAccountRegisterCmd;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +18,7 @@ public interface IAccountService {
      *
      * @param memberRegister 账号和密码
      */
-    void registerMember(MemberRegisterDTO memberRegister);
+    void registerMember(MemberRegisterCmd memberRegister);
 
     /**
      * 查询会员详细信息
