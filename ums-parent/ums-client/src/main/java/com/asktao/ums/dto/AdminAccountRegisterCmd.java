@@ -1,14 +1,13 @@
 package com.asktao.ums.dto;
 
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
 /**
  * @author wcy
  */
-@EqualsAndHashCode(callSuper = true)
+// TODO: 2021/1/6 对象删除
 @Data
-public class AdminAccountRegisterCmd extends RegisterCmd {
+public class AdminAccountRegisterCmd {
 
 
 }

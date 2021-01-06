@@ -1,5 +1,6 @@
 package com.asktao.ums.application.service.impl;
 
+import com.asktao.auth.client.IAuthClient;
 import com.asktao.auth.client.IOauthClient;
 import com.asktao.ums.application.dto.LoginCmd;
 import com.asktao.ums.application.dto.MemberRegisterCmd;
@@ -33,11 +34,16 @@ public class AccountServiceImpl implements IAccountService {
     @Autowired
     private IOauthClient oauthClient;
 
+    @Autowired
+    private IAuthClient authClient;
+
 
     @Transactional(rollbackFor = Exception.class)
     @Override
     public void registerMember(MemberRegisterCmd memberRegister) {
-        memberDomainService.register();
+        String uid = memberDomainService.register();
+        memberRegister.setId(uid);
+        authClient.register(memberRegister);
     }
 
     @Override
@@ -60,7 +66,8 @@ public class AccountServiceImpl implements IAccountService {
     public void registerAdmin(AdminAccountRegisterCmd accountRegisterCmd) {
         Admin admin = new Admin();
         BeanUtils.copyProperties(accountRegisterCmd, admin);
-        admin.setPassword(accountRegisterCmd.encodePwd());
+        // TODO: 2021/1/6 管理员注册逻辑修改
+//        admin.setPassword(accountRegisterCmd.encodePwd());
         adminDomainService.register(admin);
     }
 
