@@ -2,17 +2,16 @@ package com.asktao.ums.application.service.impl;
 
 import com.asktao.auth.client.IAuthClient;
 import com.asktao.auth.client.IOauthClient;
+import com.asktao.auth.dto.RegisterCmd;
 import com.asktao.lib.domain.RestResponse;
 import com.asktao.lib.ex.BizException;
 import com.asktao.ums.application.dto.LoginCmd;
 import com.asktao.ums.application.dto.MemberRegisterCmd;
 import com.asktao.ums.application.service.IAccountService;
 import com.asktao.ums.domain.admin.IAdminDomainService;
-import com.asktao.ums.domain.admin.entity.Admin;
 import com.asktao.ums.domain.member.IMemberDomainService;
 import com.asktao.ums.domain.member.entity.Member;
-import com.asktao.ums.dto.AdminAccountRegisterCmd;
-import org.springframework.beans.BeanUtils;
+import com.asktao.ums.application.dto.AdminAccountRegisterCmd;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -45,7 +44,14 @@ public class AccountServiceImpl implements IAccountService {
     public void registerMember(MemberRegisterCmd memberRegister) {
         String uid = memberDomainService.register();
         memberRegister.setId(uid);
-        RestResponse<?> response = authClient.register(memberRegister);
+        authRegisterAccount(memberRegister);
+    }
+
+    /**
+     * @param registerCmd 账户信息
+     */
+    private void authRegisterAccount(RegisterCmd registerCmd) {
+        RestResponse<?> response = authClient.register(registerCmd);
         if (response.bad()) {
             throw new BizException(response.getReturnCode(), response.getReturnMsg());
         }
@@ -67,13 +73,12 @@ public class AccountServiceImpl implements IAccountService {
         return oauthClient.oauthToken(params);
     }
 
+    @Transactional(rollbackFor = Exception.class)
     @Override
     public void registerAdmin(AdminAccountRegisterCmd accountRegisterCmd) {
-        Admin admin = new Admin();
-        BeanUtils.copyProperties(accountRegisterCmd, admin);
-        // TODO: 2021/1/6 管理员注册逻辑修改
-//        admin.setPassword(accountRegisterCmd.encodePwd());
-        adminDomainService.register(admin);
+        String uid = adminDomainService.register();
+        accountRegisterCmd.setId(uid);
+        authRegisterAccount(accountRegisterCmd);
     }
 
 }

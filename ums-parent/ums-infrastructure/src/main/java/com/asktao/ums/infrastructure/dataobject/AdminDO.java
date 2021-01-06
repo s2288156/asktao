@@ -46,7 +46,7 @@ public class AdminDO {
     private Integer gender;
 
     /**
-     * 账户状态，0 - 删除，1 - 正常，2 - 冻结
+     * 账户状态，0 - 删除，1 - 正常(默认），2 - 冻结
      **/
     private Integer status;
 

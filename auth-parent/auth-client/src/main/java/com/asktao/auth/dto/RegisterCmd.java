@@ -1,6 +1,5 @@
 package com.asktao.auth.dto;
 
-import com.asktao.lib.domain.ReturnCodeMsg;
 import com.asktao.lib.dto.Command;
 import com.asktao.lib.ex.BizException;
 import com.asktao.lib.ex.ResultCodeEnum;

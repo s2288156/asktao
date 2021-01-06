@@ -1,6 +1,5 @@
 package com.asktao.ums.infrastructure.gatewayimpl;
 
-import com.asktao.ums.domain.admin.entity.Admin;
 import com.asktao.ums.domain.gateway.AdminGateway;
 import com.asktao.ums.infrastructure.dataobject.AdminDO;
 import com.asktao.ums.infrastructure.mapper.AdminMapper;
@@ -17,9 +16,9 @@ public class AdminGatewayImpl implements AdminGateway {
     private AdminMapper adminMapper;
 
     @Override
-    public void insert(Admin admin) {
+    public String insert() {
         AdminDO adminDO = new AdminDO();
-        adminDO.setId(admin.getId());
         adminMapper.insert(adminDO);
+        return adminDO.getId();
     }
 }

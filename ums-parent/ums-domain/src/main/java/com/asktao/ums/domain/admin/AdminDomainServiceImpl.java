@@ -1,6 +1,5 @@
 package com.asktao.ums.domain.admin;
 
-import com.asktao.ums.domain.admin.entity.Admin;
 import com.asktao.ums.domain.gateway.AdminGateway;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,8 +14,8 @@ public class AdminDomainServiceImpl implements IAdminDomainService {
     private AdminGateway adminGateway;
 
     @Override
-    public void register(Admin admin) {
-        adminGateway.insert(admin);
+    public String register() {
+        return adminGateway.insert();
     }
 
 }
