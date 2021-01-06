@@ -12,7 +12,7 @@ public class AccountConverter {
         AccountDO accountDO = new AccountDO();
         accountDO.setId(registerCmd.getId());
         accountDO.setUsername(registerCmd.getUsername());
-        accountDO.setPassword(registerCmd.getPassword());
+        accountDO.setPassword(registerCmd.encodePwd());
         return accountDO;
     }
 }

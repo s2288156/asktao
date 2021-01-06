@@ -18,8 +18,7 @@ public class MemberDomainServiceImpl implements IMemberDomainService {
 
     @Override
     public String register() {
-        String id = memberGateway.insertUser();
-        return id;
+        return memberGateway.insertUser();
     }
 
     @Override

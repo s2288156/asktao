@@ -29,6 +29,9 @@ public class MemberController {
     @GetMapping("/detail")
     public RestResponse<MemberDetailVO> detail(@RequestHeader String uid) {
         Member member = accountService.detailForUid(uid);
+        if (member == null) {
+            return RestResponse.success();
+        }
         return RestResponse.success(MemberDetailVO.assembleFor(member));
     }
 
