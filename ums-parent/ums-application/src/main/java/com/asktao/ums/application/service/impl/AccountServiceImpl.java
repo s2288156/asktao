@@ -2,6 +2,8 @@ package com.asktao.ums.application.service.impl;
 
 import com.asktao.auth.client.IAuthClient;
 import com.asktao.auth.client.IOauthClient;
+import com.asktao.lib.domain.RestResponse;
+import com.asktao.lib.ex.BizException;
 import com.asktao.ums.application.dto.LoginCmd;
 import com.asktao.ums.application.dto.MemberRegisterCmd;
 import com.asktao.ums.application.service.IAccountService;
@@ -43,7 +45,10 @@ public class AccountServiceImpl implements IAccountService {
     public void registerMember(MemberRegisterCmd memberRegister) {
         String uid = memberDomainService.register();
         memberRegister.setId(uid);
-        authClient.register(memberRegister);
+        RestResponse<?> response = authClient.register(memberRegister);
+        if (response.bad()) {
+            throw new BizException(response.getReturnCode(), response.getReturnMsg());
+        }
     }
 
     @Override

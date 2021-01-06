@@ -5,6 +5,7 @@ import com.asktao.lib.ex.ICode;
 import com.asktao.lib.ex.ResultCodeEnum;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import org.apache.commons.lang3.StringUtils;
 
 import java.io.Serializable;
 
@@ -22,6 +23,14 @@ public class RestResponse<T> extends ReturnCodeMsg implements Serializable {
     public RestResponse(String returnCode, String returnMsg, T data) {
         super(returnCode, returnMsg);
         this.data = data;
+    }
+
+    public boolean ok() {
+        return StringUtils.equals(ResultCodeEnum.SUCCESS.code(), getReturnCode());
+    }
+
+    public boolean bad() {
+        return !ok();
     }
 
     public static <T> RestResponse<T> success() {
