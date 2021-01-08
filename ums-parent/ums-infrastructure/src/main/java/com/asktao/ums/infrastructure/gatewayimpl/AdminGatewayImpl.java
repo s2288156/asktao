@@ -21,4 +21,5 @@ public class AdminGatewayImpl implements AdminGateway {
         adminMapper.insert(adminDO);
         return adminDO.getId();
     }
+
 }

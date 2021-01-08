@@ -9,9 +9,11 @@ import com.asktao.ums.application.dto.LoginCmd;
 import com.asktao.ums.application.dto.MemberRegisterCmd;
 import com.asktao.ums.application.service.IAccountService;
 import com.asktao.ums.domain.admin.IAdminDomainService;
+import com.asktao.ums.domain.admin.entity.Admin;
 import com.asktao.ums.domain.member.IMemberDomainService;
 import com.asktao.ums.domain.member.entity.Member;
 import com.asktao.ums.application.dto.AdminAccountRegisterCmd;
+import com.asktao.ums.dto.AdminInfoCO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -79,6 +81,12 @@ public class AccountServiceImpl implements IAccountService {
         String uid = adminDomainService.register();
         accountRegisterCmd.setId(uid);
         authRegisterAccount(accountRegisterCmd);
+    }
+
+    @Override
+    public AdminInfoCO getAdminRoles(String uid) {
+        Admin admin = adminDomainService.getRolesById(uid);
+        return null;
     }
 
 }

@@ -1,5 +1,7 @@
 package com.asktao.ums.domain.admin;
 
+import com.asktao.ums.domain.admin.entity.Admin;
+
 /**
  * @author wcy
  */
@@ -12,4 +14,5 @@ public interface IAdminDomainService {
      */
     String register();
 
+    Admin getRolesById(String uid);
 }
