@@ -78,9 +78,7 @@ public class AccountServiceImpl implements IAccountService {
     @Transactional(rollbackFor = Exception.class)
     @Override
     public void registerAdmin(AdminAccountRegisterCmd accountRegisterCmd) {
-        String uid = adminDomainService.register();
-        accountRegisterCmd.setId(uid);
-        authRegisterAccount(accountRegisterCmd);
+        adminDomainService.register(accountRegisterCmd.convert2Admin());
     }
 
     @Override

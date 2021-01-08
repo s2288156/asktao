@@ -12,6 +12,10 @@ import java.util.Set;
 public class Admin {
     private String id;
 
+    private String username;
+
+    private String password;
+
     private Set<Role> roles;
 
     private static final String CLIENT_ID = AuthConstant.CLIENT_ID_ADMIN;

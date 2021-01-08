@@ -1,5 +1,8 @@
 package com.asktao.ums.domain.admin;
 
+import com.asktao.lib.ex.BizException;
+import com.asktao.lib.ex.ResultCodeEnum;
+import com.asktao.ums.domain.admin.entity.Admin;
 import com.asktao.ums.domain.gateway.AdminGateway;
 import com.asktao.ums.domain.gateway.RoleGateway;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,8 +23,11 @@ public class AdminDomainServiceImpl implements IAdminDomainService {
     private RoleGateway roleGateway;
 
     @Override
-    public String register() {
-        return adminGateway.insert();
+    public String register(Admin admin) {
+        if (adminGateway.existForUsername(admin)) {
+            throw new BizException(ResultCodeEnum.USERNAME_EXISTS);
+        }
+        return adminGateway.insert(admin);
     }
 
     @Override

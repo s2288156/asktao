@@ -9,6 +9,10 @@ CREATE TABLE `t_admin`
     `status`      tinyint UNSIGNED NULL DEFAULT 1 COMMENT '账户状态，0 - 删除，1 - 正常，2 - 冻结',
     `birthday`    date             NULL DEFAULT NULL COMMENT '生日',
     `icon`        varchar(255)     NULL DEFAULT NULL COMMENT '头像',
+    `username`    varchar(32)      NULL COMMENT '登录用户名',
+    `password`    varchar(64)      NULL COMMENT '密码',
+    `mobile`      varchar(11)      NULL COMMENT '手机号',
+    `email`       varchar(64)      NULL COMMENT '电子邮箱',
     PRIMARY KEY (`id`) USING BTREE
 ) COMMENT = '后台管理人员表';
 
@@ -31,6 +35,10 @@ CREATE TABLE `t_member`
     `status`      tinyint UNSIGNED NULL DEFAULT 1 COMMENT '账户状态，0 - 删除，1 - 正常，2 - 冻结',
     `birthday`    date             NULL DEFAULT NULL COMMENT '生日',
     `icon`        varchar(255)     NULL DEFAULT NULL COMMENT '头像',
+    `username`    varchar(32)      NULL COMMENT '登录账号',
+    `password`    varchar(64)      NULL COMMENT '密码',
+    `mobile`      varchar(11)      NULL COMMENT '手机号',
+    `email`       varchar(64)      NULL COMMENT '电子邮箱',
     PRIMARY KEY (`id`) USING BTREE
 ) COMMENT = '商城会员表';
 

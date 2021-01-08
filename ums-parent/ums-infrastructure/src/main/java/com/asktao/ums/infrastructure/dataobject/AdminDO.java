@@ -46,7 +46,7 @@ public class AdminDO {
     private Integer gender;
 
     /**
-     * 账户状态，0 - 删除，1 - 正常(默认），2 - 冻结
+     * 账户状态，0 - 删除，1 - 正常，2 - 冻结
      **/
     private Integer status;
 
@@ -59,5 +59,25 @@ public class AdminDO {
      * 头像
      **/
     private String icon;
+
+    /**
+     * 登录用户名
+     **/
+    private String username;
+
+    /**
+     * 密码
+     **/
+    private String password;
+
+    /**
+     * 手机号
+     **/
+    private String mobile;
+
+    /**
+     * 电子邮箱
+     **/
+    private String email;
 
 }
