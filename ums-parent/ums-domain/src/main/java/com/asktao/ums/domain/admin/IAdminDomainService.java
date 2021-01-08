@@ -1,6 +1,6 @@
 package com.asktao.ums.domain.admin;
 
-import com.asktao.ums.domain.admin.entity.Admin;
+import java.util.Set;
 
 /**
  * @author wcy
@@ -14,5 +14,5 @@ public interface IAdminDomainService {
      */
     String register();
 
-    Admin getRolesById(String uid);
+    Set<String> getRolesById(String uid);
 }

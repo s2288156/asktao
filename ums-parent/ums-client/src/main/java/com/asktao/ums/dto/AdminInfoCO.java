@@ -15,4 +15,7 @@ public class AdminInfoCO extends DTO {
 
     private Set<String> roles;
 
+    public AdminInfoCO(Set<String> roles) {
+        this.roles = roles;
+    }
 }

@@ -21,6 +21,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * @author wcy
@@ -85,8 +86,8 @@ public class AccountServiceImpl implements IAccountService {
 
     @Override
     public AdminInfoCO getAdminRoles(String uid) {
-        Admin admin = adminDomainService.getRolesById(uid);
-        return null;
+        Set<String> rolesName = adminDomainService.getRolesById(uid);
+        return new AdminInfoCO(rolesName);
     }
 
 }
