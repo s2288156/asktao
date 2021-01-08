@@ -22,7 +22,6 @@ public class AccountServiceImpl implements IAccountService {
     @Override
     public AccountDO selectByUsername(String username) {
         Optional<AccountDO> optional = accountMapper.selectByUsername(username);
-
         return optional.orElseThrow(() -> new UsernameNotFoundException(MessageConstant.USERNAME_PASSWORD_ERROR));
     }
 

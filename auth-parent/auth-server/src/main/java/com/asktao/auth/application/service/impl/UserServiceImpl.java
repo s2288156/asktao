@@ -53,10 +53,7 @@ public class UserServiceImpl implements UserDetailsService {
 //            userDto = umsClient.adminLoginSelect(username).getData();
             userDto = new UserDto();
         } else {
-            userDto = new UserDto();
-            userDto.setUsername(username);
-            userDto.setPassword(accountDO.getPassword());
-            userDto.setId(accountDO.getId());
+            userDto = memberAccount(username, accountDO);
         }
         userDto.setClientId(clientId);
         SecurityUser securityUser = new SecurityUser(userDto);
@@ -70,5 +67,13 @@ public class UserServiceImpl implements UserDetailsService {
             throw new CredentialsExpiredException(MessageConstant.CREDENTIALS_EXPIRED);
         }
         return securityUser;
+    }
+
+    private UserDto memberAccount(String username, AccountDO accountDO) {
+        UserDto userDto = new UserDto();
+        userDto.setUsername(username);
+        userDto.setPassword(accountDO.getPassword());
+        userDto.setId(accountDO.getId());
+        return userDto;
     }
 }
