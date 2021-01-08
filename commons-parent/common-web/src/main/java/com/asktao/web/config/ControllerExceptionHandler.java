@@ -4,6 +4,7 @@ import com.asktao.lib.domain.RestResponse;
 import com.asktao.lib.ex.BizException;
 import com.asktao.lib.ex.ResultCodeEnum;
 import com.asktao.lib.ex.SysException;
+import com.netflix.client.ClientException;
 import feign.FeignException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -49,6 +50,11 @@ public class ControllerExceptionHandler {
     public ResponseEntity<?> handleAccessDeniedException(AccessDeniedException ex) {
         log.warn("[AccessDeniedException]: {}", ex.getMessage());
         return ResponseEntity.status(HttpStatus.FORBIDDEN).body(RestResponse.failed(ResultCodeEnum.PERMISSION_ERROR));
+    }
+
+    @ExceptionHandler(ClientException.class)
+    public ResponseEntity<?> handleFeignClientException(ClientException ex) {
+        return ResponseEntity.ok(RestResponse.failed(ResultCodeEnum.SYS_EXECUTE_ERROR.code(), ex.getMessage()));
     }
 
     @ExceptionHandler(Exception.class)
