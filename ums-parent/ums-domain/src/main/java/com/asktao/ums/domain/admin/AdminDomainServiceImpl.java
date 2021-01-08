@@ -27,7 +27,10 @@ public class AdminDomainServiceImpl implements IAdminDomainService {
         if (adminGateway.existForUsername(admin)) {
             throw new BizException(ResultCodeEnum.USERNAME_EXISTS);
         }
-        return adminGateway.insert(admin);
+        String uid = adminGateway.insert(admin);
+        admin.setId(uid);
+        adminGateway.insertDefaultGustRole(admin);
+        return uid;
     }
 
     @Override

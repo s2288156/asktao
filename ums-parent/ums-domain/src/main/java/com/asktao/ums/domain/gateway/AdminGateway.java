@@ -10,4 +10,6 @@ public interface AdminGateway {
     String insert(Admin admin);
 
     boolean existForUsername(Admin admin);
+
+    void insertDefaultGustRole(Admin admin);
 }
