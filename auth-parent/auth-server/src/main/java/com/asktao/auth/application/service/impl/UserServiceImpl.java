@@ -45,15 +45,14 @@ public class UserServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        AccountDO accountDO = accountService.selectByUsername(username);
         String clientId = request.getParameter("client_id");
         UserDto userDto;
         if (AuthConstant.CLIENT_ID_ADMIN.equals(clientId)) {
             // TODO: 2021/1/5 补充admin用户登录逻辑，需要查询权限信息
-//            userDto = umsClient.adminLoginSelect(username).getData();
-            userDto = new UserDto();
+            userDto = umsClient.adminLogin(username).getData();
         } else {
-            userDto = memberAccount(username, accountDO);
+            // TODO: 2021/1/8 补充会员登录逻辑
+            userDto = new UserDto();
         }
         userDto.setClientId(clientId);
         SecurityUser securityUser = new SecurityUser(userDto);
@@ -69,11 +68,4 @@ public class UserServiceImpl implements UserDetailsService {
         return securityUser;
     }
 
-    private UserDto memberAccount(String username, AccountDO accountDO) {
-        UserDto userDto = new UserDto();
-        userDto.setUsername(username);
-        userDto.setPassword(accountDO.getPassword());
-        userDto.setId(accountDO.getId());
-        return userDto;
-    }
 }

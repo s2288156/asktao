@@ -31,7 +31,7 @@ public class AdminController {
 
     @PostMapping("/login")
     public RestResponse<?> login(AdminLoginCmd loginCmd) {
-        return RestResponse.success(accountService.login(loginCmd));
+        return RestResponse.success(accountService.login(loginCmd).getBody());
     }
 
 }

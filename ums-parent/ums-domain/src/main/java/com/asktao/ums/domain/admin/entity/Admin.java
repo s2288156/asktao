@@ -19,7 +19,7 @@ public class Admin {
 
     private String password;
 
-    private Set<Role> roles;
+    private Set<String> roles;
 
     public String clientId() {
         return CLIENT_ID;

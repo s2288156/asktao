@@ -38,4 +38,13 @@ public class AdminDomainServiceImpl implements IAdminDomainService {
         return roleGateway.selectRoleNameForUid(uid);
     }
 
+    @Override
+    public Admin loadAdminLoginInfo(String username) {
+        Admin admin = adminGateway.selectByUsername(username);
+        if (admin == null) {
+            throw new BizException(ResultCodeEnum.USERNAME_EXISTS);
+        }
+        return admin;
+    }
+
 }

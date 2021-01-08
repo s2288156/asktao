@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Set;
 
 /**
  * 登录用户信息
@@ -32,7 +33,7 @@ public class UserDto implements Serializable {
     @JsonProperty(value = "client_id")
     private String clientId;
 
-    private List<String> roles;
+    private Set<String> roles;
 
     public boolean isAdminClientId() {
         return AuthConstant.CLIENT_ID_ADMIN.equals(this.clientId);

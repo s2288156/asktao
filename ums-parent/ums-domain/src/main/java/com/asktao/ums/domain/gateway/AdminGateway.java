@@ -12,4 +12,6 @@ public interface AdminGateway {
     boolean existForUsername(Admin admin);
 
     void insertDefaultGustRole(Admin admin);
+
+    Admin selectByUsername(String username);
 }

@@ -13,6 +13,10 @@ import java.util.Set;
 @Data
 public class AdminInfoCO extends DTO {
 
+    private String username;
+
+    private String password;
+
     private Set<String> roles;
 
     public AdminInfoCO(Set<String> roles) {

@@ -18,4 +18,6 @@ public interface IAdminDomainService {
     String register(Admin admin);
 
     Set<String> getRolesById(String uid);
+
+    Admin loadAdminLoginInfo(String username);
 }

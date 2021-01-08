@@ -6,9 +6,12 @@ import com.asktao.ums.infrastructure.dataobject.AdminDO;
 import com.asktao.ums.infrastructure.dataobject.AdminRoleDO;
 import com.asktao.ums.infrastructure.mapper.AdminMapper;
 import com.asktao.ums.infrastructure.mapper.AdminRoleMapper;
+import com.asktao.ums.infrastructure.mapper.RoleMapper;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Set;
 
 /**
  * @author wcy
@@ -21,6 +24,9 @@ public class AdminGatewayImpl implements AdminGateway {
 
     @Autowired
     private AdminRoleMapper adminRoleMapper;
+
+    @Autowired
+    private RoleMapper roleMapper;
 
     @Override
     public String insert(Admin admin) {
@@ -43,6 +49,19 @@ public class AdminGatewayImpl implements AdminGateway {
         adminRoleDO.setAdminId(admin.getId());
         adminRoleDO.setRoleId(admin.gustRoleId());
         adminRoleMapper.insert(adminRoleDO);
+    }
+
+    @Override
+    public Admin selectByUsername(String username) {
+        AdminDO adminDO = adminMapper.selectOne(new LambdaQueryWrapper<AdminDO>().eq(AdminDO::getUsername, username));
+        Set<String> rolesName = roleMapper.selectRolesByUid(adminDO.getId());
+
+        Admin admin = new Admin();
+        admin.setId(adminDO.getId());
+        admin.setUsername(adminDO.getUsername());
+        admin.setPassword(adminDO.getPassword());
+        admin.setRoles(rolesName);
+        return admin;
     }
 
 }

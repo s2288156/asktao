@@ -1,5 +1,6 @@
 package com.asktao.ums.application.service;
 
+import com.asktao.lib.domain.UserDto;
 import com.asktao.ums.application.dto.AdminAccountRegisterCmd;
 import com.asktao.ums.application.dto.LoginCmd;
 import com.asktao.ums.application.dto.MemberRegisterCmd;
@@ -45,4 +46,6 @@ public interface IAccountService {
     void registerAdmin(AdminAccountRegisterCmd accountRegisterCmd);
 
     AdminInfoCO getAdminRoles(String uid);
+
+    UserDto loadAdmin(String username);
 }
