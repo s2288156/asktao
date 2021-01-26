@@ -14,9 +14,7 @@
 
 ### 安装教程
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+1. skywalking集成方式：启动命令增加启动参数`-javaagent:D:\develop\apache-skywalking-apm-bin-es7\agent\skywalking-agent.jar  -Dskywalking.agent.service_name=auth`
 
 ### 使用说明
 
@@ -27,7 +25,7 @@
     - username: 用户名，数据库存储t_member表或t_manager表
     - password: 密码，数据库存储t_member表或t_manager表
     - refresh_token: 刷新token
-
+   
 ## 命名规范
 
 | 规范 | 用途 | 解释 |
