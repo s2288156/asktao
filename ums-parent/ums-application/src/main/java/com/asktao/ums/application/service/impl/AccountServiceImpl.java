@@ -57,7 +57,7 @@ public class AccountServiceImpl implements IAccountService {
     private void authRegisterAccount(RegisterCmd registerCmd) {
         RestResponse<?> response = authClient.register(registerCmd);
         if (response.bad()) {
-            throw new BizException(response.getReturnCode(), response.getReturnMsg());
+            throw new BizException(response.getCode(), response.getMessage());
         }
     }
 

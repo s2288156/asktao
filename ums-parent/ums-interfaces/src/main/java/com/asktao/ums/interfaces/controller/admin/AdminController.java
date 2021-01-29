@@ -7,6 +7,7 @@ import com.asktao.ums.application.dto.AdminAccountRegisterCmd;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -30,7 +31,7 @@ public class AdminController {
     }
 
     @PostMapping("/login")
-    public RestResponse<?> login(AdminLoginCmd loginCmd) {
+    public RestResponse<?> login(@RequestBody AdminLoginCmd loginCmd) {
         return RestResponse.success(accountService.login(loginCmd).getBody());
     }
 

@@ -13,15 +13,15 @@ import java.io.Serializable;
 public class ReturnCodeMsg implements Serializable {
     private static final long serialVersionUID = 3136661064445721240L;
 
-    private String returnCode;
+    private String code;
 
-    private String returnMsg;
+    private String message;
 
     public ReturnCodeMsg() {
     }
 
-    public ReturnCodeMsg(String returnCode, String returnMsg) {
-        this.returnCode = returnCode;
-        this.returnMsg = returnMsg;
+    public ReturnCodeMsg(String code, String message) {
+        this.code = code;
+        this.message = message;
     }
 }

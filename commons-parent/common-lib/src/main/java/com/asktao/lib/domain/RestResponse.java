@@ -26,7 +26,7 @@ public class RestResponse<T> extends ReturnCodeMsg implements Serializable {
     }
 
     public boolean ok() {
-        return StringUtils.equals(ResultCodeEnum.SUCCESS.code(), getReturnCode());
+        return StringUtils.equals(ResultCodeEnum.SUCCESS.code(), getCode());
     }
 
     public boolean bad() {

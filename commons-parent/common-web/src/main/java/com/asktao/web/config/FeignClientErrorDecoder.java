@@ -26,11 +26,11 @@ public class FeignClientErrorDecoder implements ErrorDecoder {
             result = Util.toString(response.body().asReader(StandardCharsets.UTF_8));
             log.error("feignClient = {}, errorMsg = {}", s, result);
             ReturnCodeMsg restResult = JsonUtils.fromJson(result, ReturnCodeMsg.class);
-            if (restResult.getReturnMsg() == null || restResult.getReturnCode() == null) {
+            if (restResult.getMessage() == null || restResult.getCode() == null) {
                 return new BizException(ResultCodeEnum.SYS_EXECUTE_ERROR,
                         JsonUtils.fromJson(result, FeignErrorBody.class).getErrorDescription());
             }
-            return new BizException(restResult.getReturnCode(), restResult.getReturnMsg());
+            return new BizException(restResult.getCode(), restResult.getMessage());
         } catch (Exception e) {
             log.error("errorMsg toString ex: ", e);
             return new SysException(ResultCodeEnum.SYS_EXECUTE_ERROR, e.getLocalizedMessage());
