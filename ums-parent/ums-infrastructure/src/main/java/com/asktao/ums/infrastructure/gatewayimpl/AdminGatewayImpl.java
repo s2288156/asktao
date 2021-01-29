@@ -1,5 +1,7 @@
 package com.asktao.ums.infrastructure.gatewayimpl;
 
+import com.asktao.lib.ex.BizException;
+import com.asktao.lib.ex.ResultCodeEnum;
 import com.asktao.ums.domain.admin.entity.Admin;
 import com.asktao.ums.domain.gateway.AdminGateway;
 import com.asktao.ums.infrastructure.dataobject.AdminDO;
@@ -54,6 +56,9 @@ public class AdminGatewayImpl implements AdminGateway {
     @Override
     public Admin selectByUsername(String username) {
         AdminDO adminDO = adminMapper.selectOne(new LambdaQueryWrapper<AdminDO>().eq(AdminDO::getUsername, username));
+        if (adminDO == null) {
+            throw new BizException(ResultCodeEnum.USER_LOGIN_ERROR);
+        }
         Set<String> rolesName = roleMapper.selectRolesByUid(adminDO.getId());
 
         Admin admin = new Admin();
