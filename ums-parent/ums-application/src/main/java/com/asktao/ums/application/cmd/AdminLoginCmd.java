@@ -1,4 +1,4 @@
-package com.asktao.ums.application.dto;
+package com.asktao.ums.application.cmd;
 
 import com.asktao.lib.constant.AuthConstant;
 import com.asktao.lib.dto.Command;

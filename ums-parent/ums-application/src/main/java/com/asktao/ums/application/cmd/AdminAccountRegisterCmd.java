@@ -1,4 +1,4 @@
-package com.asktao.ums.application.dto;
+package com.asktao.ums.application.cmd;
 
 import com.asktao.auth.dto.RegisterCmd;
 import com.asktao.ums.domain.admin.entity.Admin;

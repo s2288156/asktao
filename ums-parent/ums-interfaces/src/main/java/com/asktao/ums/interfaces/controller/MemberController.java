@@ -1,10 +1,10 @@
 package com.asktao.ums.interfaces.controller;
 
 import com.asktao.lib.domain.RestResponse;
-import com.asktao.ums.application.dto.MemberLoginCmd;
+import com.asktao.ums.application.cmd.MemberLoginCmd;
 import com.asktao.ums.application.service.IAccountService;
 import com.asktao.ums.domain.member.entity.Member;
-import com.asktao.ums.application.dto.MemberRegisterCmd;
+import com.asktao.ums.application.cmd.MemberRegisterCmd;
 import com.asktao.ums.interfaces.vo.MemberDetailVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;

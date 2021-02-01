@@ -1,4 +1,4 @@
-package com.asktao.ums.application.dto;
+package com.asktao.ums.application.cmd;
 
 /**
  * @author wcy
