@@ -21,6 +21,8 @@ public class Admin {
 
     private Set<String> roles;
 
+    private String name;
+
     public String clientId() {
         return CLIENT_ID;
     }

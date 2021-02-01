@@ -41,6 +41,16 @@ public class SecurityUser implements UserDetails {
      */
     private Collection<SimpleGrantedAuthority> authorities;
 
+    /**
+     * 姓名
+     */
+    private String name;
+
+    /**
+     * 头像
+     */
+    private String avatar;
+
     public SecurityUser() {
 
     }
@@ -55,6 +65,8 @@ public class SecurityUser implements UserDetails {
             authorities = new ArrayList<>();
             userDto.getAuthorities().forEach(item -> authorities.add(new SimpleGrantedAuthority(item)));
         }
+        this.name = userDto.getName();
+        this.avatar = userDto.getAvatar();
     }
 
     @Override

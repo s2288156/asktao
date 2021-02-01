@@ -35,6 +35,16 @@ public class UserDto implements Serializable {
 
     private Set<String> authorities;
 
+    /**
+     * 姓名
+     */
+    private String name;
+
+    /**
+     * 头像
+     */
+    private String avatar;
+
     public boolean isAdminClientId() {
         return AuthConstant.CLIENT_ID_ADMIN.equals(this.clientId);
     }

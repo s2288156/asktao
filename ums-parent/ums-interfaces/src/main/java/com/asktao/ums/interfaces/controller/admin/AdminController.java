@@ -48,17 +48,7 @@ public class AdminController {
 
     @GetMapping("/user/info")
     public RestResponse<AdminUserInfo> userInfo(@RequestHeader String accessToken) {
-        JWSObject jwsObject = null;
-        try {
-            jwsObject = JWSObject.parse(accessToken);
-        } catch (ParseException e) {
-            log.error("jws Parse error:", e);
-            return RestResponse.failed(ResultCodeEnum.SYS_EXECUTE_ERROR);
-        }
-        String userStr = jwsObject.getPayload().toString();
-        UserDto userDto = JsonUtils.fromJson(userStr, UserDto.class);
-        log.warn(">>>>>>>>>>>>>>>>>>>>> {}", userStr);
-        return RestResponse.success();
+        return RestResponse.success(AdminUserInfo.createForToken(accessToken));
     }
 
 }
