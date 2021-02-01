@@ -29,6 +29,7 @@ public class ResourceServiceImpl {
         resourceRolesMap = new TreeMap<>();
         resourceRolesMap.put("/demo-foo/admin/one", Arrays.asList("ADMIN", "ONE"));
         resourceRolesMap.put("/demo-foo/admin/two", Arrays.asList("TWO", "THREE"));
+        resourceRolesMap.put("/ums/admin/user/info", Arrays.asList("ROOT"));
         redisTemplate.opsForHash().putAll(AuthConstant.RESOURCE_ROLES_MAP_KEY, resourceRolesMap);
     }
 }

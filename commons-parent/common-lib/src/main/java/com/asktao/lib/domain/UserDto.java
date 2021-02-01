@@ -33,7 +33,7 @@ public class UserDto implements Serializable {
     @JsonProperty(value = "client_id")
     private String clientId;
 
-    private Set<String> roles;
+    private Set<String> authorities;
 
     public boolean isAdminClientId() {
         return AuthConstant.CLIENT_ID_ADMIN.equals(this.clientId);

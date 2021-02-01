@@ -48,6 +48,6 @@ public class AuthConstant {
     /**
      * admin-app接口路径匹配
      */
-    public static final String ADMIN_URL_PATTERN = "/admin/**";
+    public static final String ADMIN_URL_PATTERN = "/ums/**";
 
 }

@@ -67,7 +67,7 @@ public class AccountServiceImpl implements IAccountService {
         userDto.setId(admin.getId());
         userDto.setUsername(admin.getUsername());
         userDto.setPassword(admin.getPassword());
-        userDto.setRoles(admin.getRoles());
+        userDto.setAuthorities(admin.getRoles());
         userDto.setClientId(admin.clientId());
         return userDto;
     }
