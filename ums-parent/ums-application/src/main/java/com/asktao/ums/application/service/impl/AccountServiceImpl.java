@@ -1,19 +1,13 @@
 package com.asktao.ums.application.service.impl;
 
-import com.asktao.auth.client.IAuthClient;
 import com.asktao.auth.client.IOauthClient;
-import com.asktao.auth.dto.RegisterCmd;
-import com.asktao.lib.domain.RestResponse;
 import com.asktao.lib.domain.UserDto;
-import com.asktao.lib.ex.BizException;
 import com.asktao.ums.application.cmd.AdminAccountRegisterCmd;
 import com.asktao.ums.application.cmd.LoginCmd;
-import com.asktao.ums.application.cmd.MemberRegisterCmd;
 import com.asktao.ums.application.service.IAccountService;
 import com.asktao.ums.domain.admin.IAdminDomainService;
 import com.asktao.ums.domain.admin.entity.Admin;
 import com.asktao.ums.domain.member.IMemberDomainService;
-import com.asktao.ums.domain.member.entity.Member;
 import com.asktao.ums.dto.AdminInfoCO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -38,33 +32,6 @@ public class AccountServiceImpl implements IAccountService {
 
     @Autowired
     private IOauthClient oauthClient;
-
-    @Autowired
-    private IAuthClient authClient;
-
-
-    @Transactional(rollbackFor = Exception.class)
-    @Override
-    public void registerMember(MemberRegisterCmd memberRegister) {
-        String uid = memberDomainService.register();
-        memberRegister.setId(uid);
-        authRegisterAccount(memberRegister);
-    }
-
-    /**
-     * @param registerCmd 账户信息
-     */
-    private void authRegisterAccount(RegisterCmd registerCmd) {
-        RestResponse<?> response = authClient.register(registerCmd);
-        if (response.bad()) {
-            throw new BizException(response.getCode(), response.getMessage());
-        }
-    }
-
-    @Override
-    public Member detailForUid(String uid) {
-        return memberDomainService.detail(uid);
-    }
 
     @Override
     public ResponseEntity<?> login(LoginCmd loginCmd) {

@@ -16,21 +16,6 @@ import org.springframework.http.ResponseEntity;
 public interface IAccountService {
 
     /**
-     * 注册会员
-     *
-     * @param memberRegister 账号和密码
-     */
-    void registerMember(MemberRegisterCmd memberRegister);
-
-    /**
-     * 查询会员详细信息
-     *
-     * @param uid 用户id
-     * @return 用户信息
-     */
-    Member detailForUid(String uid);
-
-    /**
      * 门户会员、后台管理员登录
      *
      * @param loginCmd 登录信息

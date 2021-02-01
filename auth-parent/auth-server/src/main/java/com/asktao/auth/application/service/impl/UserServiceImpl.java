@@ -1,8 +1,6 @@
 package com.asktao.auth.application.service.impl;
 
 import com.asktao.auth.application.dto.SecurityUser;
-import com.asktao.auth.application.service.IAccountService;
-import com.asktao.auth.infrastructure.dataobject.AccountDO;
 import com.asktao.lib.constant.AuthConstant;
 import com.asktao.lib.constant.MessageConstant;
 import com.asktao.lib.domain.UserDto;
@@ -32,9 +30,6 @@ public class UserServiceImpl implements UserDetailsService {
 
     @Autowired
     private IUmsClient umsClient;
-
-    @Autowired
-    private IAccountService accountService;
 
 //        userDto1 = new UserDto();
 //        userDto2 = new UserDto();
