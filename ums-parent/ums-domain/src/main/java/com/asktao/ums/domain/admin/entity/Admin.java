@@ -23,6 +23,8 @@ public class Admin {
 
     private String name;
 
+    private String icon;
+
     public String clientId() {
         return CLIENT_ID;
     }

@@ -47,8 +47,8 @@ public class AdminController {
     }
 
     @GetMapping("/user/info")
-    public RestResponse<AdminUserInfo> userInfo(@RequestHeader String accessToken) {
-        return RestResponse.success(AdminUserInfo.createForToken(accessToken));
+    public RestResponse<AdminUserInfo> userInfo(String token) {
+        return RestResponse.success(AdminUserInfo.createForToken(token));
     }
 
 }

@@ -44,6 +44,7 @@ public class AdminUserInfo extends DTO implements Serializable {
         AdminUserInfo adminUserInfo = new AdminUserInfo();
         adminUserInfo.setRoles(userDto.getAuthorities());
         adminUserInfo.setName(userDto.getName());
+        adminUserInfo.setAvatar(userDto.getAvatar());
         return adminUserInfo;
     }
 }
