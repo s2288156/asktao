@@ -4,6 +4,7 @@ import com.asktao.auth.client.IOauthClient;
 import com.asktao.lib.domain.UserDto;
 import com.asktao.ums.application.cmd.AdminAccountRegisterCmd;
 import com.asktao.ums.application.cmd.LoginCmd;
+import com.asktao.ums.application.config.CommonValues;
 import com.asktao.ums.application.service.IAccountService;
 import com.asktao.ums.domain.admin.IAdminDomainService;
 import com.asktao.ums.domain.admin.entity.Admin;
@@ -33,6 +34,9 @@ public class AccountServiceImpl implements IAccountService {
     @Autowired
     private IOauthClient oauthClient;
 
+    @Autowired
+    private CommonValues commonValues;
+
     @Override
     public ResponseEntity<?> login(LoginCmd loginCmd) {
         Map<String, String> params = new HashMap<>(16);
@@ -47,7 +51,9 @@ public class AccountServiceImpl implements IAccountService {
     @Transactional(rollbackFor = Exception.class)
     @Override
     public void registerAdmin(AdminAccountRegisterCmd accountRegisterCmd) {
-        adminDomainService.register(accountRegisterCmd.convert2Admin());
+        Admin admin = accountRegisterCmd.convert2Admin();
+        admin.setIcon(commonValues.getDefaultAvatar());
+        adminDomainService.register(admin);
     }
 
     @Override
