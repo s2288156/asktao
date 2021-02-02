@@ -17,9 +17,9 @@ spring:
           - data-id: redis.yml
             group: BASE
             refresh: false
-#          - data-id: ums-common.yml
-#            group: SERVER
-#            refresh: true
+          - data-id: ums-common.yml
+            group: SERVER
+            refresh: true
 server:
   port: 8500
 logging:
