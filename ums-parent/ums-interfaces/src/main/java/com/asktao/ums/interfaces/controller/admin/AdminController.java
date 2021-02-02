@@ -51,4 +51,9 @@ public class AdminController {
         return RestResponse.success(AdminUserInfo.createForToken(token));
     }
 
+    @PostMapping("/logout")
+    public RestResponse<?> logout() {
+        return RestResponse.success();
+    }
+
 }
