@@ -1,5 +1,7 @@
 package com.asktao.ums.infrastructure.gatewayimpl;
 
+import com.asktao.lib.domain.PageQuery;
+import com.asktao.lib.domain.PageResult;
 import com.asktao.ums.BaseTest;
 import com.asktao.ums.domain.admin.entity.Admin;
 import com.asktao.ums.domain.gateway.AdminGateway;
@@ -29,5 +31,15 @@ class AdminGatewayImplTest extends BaseTest {
         Set<String> roles = admin.getRoles();
         assertNotNull(roles);
         assertTrue(roles.contains("ROOT"));
+    }
+
+    @Test
+    void pageAdminTest() {
+        PageQuery pageQuery = new PageQuery();
+        pageQuery.setPage(1L);
+        pageQuery.setLimit(10L);
+        PageResult<Admin> adminPageResult = adminGateway.pageQuery(pageQuery);
+        assertTrue(adminPageResult.getTotal() > 0);
+        log.warn(">>>> {}", adminPageResult.getRecords());
     }
 }

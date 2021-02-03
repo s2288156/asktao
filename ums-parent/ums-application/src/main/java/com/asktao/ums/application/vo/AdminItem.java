@@ -1,6 +1,5 @@
 package com.asktao.ums.application.vo;
 
-import com.asktao.lib.domain.PageResult;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -9,7 +8,7 @@ import java.io.Serializable;
  * @author wcy-auto
  **/
 @Data
-public class AdminItem extends PageResult implements Serializable {
+public class AdminItem implements Serializable {
     private static final long serialVersionUID = -73171005836472364L;
 
     private String id;

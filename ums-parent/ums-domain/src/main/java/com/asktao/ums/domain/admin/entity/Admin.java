@@ -25,6 +25,10 @@ public class Admin {
 
     private String icon;
 
+    private Integer gender;
+
+    private Integer status;
+
     public String clientId() {
         return CLIENT_ID;
     }

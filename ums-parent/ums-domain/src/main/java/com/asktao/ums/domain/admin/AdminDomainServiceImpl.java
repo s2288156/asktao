@@ -51,7 +51,7 @@ public class AdminDomainServiceImpl implements IAdminDomainService {
 
     @Override
     public PageResult<Admin> pageAdmin(PageQuery pageQuery) {
-
+        adminGateway.pageQuery(pageQuery);
         return null;
     }
 
