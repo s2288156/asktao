@@ -1,10 +1,11 @@
 package com.asktao.ums.application.service;
 
 import com.asktao.lib.domain.UserDto;
+import com.asktao.lib.domain.PageQuery;
+import com.asktao.lib.domain.PageResult;
 import com.asktao.ums.application.cmd.AdminAccountRegisterCmd;
 import com.asktao.ums.application.cmd.LoginCmd;
-import com.asktao.ums.application.cmd.MemberRegisterCmd;
-import com.asktao.ums.domain.member.entity.Member;
+import com.asktao.ums.application.vo.AdminItem;
 import com.asktao.ums.dto.AdminInfoCO;
 import org.springframework.http.ResponseEntity;
 
@@ -33,4 +34,6 @@ public interface IAccountService {
     AdminInfoCO getAdminRoles(String uid);
 
     UserDto loadAdmin(String username);
+
+    PageResult<AdminItem> pageAdmins(PageQuery pageQuery);
 }

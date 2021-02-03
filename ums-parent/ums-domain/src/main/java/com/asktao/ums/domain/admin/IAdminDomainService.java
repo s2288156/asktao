@@ -1,5 +1,7 @@
 package com.asktao.ums.domain.admin;
 
+import com.asktao.lib.domain.PageQuery;
+import com.asktao.lib.domain.PageResult;
 import com.asktao.ums.domain.admin.entity.Admin;
 
 import java.util.Set;
@@ -20,4 +22,6 @@ public interface IAdminDomainService {
     Set<String> getRolesById(String uid);
 
     Admin loadAdminLoginInfo(String username);
+
+    PageResult<Admin> pageAdmin(PageQuery pageQuery);
 }

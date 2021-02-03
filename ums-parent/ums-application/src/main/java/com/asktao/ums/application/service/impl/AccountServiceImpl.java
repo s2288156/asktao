@@ -2,10 +2,13 @@ package com.asktao.ums.application.service.impl;
 
 import com.asktao.auth.client.IOauthClient;
 import com.asktao.lib.domain.UserDto;
+import com.asktao.lib.domain.PageQuery;
+import com.asktao.lib.domain.PageResult;
 import com.asktao.ums.application.cmd.AdminAccountRegisterCmd;
 import com.asktao.ums.application.cmd.LoginCmd;
 import com.asktao.ums.application.config.CommonValues;
 import com.asktao.ums.application.service.IAccountService;
+import com.asktao.ums.application.vo.AdminItem;
 import com.asktao.ums.domain.admin.IAdminDomainService;
 import com.asktao.ums.domain.admin.entity.Admin;
 import com.asktao.ums.domain.member.IMemberDomainService;
@@ -66,6 +69,12 @@ public class AccountServiceImpl implements IAccountService {
     public UserDto loadAdmin(String username) {
         Admin admin = adminDomainService.loadAdminLoginInfo(username);
         return convert2UserDto(admin);
+    }
+
+    @Override
+    public PageResult<AdminItem> pageAdmins(PageQuery pageQuery) {
+        adminDomainService.pageAdmin(pageQuery);
+        return null;
     }
 
     private UserDto convert2UserDto(Admin admin) {

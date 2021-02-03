@@ -1,5 +1,7 @@
 package com.asktao.ums.domain.admin;
 
+import com.asktao.lib.domain.PageQuery;
+import com.asktao.lib.domain.PageResult;
 import com.asktao.lib.ex.BizException;
 import com.asktao.lib.ex.ResultCodeEnum;
 import com.asktao.ums.domain.admin.entity.Admin;
@@ -45,6 +47,12 @@ public class AdminDomainServiceImpl implements IAdminDomainService {
             throw new BizException(ResultCodeEnum.USERNAME_EXISTS);
         }
         return admin;
+    }
+
+    @Override
+    public PageResult<Admin> pageAdmin(PageQuery pageQuery) {
+
+        return null;
     }
 
 }
