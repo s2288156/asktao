@@ -1,6 +1,7 @@
 package com.asktao.ums.domain.admin.entity;
 
 import com.asktao.lib.constant.AuthConstant;
+import com.asktao.ums.domain.gateway.enums.GenderEnum;
 import lombok.Data;
 
 import java.util.Set;
@@ -25,7 +26,7 @@ public class Admin {
 
     private String icon;
 
-    private Integer gender;
+    private GenderEnum gender;
 
     private Integer status;
 

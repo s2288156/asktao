@@ -1,5 +1,6 @@
 package com.asktao.ums.application.vo;
 
+import com.asktao.ums.domain.gateway.enums.GenderEnum;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -21,7 +22,7 @@ public class AdminItem implements Serializable {
     /**
      * 性别，0 - 未知，1 - 男，2 - 女
      **/
-    private Integer gender;
+    private GenderEnum gender;
 
     /**
      * 账户状态，0 - 删除，1 - 正常，2 - 冻结

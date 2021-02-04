@@ -1,5 +1,6 @@
 package com.asktao.ums.infrastructure.dataobject;
 
+import com.asktao.ums.domain.gateway.enums.GenderEnum;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -43,7 +44,7 @@ public class AdminDO {
     /**
      * 性别，0 - 未知，1 - 男，2 - 女
      **/
-    private Integer gender;
+    private GenderEnum gender;
 
     /**
      * 账户状态，0 - 删除，1 - 正常，2 - 冻结

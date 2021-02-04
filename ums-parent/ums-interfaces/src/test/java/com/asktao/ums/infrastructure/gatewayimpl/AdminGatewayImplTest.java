@@ -23,7 +23,7 @@ class AdminGatewayImplTest extends BaseTest {
     private AdminGateway adminGateway;
 
     @Test
-    void insert() {
+    void selectTest() {
         Admin admin = adminGateway.selectByUsername("admin");
         assertNotNull(admin);
 
