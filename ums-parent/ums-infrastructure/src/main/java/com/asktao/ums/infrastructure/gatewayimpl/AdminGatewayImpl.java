@@ -15,6 +15,7 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.OrderItem;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -39,8 +40,7 @@ public class AdminGatewayImpl implements AdminGateway {
     @Override
     public String insert(Admin admin) {
         AdminDO adminDO = new AdminDO();
-        adminDO.setUsername(admin.getUsername());
-        adminDO.setPassword(admin.getPassword());
+        BeanUtils.copyProperties(admin, adminDO);
         adminMapper.insert(adminDO);
         return adminDO.getId();
     }
