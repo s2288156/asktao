@@ -4,6 +4,7 @@ import com.asktao.ums.domain.gateway.enums.GenderEnum;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 
 /**
  * @author wcy-auto
@@ -34,4 +35,8 @@ public class AdminItem implements Serializable {
      **/
     private String username;
 
+    /**
+     * 注册时间
+     **/
+    private LocalDateTime createTime;
 }

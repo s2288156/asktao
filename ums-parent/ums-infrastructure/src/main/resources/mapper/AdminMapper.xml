@@ -3,7 +3,7 @@
 <mapper namespace="com.asktao.ums.infrastructure.mapper.AdminMapper">
 
     <select id="pageAdmin" resultType="com.asktao.ums.domain.admin.entity.Admin">
-        select id, name, gender, status, username
+        select id, name, gender, status, username, create_time
         from t_admin
     </select>
 </mapper>

@@ -4,6 +4,7 @@ import com.asktao.lib.constant.AuthConstant;
 import com.asktao.ums.domain.gateway.enums.GenderEnum;
 import lombok.Data;
 
+import java.time.LocalDateTime;
 import java.util.Set;
 
 /**
@@ -29,6 +30,11 @@ public class Admin {
     private GenderEnum gender;
 
     private Integer status;
+
+    /**
+     * 注册时间
+     **/
+    private LocalDateTime createTime;
 
     public String clientId() {
         return CLIENT_ID;
