@@ -9,7 +9,7 @@ import com.asktao.ums.application.cmd.LoginCmd;
 import com.asktao.ums.application.cmd.admin.AdminUpdateCmd;
 import com.asktao.ums.application.config.CommonValues;
 import com.asktao.ums.application.service.IAccountService;
-import com.asktao.ums.application.vo.AdminItem;
+import com.asktao.ums.application.vo.AdminSim;
 import com.asktao.ums.domain.admin.IAdminDomainService;
 import com.asktao.ums.domain.admin.entity.Admin;
 import com.asktao.ums.domain.member.IMemberDomainService;
@@ -76,15 +76,15 @@ public class AccountServiceImpl implements IAccountService {
     }
 
     @Override
-    public PageResult<AdminItem> pageAdmins(PageQuery pageQuery) {
+    public PageResult<AdminSim> pageAdmins(PageQuery pageQuery) {
         PageResult<Admin> adminPageResult = adminDomainService.pageAdmin(pageQuery);
-        List<AdminItem> adminItemList = adminPageResult.getRecords()
+        List<AdminSim> adminSimList = adminPageResult.getRecords()
                 .stream().map(admin -> {
-                    AdminItem adminItem = new AdminItem();
-                    BeanUtils.copyProperties(admin, adminItem);
-                    return adminItem;
+                    AdminSim adminSim = new AdminSim();
+                    BeanUtils.copyProperties(admin, adminSim);
+                    return adminSim;
                 }).collect(Collectors.toList());
-        return PageResult.createFor(adminPageResult.getTotal(), adminItemList);
+        return PageResult.createFor(adminPageResult.getTotal(), adminSimList);
     }
 
     @Override

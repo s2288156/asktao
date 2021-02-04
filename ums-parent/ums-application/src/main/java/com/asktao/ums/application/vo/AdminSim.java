@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
  * @author wcy-auto
  **/
 @Data
-public class AdminItem implements Serializable {
+public class AdminSim implements Serializable {
     private static final long serialVersionUID = -73171005836472364L;
 
     private String id;
