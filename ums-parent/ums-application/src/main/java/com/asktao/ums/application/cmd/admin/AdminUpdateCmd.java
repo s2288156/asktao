@@ -5,6 +5,7 @@ import com.asktao.ums.domain.admin.entity.Admin;
 import com.asktao.ums.domain.gateway.enums.AdminStatusEnum;
 import com.asktao.ums.domain.gateway.enums.GenderEnum;
 import lombok.Data;
+import org.apache.commons.lang3.StringUtils;
 import org.checkerframework.checker.units.qual.A;
 import org.springframework.beans.BeanUtils;
 
@@ -27,26 +28,27 @@ public class AdminUpdateCmd extends Command {
     /**
      * 性别{@link GenderEnum}
      **/
-    @NotBlank
     private String gender;
 
     /**
      * 账户状态{@link AdminStatusEnum}
      **/
-    @NotBlank
     private String status;
 
     /**
      * 登录用户名
      **/
-    @NotBlank
     private String username;
 
     public Admin convert2Admin() {
         Admin admin = new Admin();
         BeanUtils.copyProperties(this, admin);
-        admin.setGender(GenderEnum.valueOf(getGender()));
-        admin.setStatus(AdminStatusEnum.valueOf(getStatus()));
+        if (StringUtils.isNotBlank(getGender())) {
+            admin.setGender(GenderEnum.valueOf(getGender()));
+        }
+        if (StringUtils.isNotBlank(getStatus())) {
+            admin.setStatus(AdminStatusEnum.valueOf(getStatus()));
+        }
         return admin;
     }
 }
