@@ -52,7 +52,7 @@ public class AdminController {
 
     @GetMapping("/list")
     public RestResponse<?> list(PageQuery pageQuery) {
-        return RestResponse.success();
+        return RestResponse.success(accountService.pageAdmins(pageQuery));
     }
 
 

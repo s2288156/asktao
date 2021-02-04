@@ -14,6 +14,7 @@ import com.asktao.ums.infrastructure.mapper.RoleMapper;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.OrderItem;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +23,7 @@ import java.util.Set;
 /**
  * @author wcy
  */
+@Slf4j
 @Service
 public class AdminGatewayImpl implements AdminGateway {
 
@@ -80,7 +82,7 @@ public class AdminGatewayImpl implements AdminGateway {
         Page<Admin> page = new Page<Admin>(pageQuery.getPage(), pageQuery.getLimit())
                 .addOrder(OrderItem.asc("id"));
         adminMapper.pageAdmin(page);
-        return PageResult.createFor(page.getTotal(), page.getRecords());
+        return new PageResult<>(page.getTotal(), page.getRecords());
     }
 
 }

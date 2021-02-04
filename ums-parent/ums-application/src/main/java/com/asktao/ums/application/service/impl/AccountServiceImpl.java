@@ -13,14 +13,18 @@ import com.asktao.ums.domain.admin.IAdminDomainService;
 import com.asktao.ums.domain.admin.entity.Admin;
 import com.asktao.ums.domain.member.IMemberDomainService;
 import com.asktao.ums.dto.AdminInfoCO;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * @author wcy
@@ -73,8 +77,14 @@ public class AccountServiceImpl implements IAccountService {
 
     @Override
     public PageResult<AdminItem> pageAdmins(PageQuery pageQuery) {
-        adminDomainService.pageAdmin(pageQuery);
-        return null;
+        PageResult<Admin> adminPageResult = adminDomainService.pageAdmin(pageQuery);
+        List<AdminItem> adminItemList = adminPageResult.getRecords()
+                .stream().map(admin -> {
+                    AdminItem adminItem = new AdminItem();
+                    BeanUtils.copyProperties(admin, adminItem);
+                    return adminItem;
+                }).collect(Collectors.toList());
+        return PageResult.createFor(adminPageResult.getTotal(), adminItemList);
     }
 
     private UserDto convert2UserDto(Admin admin) {

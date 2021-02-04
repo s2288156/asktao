@@ -7,6 +7,7 @@ import com.asktao.lib.ex.ResultCodeEnum;
 import com.asktao.ums.domain.admin.entity.Admin;
 import com.asktao.ums.domain.gateway.AdminGateway;
 import com.asktao.ums.domain.gateway.RoleGateway;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +16,7 @@ import java.util.Set;
 /**
  * @author wcy
  */
+@Slf4j
 @Service
 public class AdminDomainServiceImpl implements IAdminDomainService {
 
@@ -51,8 +53,7 @@ public class AdminDomainServiceImpl implements IAdminDomainService {
 
     @Override
     public PageResult<Admin> pageAdmin(PageQuery pageQuery) {
-        adminGateway.pageQuery(pageQuery);
-        return null;
+        return adminGateway.pageQuery(pageQuery);
     }
 
 }

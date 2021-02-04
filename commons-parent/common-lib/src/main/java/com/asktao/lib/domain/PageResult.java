@@ -15,15 +15,14 @@ public class PageResult<E> implements Serializable {
 
     private Long total;
 
-//    private Integer size;
-//
-//    private Long current;
-
     private List<E> records;
 
     public PageResult(Long total, List<E> records) {
         this.total = total;
         this.records = records;
+    }
+
+    public PageResult() {
     }
 
     public static <E> PageResult<E> createFor(Long total, List<E> records) {
