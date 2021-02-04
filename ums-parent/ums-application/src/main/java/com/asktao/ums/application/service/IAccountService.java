@@ -3,8 +3,9 @@ package com.asktao.ums.application.service;
 import com.asktao.lib.domain.UserDto;
 import com.asktao.lib.domain.PageQuery;
 import com.asktao.lib.domain.PageResult;
-import com.asktao.ums.application.cmd.AdminAccountRegisterCmd;
+import com.asktao.ums.application.cmd.admin.AdminAccountRegisterCmd;
 import com.asktao.ums.application.cmd.LoginCmd;
+import com.asktao.ums.application.cmd.admin.AdminUpdateCmd;
 import com.asktao.ums.application.vo.AdminItem;
 import com.asktao.ums.dto.AdminInfoCO;
 import org.springframework.http.ResponseEntity;
@@ -36,4 +37,6 @@ public interface IAccountService {
     UserDto loadAdmin(String username);
 
     PageResult<AdminItem> pageAdmins(PageQuery pageQuery);
+
+    void updateAdmin(AdminUpdateCmd adminUpdateCmd);
 }

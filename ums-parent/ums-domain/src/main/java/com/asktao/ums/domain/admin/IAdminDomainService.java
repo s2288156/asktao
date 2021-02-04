@@ -24,4 +24,6 @@ public interface IAdminDomainService {
     Admin loadAdminLoginInfo(String username);
 
     PageResult<Admin> pageAdmin(PageQuery pageQuery);
+
+    void update(Admin admin);
 }

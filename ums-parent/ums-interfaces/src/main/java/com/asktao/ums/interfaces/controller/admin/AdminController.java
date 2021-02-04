@@ -2,8 +2,9 @@ package com.asktao.ums.interfaces.controller.admin;
 
 import com.asktao.lib.domain.RestResponse;
 import com.asktao.lib.domain.PageQuery;
-import com.asktao.ums.application.cmd.AdminAccountRegisterCmd;
-import com.asktao.ums.application.cmd.AdminLoginCmd;
+import com.asktao.ums.application.cmd.admin.AdminAccountRegisterCmd;
+import com.asktao.ums.application.cmd.admin.AdminLoginCmd;
+import com.asktao.ums.application.cmd.admin.AdminUpdateCmd;
 import com.asktao.ums.application.service.IAccountService;
 import com.asktao.ums.application.vo.AdminUserInfo;
 import lombok.extern.slf4j.Slf4j;
@@ -55,5 +56,9 @@ public class AdminController {
         return RestResponse.success(accountService.pageAdmins(pageQuery));
     }
 
-
+    @PostMapping("/update")
+    public RestResponse<?> update(@RequestBody AdminUpdateCmd adminUpdateCmd) {
+        accountService.updateAdmin(adminUpdateCmd);
+        return RestResponse.success();
+    }
 }

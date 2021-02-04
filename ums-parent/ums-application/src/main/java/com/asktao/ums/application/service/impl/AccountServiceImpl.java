@@ -4,8 +4,9 @@ import com.asktao.auth.client.IOauthClient;
 import com.asktao.lib.domain.UserDto;
 import com.asktao.lib.domain.PageQuery;
 import com.asktao.lib.domain.PageResult;
-import com.asktao.ums.application.cmd.AdminAccountRegisterCmd;
+import com.asktao.ums.application.cmd.admin.AdminAccountRegisterCmd;
 import com.asktao.ums.application.cmd.LoginCmd;
+import com.asktao.ums.application.cmd.admin.AdminUpdateCmd;
 import com.asktao.ums.application.config.CommonValues;
 import com.asktao.ums.application.service.IAccountService;
 import com.asktao.ums.application.vo.AdminItem;
@@ -19,7 +20,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -85,6 +85,11 @@ public class AccountServiceImpl implements IAccountService {
                     return adminItem;
                 }).collect(Collectors.toList());
         return PageResult.createFor(adminPageResult.getTotal(), adminItemList);
+    }
+
+    @Override
+    public void updateAdmin(AdminUpdateCmd adminUpdateCmd) {
+        adminDomainService.update(adminUpdateCmd.convert2Admin());
     }
 
     private UserDto convert2UserDto(Admin admin) {

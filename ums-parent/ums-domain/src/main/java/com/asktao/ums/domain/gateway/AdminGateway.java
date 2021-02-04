@@ -18,4 +18,6 @@ public interface AdminGateway {
     Admin selectByUsername(String username);
 
     PageResult<Admin> pageQuery(PageQuery pageQuery);
+
+    void update(Admin admin);
 }

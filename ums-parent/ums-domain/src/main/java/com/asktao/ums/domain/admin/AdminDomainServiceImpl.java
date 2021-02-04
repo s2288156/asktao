@@ -56,4 +56,9 @@ public class AdminDomainServiceImpl implements IAdminDomainService {
         return adminGateway.pageQuery(pageQuery);
     }
 
+    @Override
+    public void update(Admin admin) {
+        adminGateway.update(admin);
+    }
+
 }

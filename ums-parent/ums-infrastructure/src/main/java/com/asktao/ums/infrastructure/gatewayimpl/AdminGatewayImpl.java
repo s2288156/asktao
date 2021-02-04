@@ -6,6 +6,7 @@ import com.asktao.lib.ex.BizException;
 import com.asktao.lib.ex.ResultCodeEnum;
 import com.asktao.ums.domain.admin.entity.Admin;
 import com.asktao.ums.domain.gateway.AdminGateway;
+import com.asktao.ums.infrastructure.convertor.AdminConvertor;
 import com.asktao.ums.infrastructure.dataobject.AdminDO;
 import com.asktao.ums.infrastructure.dataobject.AdminRoleDO;
 import com.asktao.ums.infrastructure.mapper.AdminMapper;
@@ -83,6 +84,11 @@ public class AdminGatewayImpl implements AdminGateway {
                 .addOrder(OrderItem.asc("id"));
         adminMapper.pageAdmin(page);
         return new PageResult<>(page.getTotal(), page.getRecords());
+    }
+
+    @Override
+    public void update(Admin admin) {
+        adminMapper.updateById(AdminConvertor.convertDomain2Do(admin));
     }
 
 }
