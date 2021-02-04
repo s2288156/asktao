@@ -1,5 +1,6 @@
 package com.asktao.ums.infrastructure.dataobject;
 
+import com.asktao.ums.domain.gateway.enums.AdminStatusEnum;
 import com.asktao.ums.domain.gateway.enums.GenderEnum;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.AllArgsConstructor;
@@ -49,7 +50,7 @@ public class AdminDO {
     /**
      * 账户状态，0 - 删除，1 - 正常，2 - 冻结
      **/
-    private Integer status;
+    private AdminStatusEnum status;
 
     /**
      * 生日

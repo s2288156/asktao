@@ -1,5 +1,6 @@
 package com.asktao.ums.application.vo;
 
+import com.asktao.ums.domain.gateway.enums.AdminStatusEnum;
 import com.asktao.ums.domain.gateway.enums.GenderEnum;
 import lombok.Data;
 
@@ -28,7 +29,7 @@ public class AdminItem implements Serializable {
     /**
      * 账户状态，0 - 删除，1 - 正常，2 - 冻结
      **/
-    private Integer status;
+    private AdminStatusEnum status;
 
     /**
      * 登录用户名
