@@ -2,7 +2,8 @@ package com.asktao.ums.interfaces.controller.admin;
 
 import com.asktao.lib.domain.RestResponse;
 import com.asktao.lib.domain.PageQuery;
-import com.asktao.ums.application.cmd.admin.AdminAccountRegisterCmd;
+import com.asktao.ums.application.cmd.admin.AdminAddCmd;
+import com.asktao.ums.application.cmd.admin.AdminRegisterCmd;
 import com.asktao.ums.application.cmd.admin.AdminLoginCmd;
 import com.asktao.ums.application.cmd.admin.AdminUpdateCmd;
 import com.asktao.ums.application.service.IAccountService;
@@ -31,8 +32,8 @@ public class AdminController {
     private IAccountService accountService;
 
     @PostMapping("/register")
-    public RestResponse<?> register(AdminAccountRegisterCmd registerCmd) {
-        accountService.registerAdmin(registerCmd);
+    public RestResponse<?> register(AdminRegisterCmd registerCmd) {
+        accountService.registerAdmin(registerCmd.convert2Admin());
         return RestResponse.success();
     }
 
@@ -59,6 +60,12 @@ public class AdminController {
     @PostMapping("/update")
     public RestResponse<?> update(@RequestBody AdminUpdateCmd adminUpdateCmd) {
         accountService.updateAdmin(adminUpdateCmd);
+        return RestResponse.success();
+    }
+
+    @PostMapping("/add")
+    public RestResponse<?> add(@RequestBody AdminAddCmd addCmd) {
+        accountService.registerAdmin(addCmd.convert2Admin());
         return RestResponse.success();
     }
 }

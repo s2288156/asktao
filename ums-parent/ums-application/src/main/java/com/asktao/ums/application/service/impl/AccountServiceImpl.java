@@ -4,7 +4,6 @@ import com.asktao.auth.client.IOauthClient;
 import com.asktao.lib.domain.UserDto;
 import com.asktao.lib.domain.PageQuery;
 import com.asktao.lib.domain.PageResult;
-import com.asktao.ums.application.cmd.admin.AdminAccountRegisterCmd;
 import com.asktao.ums.application.cmd.LoginCmd;
 import com.asktao.ums.application.cmd.admin.AdminUpdateCmd;
 import com.asktao.ums.application.config.CommonValues;
@@ -57,8 +56,7 @@ public class AccountServiceImpl implements IAccountService {
 
     @Transactional(rollbackFor = Exception.class)
     @Override
-    public void registerAdmin(AdminAccountRegisterCmd accountRegisterCmd) {
-        Admin admin = accountRegisterCmd.convert2Admin();
+    public void registerAdmin(Admin admin) {
         admin.setIcon(commonValues.getDefaultAvatar());
         adminDomainService.register(admin);
     }

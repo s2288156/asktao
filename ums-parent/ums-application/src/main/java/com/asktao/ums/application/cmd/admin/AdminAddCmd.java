@@ -10,12 +10,15 @@ import lombok.EqualsAndHashCode;
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class AdminAccountRegisterCmd extends RegisterCmd {
+public class AdminAddCmd extends RegisterCmd {
+
+    private String name;
 
     public Admin convert2Admin() {
         Admin admin = new Admin();
         admin.setUsername(getUsername());
         admin.setPassword(encodePwd());
+        admin.setName(getName());
         return admin;
     }
 }

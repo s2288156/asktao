@@ -1,12 +1,9 @@
 package com.asktao.auth.dto;
 
 import com.asktao.lib.dto.Command;
-import com.asktao.lib.ex.BizException;
-import com.asktao.lib.ex.ResultCodeEnum;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.validation.constraints.NotBlank;
@@ -31,10 +28,4 @@ public class RegisterCmd extends Command {
         return new BCryptPasswordEncoder().encode(password);
     }
 
-    public void checkUid() {
-        if (StringUtils.isBlank(id)) {
-            log.error("uid不能为空");
-            throw new BizException(ResultCodeEnum.USER_REGISTER_ERROR);
-        }
-    }
 }
