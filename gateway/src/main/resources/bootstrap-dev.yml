@@ -4,6 +4,6 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: http://local.com:8848
+        server-addr: http://node0.com:8848
       config:
-        server-addr: http://local.com:8848
+        server-addr: http://node0.com:8848
