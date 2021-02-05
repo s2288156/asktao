@@ -4,6 +4,7 @@ import com.asktao.lib.dto.Command;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.extern.slf4j.Slf4j;
+import org.hibernate.validator.constraints.Length;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.validation.constraints.NotBlank;
@@ -22,6 +23,7 @@ public class RegisterCmd extends Command {
     private String username;
 
     @NotBlank(message = "密码不能为空")
+    @Length(min = 6, max = 18, message = "The password length cannot be less than 6 characters!")
     private String password;
 
     public String encodePwd() {

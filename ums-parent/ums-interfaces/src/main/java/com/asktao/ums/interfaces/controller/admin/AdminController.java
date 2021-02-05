@@ -7,6 +7,7 @@ import com.asktao.ums.application.cmd.admin.AdminRegisterCmd;
 import com.asktao.ums.application.cmd.admin.AdminLoginCmd;
 import com.asktao.ums.application.cmd.admin.AdminUpdateCmd;
 import com.asktao.ums.application.service.IAccountService;
+import com.asktao.ums.application.vo.AdminSim;
 import com.asktao.ums.application.vo.AdminUserInfo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -65,7 +66,7 @@ public class AdminController {
 
     @PostMapping("/add")
     public RestResponse<?> add(@RequestBody AdminAddCmd addCmd) {
-        accountService.registerAdmin(addCmd.convert2Admin());
-        return RestResponse.success();
+        AdminSim adminSim = accountService.registerAdmin(addCmd.convert2Admin());
+        return RestResponse.success(adminSim);
     }
 }

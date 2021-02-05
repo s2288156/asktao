@@ -8,6 +8,7 @@ import com.asktao.ums.application.cmd.LoginCmd;
 import com.asktao.ums.application.cmd.admin.AdminUpdateCmd;
 import com.asktao.ums.application.config.CommonValues;
 import com.asktao.ums.application.service.IAccountService;
+import com.asktao.ums.application.vo.AdminDetail;
 import com.asktao.ums.application.vo.AdminSim;
 import com.asktao.ums.domain.admin.IAdminDomainService;
 import com.asktao.ums.domain.admin.entity.Admin;
@@ -56,9 +57,13 @@ public class AccountServiceImpl implements IAccountService {
 
     @Transactional(rollbackFor = Exception.class)
     @Override
-    public void registerAdmin(Admin admin) {
+    public AdminSim registerAdmin(Admin admin) {
         admin.setIcon(commonValues.getDefaultAvatar());
-        adminDomainService.register(admin);
+        String uid = adminDomainService.register(admin);
+        AdminSim adminSim = new AdminSim();
+        BeanUtils.copyProperties(admin, adminSim);
+        adminSim.setId(uid);
+        return adminSim;
     }
 
     @Override

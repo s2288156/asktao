@@ -30,7 +30,7 @@ public interface IAccountService {
      *
      * @param admin admin
      */
-    void registerAdmin(Admin admin);
+    AdminSim registerAdmin(Admin admin);
 
     AdminInfoCO getAdminRoles(String uid);
 
