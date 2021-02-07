@@ -2,6 +2,7 @@ package com.asktao.ums.interfaces.controller.admin;
 
 import com.asktao.lib.domain.AbstractPageQuery;
 import com.asktao.lib.domain.RestResponse;
+import com.asktao.mybatis.base.PageQuery;
 import com.asktao.ums.application.cmd.admin.AdminAddCmd;
 import com.asktao.ums.application.cmd.admin.AdminLoginCmd;
 import com.asktao.ums.application.cmd.admin.AdminRegisterCmd;
@@ -53,7 +54,7 @@ public class AdminController {
     }
 
     @GetMapping("/list")
-    public RestResponse<?> list(AbstractPageQuery pageQuery) {
+    public RestResponse<?> list(PageQuery pageQuery) {
         return RestResponse.success(accountService.pageAdmins(pageQuery));
     }
 

@@ -46,7 +46,7 @@ public abstract class AbstractPageQuery extends Query implements Serializable {
                 .collect(Collectors.toList());
     }
 
-    static class SortItem {
+    public static class SortItem {
         private final boolean isAsc;
 
         private final String fieldName;

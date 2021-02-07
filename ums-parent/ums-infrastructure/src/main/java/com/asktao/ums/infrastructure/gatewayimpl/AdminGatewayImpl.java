@@ -4,6 +4,7 @@ import com.asktao.lib.domain.AbstractPageQuery;
 import com.asktao.lib.domain.PageResult;
 import com.asktao.lib.ex.BizException;
 import com.asktao.lib.ex.ResultCodeEnum;
+import com.asktao.mybatis.base.PageQuery;
 import com.asktao.ums.domain.admin.entity.Admin;
 import com.asktao.ums.domain.gateway.AdminGateway;
 import com.asktao.ums.infrastructure.convertor.AdminConvertor;
@@ -80,8 +81,10 @@ public class AdminGatewayImpl implements AdminGateway {
 
     @Override
     public PageResult<Admin> pageQuery(AbstractPageQuery pageQuery) {
-        Page<Admin> page = new Page<Admin>(pageQuery.getPage(), pageQuery.getLimit())
-                .addOrder(OrderItem.asc("id"));
+        PageQuery query = (PageQuery) pageQuery;
+//        Page<Admin> page = new Page<Admin>(pageQuery.getPage(), pageQuery.getLimit())
+//                .addOrder(OrderItem.asc("id"));
+        Page<Admin> page = query.createPage();
         adminMapper.pageAdmin(page);
         return new PageResult<>(page.getTotal(), page.getRecords());
     }

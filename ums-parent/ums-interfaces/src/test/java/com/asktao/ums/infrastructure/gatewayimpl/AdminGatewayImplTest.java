@@ -39,8 +39,9 @@ class AdminGatewayImplTest extends BaseTest {
         AbstractPageQuery pageQuery = new PageQuery();
         pageQuery.setPage(1L);
         pageQuery.setLimit(10L);
+        pageQuery.setSort("+gender");
         PageResult<Admin> adminPageResult = adminGateway.pageQuery(pageQuery);
         assertTrue(adminPageResult.getTotal() > 0);
-        log.warn(">>>> {}", adminPageResult.getRecords());
+        adminPageResult.getRecords().forEach(item -> log.warn(">>>> id = {},  time = {}, gender = {}", item.getId(), item.getCreateTime(), item.getGender()));
     }
 }

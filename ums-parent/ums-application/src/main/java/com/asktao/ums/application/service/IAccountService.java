@@ -3,6 +3,7 @@ package com.asktao.ums.application.service;
 import com.asktao.lib.domain.UserDto;
 import com.asktao.lib.domain.AbstractPageQuery;
 import com.asktao.lib.domain.PageResult;
+import com.asktao.mybatis.base.PageQuery;
 import com.asktao.ums.application.cmd.LoginCmd;
 import com.asktao.ums.application.cmd.admin.AdminUpdateCmd;
 import com.asktao.ums.application.vo.AdminSim;
@@ -36,7 +37,7 @@ public interface IAccountService {
 
     UserDto loadAdmin(String username);
 
-    PageResult<AdminSim> pageAdmins(AbstractPageQuery pageQuery);
+    PageResult<AdminSim> pageAdmins(PageQuery pageQuery);
 
     void updateAdmin(AdminUpdateCmd adminUpdateCmd);
 }
