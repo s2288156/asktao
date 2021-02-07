@@ -65,7 +65,7 @@ public class AdminController {
     }
 
     @PostMapping("/add")
-    public RestResponse<?> add(@RequestBody AdminAddCmd addCmd) {
+    public RestResponse<?> add(@Validated @RequestBody AdminAddCmd addCmd) {
         AdminSim adminSim = accountService.registerAdmin(addCmd.convert2Admin());
         return RestResponse.success(adminSim);
     }

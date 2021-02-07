@@ -39,13 +39,6 @@ public class ControllerExceptionHandler {
         return ResponseEntity.ok(RestResponse.failed(ex.getErrCode(), ex.getMessage()));
     }
 
-    @ExceptionHandler(value = BindException.class)
-    public ResponseEntity<?> bingEx(BindException e) {
-        log.warn("校验异常字段filedName: {}", e.getFieldError().getField());
-        return ResponseEntity.ok(RestResponse.failed(ResultCodeEnum.USER_ERROR.code(),
-                e.getFieldError().getDefaultMessage()));
-    }
-
     @ExceptionHandler(AccessDeniedException.class)
     public ResponseEntity<?> handleAccessDeniedException(AccessDeniedException ex) {
         log.warn("[AccessDeniedException]: {}", ex.getMessage());
@@ -81,8 +74,14 @@ public class ControllerExceptionHandler {
     public ResponseEntity<?> handleParamNotValidException(MethodArgumentNotValidException ex) {
         BindingResult bindingResult = ex.getBindingResult();
         List<ObjectError> allErrors = bindingResult.getAllErrors();
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-                .body(RestResponse.failed(ResultCodeEnum.USER_ERROR.code(), allErrors.get(0).getDefaultMessage()));
+        log.warn("校验异常字段filedName: {}", allErrors.get(0).getDefaultMessage());
+        return ResponseEntity.ok(RestResponse.failed(ResultCodeEnum.USER_ERROR.code(), allErrors.get(0).getDefaultMessage()));
     }
 
+    @ExceptionHandler(value = BindException.class)
+    public ResponseEntity<?> bingEx(BindException e) {
+        log.warn("校验异常字段filedName: {}", e.getFieldError().getField());
+        return ResponseEntity.ok(RestResponse.failed(ResultCodeEnum.USER_ERROR.code(),
+                e.getFieldError().getDefaultMessage()));
+    }
 }
