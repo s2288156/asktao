@@ -1,7 +1,8 @@
 package com.asktao.ums.infrastructure.gatewayimpl;
 
-import com.asktao.lib.domain.PageQuery;
+import com.asktao.lib.domain.AbstractPageQuery;
 import com.asktao.lib.domain.PageResult;
+import com.asktao.mybatis.base.PageQuery;
 import com.asktao.ums.BaseTest;
 import com.asktao.ums.domain.admin.entity.Admin;
 import com.asktao.ums.domain.gateway.AdminGateway;
@@ -35,7 +36,7 @@ class AdminGatewayImplTest extends BaseTest {
 
     @Test
     void pageAdminTest() {
-        PageQuery pageQuery = new PageQuery();
+        AbstractPageQuery pageQuery = new PageQuery();
         pageQuery.setPage(1L);
         pageQuery.setLimit(10L);
         PageResult<Admin> adminPageResult = adminGateway.pageQuery(pageQuery);

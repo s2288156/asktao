@@ -1,6 +1,6 @@
 package com.asktao.ums.domain.gateway;
 
-import com.asktao.lib.domain.PageQuery;
+import com.asktao.lib.domain.AbstractPageQuery;
 import com.asktao.lib.domain.PageResult;
 import com.asktao.ums.domain.admin.entity.Admin;
 
@@ -17,7 +17,7 @@ public interface AdminGateway {
 
     Admin selectByUsername(String username);
 
-    PageResult<Admin> pageQuery(PageQuery pageQuery);
+    PageResult<Admin> pageQuery(AbstractPageQuery pageQuery);
 
     void update(Admin admin);
 }

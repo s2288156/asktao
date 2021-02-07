@@ -1,10 +1,10 @@
 package com.asktao.ums.interfaces.controller.admin;
 
+import com.asktao.lib.domain.AbstractPageQuery;
 import com.asktao.lib.domain.RestResponse;
-import com.asktao.lib.domain.PageQuery;
 import com.asktao.ums.application.cmd.admin.AdminAddCmd;
-import com.asktao.ums.application.cmd.admin.AdminRegisterCmd;
 import com.asktao.ums.application.cmd.admin.AdminLoginCmd;
+import com.asktao.ums.application.cmd.admin.AdminRegisterCmd;
 import com.asktao.ums.application.cmd.admin.AdminUpdateCmd;
 import com.asktao.ums.application.service.IAccountService;
 import com.asktao.ums.application.vo.AdminSim;
@@ -24,7 +24,6 @@ import org.springframework.web.bind.annotation.RestController;
  * @author wcy
  */
 @Slf4j
-@Validated
 @RequestMapping("/admin")
 @RestController
 public class AdminController {
@@ -54,7 +53,7 @@ public class AdminController {
     }
 
     @GetMapping("/list")
-    public RestResponse<?> list(PageQuery pageQuery) {
+    public RestResponse<?> list(AbstractPageQuery pageQuery) {
         return RestResponse.success(accountService.pageAdmins(pageQuery));
     }
 

@@ -1,6 +1,6 @@
 package com.asktao.ums.domain.admin;
 
-import com.asktao.lib.domain.PageQuery;
+import com.asktao.lib.domain.AbstractPageQuery;
 import com.asktao.lib.domain.PageResult;
 import com.asktao.ums.domain.admin.entity.Admin;
 
@@ -23,7 +23,7 @@ public interface IAdminDomainService {
 
     Admin loadAdminLoginInfo(String username);
 
-    PageResult<Admin> pageAdmin(PageQuery pageQuery);
+    PageResult<Admin> pageAdmin(AbstractPageQuery pageQuery);
 
     void update(Admin admin);
 }

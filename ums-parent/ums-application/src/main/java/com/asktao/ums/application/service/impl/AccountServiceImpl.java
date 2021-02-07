@@ -2,13 +2,12 @@ package com.asktao.ums.application.service.impl;
 
 import com.asktao.auth.client.IOauthClient;
 import com.asktao.lib.domain.UserDto;
-import com.asktao.lib.domain.PageQuery;
+import com.asktao.lib.domain.AbstractPageQuery;
 import com.asktao.lib.domain.PageResult;
 import com.asktao.ums.application.cmd.LoginCmd;
 import com.asktao.ums.application.cmd.admin.AdminUpdateCmd;
 import com.asktao.ums.application.config.CommonValues;
 import com.asktao.ums.application.service.IAccountService;
-import com.asktao.ums.application.vo.AdminDetail;
 import com.asktao.ums.application.vo.AdminSim;
 import com.asktao.ums.domain.admin.IAdminDomainService;
 import com.asktao.ums.domain.admin.entity.Admin;
@@ -79,7 +78,7 @@ public class AccountServiceImpl implements IAccountService {
     }
 
     @Override
-    public PageResult<AdminSim> pageAdmins(PageQuery pageQuery) {
+    public PageResult<AdminSim> pageAdmins(AbstractPageQuery pageQuery) {
         PageResult<Admin> adminPageResult = adminDomainService.pageAdmin(pageQuery);
         List<AdminSim> adminSimList = adminPageResult.getRecords()
                 .stream().map(admin -> {

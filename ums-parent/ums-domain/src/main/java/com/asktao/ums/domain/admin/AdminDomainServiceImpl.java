@@ -1,6 +1,6 @@
 package com.asktao.ums.domain.admin;
 
-import com.asktao.lib.domain.PageQuery;
+import com.asktao.lib.domain.AbstractPageQuery;
 import com.asktao.lib.domain.PageResult;
 import com.asktao.lib.ex.BizException;
 import com.asktao.lib.ex.ResultCodeEnum;
@@ -52,7 +52,7 @@ public class AdminDomainServiceImpl implements IAdminDomainService {
     }
 
     @Override
-    public PageResult<Admin> pageAdmin(PageQuery pageQuery) {
+    public PageResult<Admin> pageAdmin(AbstractPageQuery pageQuery) {
         return adminGateway.pageQuery(pageQuery);
     }
 

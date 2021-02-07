@@ -1,6 +1,6 @@
 package com.asktao.ums.infrastructure.gatewayimpl;
 
-import com.asktao.lib.domain.PageQuery;
+import com.asktao.lib.domain.AbstractPageQuery;
 import com.asktao.lib.domain.PageResult;
 import com.asktao.lib.ex.BizException;
 import com.asktao.lib.ex.ResultCodeEnum;
@@ -79,7 +79,7 @@ public class AdminGatewayImpl implements AdminGateway {
     }
 
     @Override
-    public PageResult<Admin> pageQuery(PageQuery pageQuery) {
+    public PageResult<Admin> pageQuery(AbstractPageQuery pageQuery) {
         Page<Admin> page = new Page<Admin>(pageQuery.getPage(), pageQuery.getLimit())
                 .addOrder(OrderItem.asc("id"));
         adminMapper.pageAdmin(page);

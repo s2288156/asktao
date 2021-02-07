@@ -12,7 +12,7 @@ import java.util.List;
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class PageQuery extends Query implements Serializable {
+public abstract class AbstractPageQuery extends Query implements Serializable {
 
     private static final long serialVersionUID = -7601268510908168984L;
 
@@ -29,8 +29,8 @@ public class PageQuery extends Query implements Serializable {
     private String sort;
 
     /**
-     * 排序方式集合，格式为 ["name:aes", "age:desc"]
+     * 排序方式集合，格式为 ["+name", "-age"]
      */
-    private List<String> sortList;
+    private List<String> sorts;
 
 }
