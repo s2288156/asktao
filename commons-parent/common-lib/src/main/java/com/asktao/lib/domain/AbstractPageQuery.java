@@ -6,6 +6,9 @@ import lombok.EqualsAndHashCode;
 import org.apache.commons.lang3.StringUtils;
 
 import java.io.Serializable;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author wcy
@@ -33,7 +36,33 @@ public abstract class AbstractPageQuery extends Query implements Serializable {
      */
     private String sort;
 
-    public String[] splitSort() {
+    private String[] splitSort() {
         return StringUtils.split(getSort(), SEPARATOR);
+    }
+
+    public List<SortItem> handleSort() {
+        return Arrays.stream(splitSort())
+                .map(item -> new SortItem(StringUtils.contains(item, "+"), StringUtils.substring(item, 1)))
+                .collect(Collectors.toList());
+    }
+
+    static class SortItem {
+        private final boolean isAsc;
+
+        private final String fieldName;
+
+        public SortItem(boolean isAsc, String fieldName) {
+            this.isAsc = isAsc;
+            this.fieldName = fieldName;
+        }
+
+        public boolean isAsc() {
+            return isAsc;
+        }
+
+        public String getFieldName() {
+            return fieldName;
+        }
+
     }
 }
