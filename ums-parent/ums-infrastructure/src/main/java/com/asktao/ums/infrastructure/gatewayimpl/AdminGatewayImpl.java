@@ -14,7 +14,6 @@ import com.asktao.ums.infrastructure.mapper.AdminMapper;
 import com.asktao.ums.infrastructure.mapper.AdminRoleMapper;
 import com.asktao.ums.infrastructure.mapper.RoleMapper;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.baomidou.mybatisplus.core.metadata.OrderItem;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
@@ -82,10 +81,7 @@ public class AdminGatewayImpl implements AdminGateway {
     @Override
     public PageResult<Admin> pageQuery(AbstractPageQuery pageQuery) {
         PageQuery query = (PageQuery) pageQuery;
-//        Page<Admin> page = new Page<Admin>(pageQuery.getPage(), pageQuery.getLimit())
-//                .addOrder(OrderItem.asc("id"));
-        Page<Admin> page = query.createPage();
-        adminMapper.pageAdmin(page);
+        Page<Admin> page = adminMapper.pageAdmin(query.createPage());
         return new PageResult<>(page.getTotal(), page.getRecords());
     }
 
