@@ -23,7 +23,7 @@ public class RoleController {
     @Autowired
     private IRoleService roleService;
 
-    @GetMapping("/all/uid")
+    @GetMapping("/current/all")
     public RestResponse<Set<RoleVo>> all(@RequestHeader String uid) {
         return RestResponse.success(roleService.allForUid(uid));
     }

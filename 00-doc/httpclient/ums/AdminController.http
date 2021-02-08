@@ -10,8 +10,3 @@ Content-Type: application/json
 ###
 GET http://{{host}}/ums/admin/user/info?token={{auth_token}}
 Authorization: Bearer {{auth_token}}
-
-###
-GET http://{{host}}/ums/admin/all_roles
-Authorization: Bearer {{auth_token}}
-
