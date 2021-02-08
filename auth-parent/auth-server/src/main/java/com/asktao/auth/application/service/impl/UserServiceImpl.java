@@ -43,7 +43,6 @@ public class UserServiceImpl implements UserDetailsService {
         String clientId = request.getParameter("client_id");
         UserDto userDto;
         if (AuthConstant.CLIENT_ID_ADMIN.equals(clientId)) {
-            // TODO: 2021/1/5 补充admin用户登录逻辑，需要查询权限信息
             userDto = umsClient.adminLogin(username).getData();
         } else {
             // TODO: 2021/1/8 补充会员登录逻辑

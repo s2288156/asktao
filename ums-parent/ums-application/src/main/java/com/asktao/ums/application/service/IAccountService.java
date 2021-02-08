@@ -1,14 +1,12 @@
 package com.asktao.ums.application.service;
 
-import com.asktao.lib.domain.UserDto;
-import com.asktao.lib.domain.AbstractPageQuery;
 import com.asktao.lib.domain.PageResult;
+import com.asktao.lib.domain.UserDto;
 import com.asktao.mybatis.base.PageQuery;
 import com.asktao.ums.application.cmd.LoginCmd;
 import com.asktao.ums.application.cmd.admin.AdminUpdateCmd;
 import com.asktao.ums.application.vo.AdminSim;
 import com.asktao.ums.domain.admin.entity.Admin;
-import com.asktao.ums.dto.AdminInfoCO;
 import org.springframework.http.ResponseEntity;
 
 /**
@@ -32,8 +30,6 @@ public interface IAccountService {
      * @param admin admin
      */
     AdminSim registerAdmin(Admin admin);
-
-    AdminInfoCO getAdminRoles(String uid);
 
     UserDto loadAdmin(String username);
 

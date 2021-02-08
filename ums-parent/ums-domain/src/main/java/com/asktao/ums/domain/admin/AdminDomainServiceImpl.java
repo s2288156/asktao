@@ -11,8 +11,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Set;
-
 /**
  * @author wcy
  */
@@ -35,11 +33,6 @@ public class AdminDomainServiceImpl implements IAdminDomainService {
         admin.setId(uid);
         adminGateway.insertDefaultGustRole(admin);
         return uid;
-    }
-
-    @Override
-    public Set<String> getRolesById(String uid) {
-        return roleGateway.selectRoleNameForUid(uid);
     }
 
     @Override

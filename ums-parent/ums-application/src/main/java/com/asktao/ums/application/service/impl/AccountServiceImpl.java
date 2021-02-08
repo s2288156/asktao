@@ -1,8 +1,8 @@
 package com.asktao.ums.application.service.impl;
 
 import com.asktao.auth.client.IOauthClient;
-import com.asktao.lib.domain.UserDto;
 import com.asktao.lib.domain.PageResult;
+import com.asktao.lib.domain.UserDto;
 import com.asktao.mybatis.base.PageQuery;
 import com.asktao.ums.application.cmd.LoginCmd;
 import com.asktao.ums.application.cmd.admin.AdminUpdateCmd;
@@ -12,7 +12,6 @@ import com.asktao.ums.application.vo.AdminSim;
 import com.asktao.ums.domain.admin.IAdminDomainService;
 import com.asktao.ums.domain.admin.entity.Admin;
 import com.asktao.ums.domain.member.IMemberDomainService;
-import com.asktao.ums.dto.AdminInfoCO;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -22,7 +21,6 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
@@ -63,12 +61,6 @@ public class AccountServiceImpl implements IAccountService {
         BeanUtils.copyProperties(admin, adminSim);
         adminSim.setId(uid);
         return adminSim;
-    }
-
-    @Override
-    public AdminInfoCO getAdminRoles(String uid) {
-        Set<String> rolesName = adminDomainService.getRolesById(uid);
-        return new AdminInfoCO(rolesName);
     }
 
     @Override
