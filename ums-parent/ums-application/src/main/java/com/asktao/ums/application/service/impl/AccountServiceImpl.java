@@ -11,7 +11,6 @@ import com.asktao.ums.application.service.IAccountService;
 import com.asktao.ums.application.vo.AdminSim;
 import com.asktao.ums.domain.admin.IAdminDomainService;
 import com.asktao.ums.domain.admin.entity.Admin;
-import com.asktao.ums.domain.member.IMemberDomainService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -28,9 +27,6 @@ import java.util.stream.Collectors;
  */
 @Service
 public class AccountServiceImpl implements IAccountService {
-
-    @Autowired
-    private IMemberDomainService memberDomainService;
 
     @Autowired
     private IAdminDomainService adminDomainService;
