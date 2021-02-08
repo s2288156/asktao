@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class AdminRole extends DTO implements Serializable {
+public class RoleVo extends DTO implements Serializable {
     private static final long serialVersionUID = 1779114977217915760L;
 
     private String id;
