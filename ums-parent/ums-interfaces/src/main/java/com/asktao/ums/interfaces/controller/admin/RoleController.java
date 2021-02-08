@@ -1,11 +1,16 @@
 package com.asktao.ums.interfaces.controller.admin;
 
 import com.asktao.lib.domain.RestResponse;
+import com.asktao.ums.application.service.IRoleService;
+import com.asktao.ums.application.vo.RoleVo;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Set;
 
 /**
  * @author wcy
@@ -15,9 +20,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/role")
 public class RoleController {
 
-    @GetMapping("/all/uid")
-    public RestResponse<?> all(@RequestHeader String uid) {
+    @Autowired
+    private IRoleService roleService;
 
-        return RestResponse.success();
+    @GetMapping("/all/uid")
+    public RestResponse<Set<RoleVo>> all(@RequestHeader String uid) {
+        return RestResponse.success(roleService.allForUid(uid));
     }
 }

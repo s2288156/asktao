@@ -66,7 +66,7 @@ public class AdminGatewayImpl implements AdminGateway {
         if (adminDO == null) {
             throw new BizException(ResultCodeEnum.USER_LOGIN_ERROR);
         }
-        Set<String> rolesName = roleMapper.selectRolesByUid(adminDO.getId());
+        Set<String> rolesName = roleMapper.listRoleNameByUid(adminDO.getId());
 
         Admin admin = new Admin();
         admin.setId(adminDO.getId());

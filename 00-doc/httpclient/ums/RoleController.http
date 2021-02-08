@@ -1,0 +1,5 @@
+###
+GET http://{{host}}/ums/role/all/uid
+Authorization: Bearer {{auth_token}}
+
+

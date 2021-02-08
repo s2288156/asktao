@@ -1,8 +1,10 @@
 package com.asktao.ums.application.vo;
 
 import com.asktao.lib.dto.DTO;
+import com.asktao.ums.domain.role.entity.Role;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import org.springframework.beans.BeanUtils;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -33,4 +35,10 @@ public class RoleVo extends DTO implements Serializable {
      * 排序
      **/
     private Integer sort;
+
+    public static RoleVo createForDomain(Role role) {
+        RoleVo roleVo = new RoleVo();
+        BeanUtils.copyProperties(role, roleVo);
+        return roleVo;
+    }
 }

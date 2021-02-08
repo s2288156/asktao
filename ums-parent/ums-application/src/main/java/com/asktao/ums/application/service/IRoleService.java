@@ -2,13 +2,13 @@ package com.asktao.ums.application.service;
 
 import com.asktao.ums.application.vo.RoleVo;
 
-import java.util.List;
+import java.util.Set;
 
 /**
  * @author wcy
  */
 public interface IRoleService {
 
-    List<RoleVo> allForUid(String uid);
+    Set<RoleVo> allForUid(String uid);
 
 }
