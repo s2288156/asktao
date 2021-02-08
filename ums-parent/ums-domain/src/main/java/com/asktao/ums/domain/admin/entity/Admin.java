@@ -22,7 +22,7 @@ public class Admin {
 
     private String password;
 
-    private Set<String> roles;
+    private Set<String> roleNames;
 
     private String name;
 

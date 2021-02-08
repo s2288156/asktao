@@ -72,7 +72,7 @@ public class AdminGatewayImpl implements AdminGateway {
         admin.setId(adminDO.getId());
         admin.setUsername(adminDO.getUsername());
         admin.setPassword(adminDO.getPassword());
-        admin.setRoles(rolesName);
+        admin.setRoleNames(rolesName);
         admin.setName(adminDO.getName());
         admin.setIcon(adminDO.getIcon());
         return admin;

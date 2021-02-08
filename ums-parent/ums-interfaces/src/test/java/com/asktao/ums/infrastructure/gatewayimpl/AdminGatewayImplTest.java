@@ -29,7 +29,7 @@ class AdminGatewayImplTest extends BaseTest {
         assertNotNull(admin);
 
         log.warn(">>>> {}", admin);
-        Set<String> roles = admin.getRoles();
+        Set<String> roles = admin.getRoleNames();
         assertNotNull(roles);
         assertTrue(roles.contains("ROOT"));
     }
