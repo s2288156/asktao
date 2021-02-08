@@ -1,6 +1,5 @@
 package com.asktao.ums.interfaces.controller.admin;
 
-import com.asktao.lib.domain.AbstractPageQuery;
 import com.asktao.lib.domain.RestResponse;
 import com.asktao.mybatis.base.PageQuery;
 import com.asktao.ums.application.cmd.admin.AdminAddCmd;
@@ -10,21 +9,23 @@ import com.asktao.ums.application.cmd.admin.AdminUpdateCmd;
 import com.asktao.ums.application.service.IAccountService;
 import com.asktao.ums.application.vo.AdminSim;
 import com.asktao.ums.application.vo.AdminUserInfo;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.Enumeration;
 
 /**
  * 后台管理端账户
  *
  * @author wcy
  */
-@Slf4j
 @RequestMapping("/admin")
 @RestController
 public class AdminController {
@@ -68,5 +69,11 @@ public class AdminController {
     public RestResponse<?> add(@Validated @RequestBody AdminAddCmd addCmd) {
         AdminSim adminSim = accountService.registerAdmin(addCmd.convert2Admin());
         return RestResponse.success(adminSim);
+    }
+
+    @GetMapping("/all_roles")
+    public RestResponse<?> allRoles(@RequestHeader String uid) {
+
+        return RestResponse.success();
     }
 }

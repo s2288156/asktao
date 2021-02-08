@@ -1,6 +1,8 @@
 package com.asktao.gateway.filter;
 
 import com.asktao.lib.constant.AuthConstant;
+import com.asktao.lib.domain.UserDto;
+import com.asktao.lib.util.JsonUtils;
 import com.nimbusds.jose.JWSObject;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
@@ -38,9 +40,10 @@ public class AuthGlobalFilter implements GlobalFilter {
             log.error("jwt parse异常", e);
         }
         String userStr = jwsObject.getPayload().toString();
+        UserDto userDto = JsonUtils.fromJson(userStr, UserDto.class);
         ServerHttpRequest request = exchange.getRequest()
                 .mutate()
-                .header(AuthConstant.USER_TOKEN_HEADER, userStr)
+                .header(AuthConstant.USER_ID_HEADER, userDto.getId())
                 .build();
         exchange = exchange.mutate().request(request).build();
         return chain.filter(exchange);

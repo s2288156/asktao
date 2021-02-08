@@ -35,6 +35,8 @@ public class AuthConstant {
      */
     public static final String USER_TOKEN_HEADER = "user";
 
+    public static final String USER_ID_HEADER = "uid";
+
     /**
      * 后台管理client_id
      */
