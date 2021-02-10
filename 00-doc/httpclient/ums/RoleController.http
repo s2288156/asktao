@@ -1,5 +1,5 @@
 ###
-GET http://{{host}}/ums/role/current/all
+GET http://{{host}}/ums/role/list/1
 Authorization: Bearer {{auth_token}}
 
 

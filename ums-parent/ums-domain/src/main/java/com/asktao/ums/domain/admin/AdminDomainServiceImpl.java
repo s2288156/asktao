@@ -11,6 +11,7 @@ import com.asktao.ums.domain.gateway.RoleGateway;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * @author wcy
@@ -58,10 +59,11 @@ public class AdminDomainServiceImpl implements IAdminDomainService {
         adminGateway.update(admin);
     }
 
+    @Transactional(rollbackFor = Exception.class)
     @Override
     public void updateRoles(Admin admin) {
         adminRoleGateway.deleteAllForUid(admin.getId());
-
+        adminRoleGateway.batchAddAdminRole(admin);
     }
 
 }

@@ -22,7 +22,7 @@ class AdminRoleGatewayImplTest extends BaseTest {
         Set<String> roleIds = new HashSet<>();
         roleIds.add("1");
         roleIds.add("2");
-        roleIds.add("1231231231231231231231231231231231312312312312312313213123123123132123123123132");
+//        roleIds.add("1231231231231231231231231231231231312312312312312313213123123123132123123123132");
         roleIds.add("3");
         Admin admin = new Admin();
         admin.setId("aaaaaaaaaaaaa");

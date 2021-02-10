@@ -7,6 +7,7 @@ import com.asktao.ums.infrastructure.mapper.AdminRoleMapper;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * @author wcy
@@ -31,6 +32,7 @@ public class AdminRoleGatewayImpl implements AdminRoleGateway {
         adminRoleMapper.insert(adminRoleDO);
     }
 
+    @Transactional(rollbackFor = Exception.class)
     @Override
     public void batchAddAdminRole(Admin admin) {
         admin.getRoleIds().forEach(roleId -> {
