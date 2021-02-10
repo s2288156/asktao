@@ -22,4 +22,7 @@ public interface IAdminDomainService {
     PageResult<Admin> pageAdmin(AbstractPageQuery pageQuery);
 
     void update(Admin admin);
+
+    void updateRoles(Admin admin);
+
 }

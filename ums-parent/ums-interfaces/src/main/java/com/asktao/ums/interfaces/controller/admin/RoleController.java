@@ -34,6 +34,7 @@ public class RoleController {
     @PostMapping("/assign")
     public RestResponse<?> assign(@RequestBody RoleAssignCmd roleAssignCmd) {
         log.warn(">>>>> {}", roleAssignCmd);
+        roleService.assignRole(roleAssignCmd);
         return RestResponse.success();
     }
 }

@@ -31,7 +31,7 @@ public class AdminDomainServiceImpl implements IAdminDomainService {
         }
         String uid = adminGateway.insert(admin);
         admin.setId(uid);
-        adminGateway.insertDefaultGustRole(admin);
+        adminGateway.addAdminRole(admin);
         return uid;
     }
 
@@ -52,6 +52,11 @@ public class AdminDomainServiceImpl implements IAdminDomainService {
     @Override
     public void update(Admin admin) {
         adminGateway.update(admin);
+    }
+
+    @Override
+    public void updateRoles(Admin admin) {
+
     }
 
 }

@@ -1,11 +1,12 @@
 package com.asktao.ums.application.cmd.role;
 
 import com.asktao.lib.dto.Command;
+import com.asktao.ums.domain.admin.entity.Admin;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.Set;
 
 /**
  * @author wcy
@@ -17,5 +18,12 @@ public class RoleAssignCmd extends Command implements Serializable {
 
     private String uid;
 
-    private List<String> roleIds;
+    private Set<String> roleIds;
+
+    public Admin convert2Admin() {
+        Admin admin = new Admin();
+        admin.setId(this.uid);
+        admin.setRoleIds(this.roleIds);
+        return admin;
+    }
 }

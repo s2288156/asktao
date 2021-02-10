@@ -53,7 +53,7 @@ public class AdminGatewayImpl implements AdminGateway {
     }
 
     @Override
-    public void insertDefaultGustRole(Admin admin) {
+    public void addAdminRole(Admin admin) {
         AdminRoleDO adminRoleDO = new AdminRoleDO();
         adminRoleDO.setAdminId(admin.getId());
         adminRoleDO.setRoleId(admin.gustRoleId());

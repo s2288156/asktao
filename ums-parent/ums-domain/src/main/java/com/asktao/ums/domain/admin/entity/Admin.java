@@ -32,6 +32,8 @@ public class Admin {
 
     private AdminStatusEnum status;
 
+    private Set<String> roleIds;
+
     /**
      * 注册时间
      **/
