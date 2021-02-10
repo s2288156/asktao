@@ -9,4 +9,6 @@ import java.util.Set;
  */
 public interface IRoleDomainService {
     Set<Role> allForUid(String uid);
+
+    Set<Role> all();
 }

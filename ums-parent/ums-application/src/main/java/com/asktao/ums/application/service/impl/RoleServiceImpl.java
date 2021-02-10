@@ -34,4 +34,13 @@ public class RoleServiceImpl implements IRoleService {
     public void assignRole(RoleAssignCmd roleAssignCmd) {
         adminDomainService.updateRoles(roleAssignCmd.convert2Admin());
     }
+
+    @Override
+    public Set<RoleVo> all() {
+        return roleDomainService.all()
+                .stream()
+                .map(RoleVo::createForDomain)
+                .collect(Collectors.toSet());
+    }
+
 }

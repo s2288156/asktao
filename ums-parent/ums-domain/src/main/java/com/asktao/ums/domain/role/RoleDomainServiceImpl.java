@@ -19,4 +19,9 @@ public class RoleDomainServiceImpl implements IRoleDomainService {
     public Set<Role> allForUid(String uid) {
         return roleGateway.selectAllForUid(uid);
     }
+
+    @Override
+    public Set<Role> all() {
+        return roleGateway.listAll();
+    }
 }

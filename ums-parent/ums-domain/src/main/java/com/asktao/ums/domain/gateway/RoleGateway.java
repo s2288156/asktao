@@ -9,4 +9,6 @@ import java.util.Set;
  */
 public interface RoleGateway {
     Set<Role> selectAllForUid(String uid);
+
+    Set<Role> listAll();
 }

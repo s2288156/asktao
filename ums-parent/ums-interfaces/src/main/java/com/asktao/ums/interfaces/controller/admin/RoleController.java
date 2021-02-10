@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -28,8 +27,13 @@ public class RoleController {
     private IRoleService roleService;
 
     @GetMapping("/list/{uid}")
-    public RestResponse<Set<RoleVo>> all(@PathVariable String uid) {
+    public RestResponse<Set<RoleVo>> listForUid(@PathVariable String uid) {
         return RestResponse.success(roleService.allForUid(uid));
+    }
+
+    @GetMapping("/list_all")
+    public RestResponse<Set<RoleVo>> all() {
+        return RestResponse.success(roleService.all());
     }
 
     @PostMapping("/assign")

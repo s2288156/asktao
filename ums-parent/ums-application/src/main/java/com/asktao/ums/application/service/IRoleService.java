@@ -13,4 +13,6 @@ public interface IRoleService {
     Set<RoleVo> allForUid(String uid);
 
     void assignRole(RoleAssignCmd roleAssignCmd);
+
+    Set<RoleVo> all();
 }

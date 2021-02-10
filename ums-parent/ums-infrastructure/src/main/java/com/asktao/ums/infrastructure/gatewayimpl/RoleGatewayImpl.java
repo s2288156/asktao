@@ -21,4 +21,9 @@ public class RoleGatewayImpl implements RoleGateway {
     public Set<Role> selectAllForUid(String uid) {
         return roleMapper.listRoleByUid(uid);
     }
+
+    @Override
+    public Set<Role> listAll() {
+        return roleMapper.listAll();
+    }
 }

@@ -14,4 +14,6 @@ public interface RoleMapper extends BaseMapper<RoleDO> {
     Set<String> listRoleNameByUid(String uid);
 
     Set<Role> listRoleByUid(String uid);
+
+    Set<Role> listAll();
 }
