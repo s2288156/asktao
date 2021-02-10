@@ -52,13 +52,7 @@ public class AdminGatewayImpl implements AdminGateway {
         return adminDO != null;
     }
 
-    @Override
-    public void addAdminRole(Admin admin) {
-        AdminRoleDO adminRoleDO = new AdminRoleDO();
-        adminRoleDO.setAdminId(admin.getId());
-        adminRoleDO.setRoleId(admin.gustRoleId());
-        adminRoleMapper.insert(adminRoleDO);
-    }
+
 
     @Override
     public Admin selectByUsername(String username) {

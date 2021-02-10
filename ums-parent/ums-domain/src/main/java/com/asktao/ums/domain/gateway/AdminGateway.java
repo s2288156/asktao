@@ -13,8 +13,6 @@ public interface AdminGateway {
 
     boolean existForUsername(Admin admin);
 
-    void addAdminRole(Admin admin);
-
     Admin selectByUsername(String username);
 
     PageResult<Admin> pageQuery(AbstractPageQuery pageQuery);

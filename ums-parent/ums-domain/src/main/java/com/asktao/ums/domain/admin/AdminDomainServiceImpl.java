@@ -6,6 +6,7 @@ import com.asktao.lib.ex.BizException;
 import com.asktao.lib.ex.ResultCodeEnum;
 import com.asktao.ums.domain.admin.entity.Admin;
 import com.asktao.ums.domain.gateway.AdminGateway;
+import com.asktao.ums.domain.gateway.AdminRoleGateway;
 import com.asktao.ums.domain.gateway.RoleGateway;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,9 @@ public class AdminDomainServiceImpl implements IAdminDomainService {
     @Autowired
     private RoleGateway roleGateway;
 
+    @Autowired
+    private AdminRoleGateway adminRoleGateway;
+
     @Override
     public String register(Admin admin) {
         if (adminGateway.existForUsername(admin)) {
@@ -31,7 +35,7 @@ public class AdminDomainServiceImpl implements IAdminDomainService {
         }
         String uid = adminGateway.insert(admin);
         admin.setId(uid);
-        adminGateway.addAdminRole(admin);
+        adminRoleGateway.addAdminRole(admin);
         return uid;
     }
 
@@ -56,6 +60,7 @@ public class AdminDomainServiceImpl implements IAdminDomainService {
 
     @Override
     public void updateRoles(Admin admin) {
+        adminRoleGateway.deleteAllForUid(admin.getId());
 
     }
 
