@@ -3,7 +3,6 @@ package com.asktao.lib.secure.symmetric;
 import com.asktao.lib.secure.AlgorithmEnum;
 import com.asktao.lib.secure.Mode;
 import com.asktao.lib.secure.Padding;
-import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 
 import javax.crypto.spec.IvParameterSpec;
@@ -13,7 +12,6 @@ import java.nio.charset.StandardCharsets;
 /**
  * @author wcy
  */
-@Slf4j
 public class AES extends SymmetricCrypto {
 
     /**
@@ -40,11 +38,9 @@ public class AES extends SymmetricCrypto {
      */
     private static SecretKeySpec getSecretKeySpec(final String key) {
         try {
-            log.info("key length = {}", key.length());
             return new SecretKeySpec(key.getBytes(StandardCharsets.UTF_8), AlgorithmEnum.AES.name());
         } catch (Exception e) {
-            log.error("getSecretKeySpec ex:", e);
-            throw new IllegalStateException("getSecretKeySpec ex");
+            throw new IllegalStateException("getSecretKeySpec ex", e);
         }
     }
 }
