@@ -8,9 +8,9 @@ services:
     ports:
       - 6379:6379
     volumes:
-      - /home/wuyang/develop/docker_data/redisData:/data
-      - /home/wuyang/develop/docker/redis.conf:/usr/local/etc/redis/redis.conf
-      - /home/wuyang/develop/docker_data/redisLogs:/logs
+      - /home/wuyang/develop/docker_data/redisData:/data # redis data
+      - /home/wuyang/develop/docker/redis.conf:/usr/local/etc/redis/redis.conf # redis config
+      - /home/wuyang/develop/docker_data/redisLogs:/logs # redis log
 
   nacos:
     image: nacos/nacos-server:1.4.1
@@ -31,9 +31,9 @@ services:
     container_name: mysql
     image: nacos/nacos-mysql:8.0.16
     env_file:
-      - /home/wuyang/develop/docker/nacos/env/mysql.env
+      - /home/wuyang/develop/docker/nacos/env/mysql.env # mysql env
     volumes:
-      - /home/wuyang/develop/docker_data/mysqlData:/var/lib/mysql
+      - /home/wuyang/develop/docker_data/mysqlData:/var/lib/mysql # mysql data
     ports:
       - "3306:3306"
     restart: always
