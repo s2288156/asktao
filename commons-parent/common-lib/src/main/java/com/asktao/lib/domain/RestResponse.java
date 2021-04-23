@@ -1,8 +1,8 @@
 package com.asktao.lib.domain;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.asktao.lib.ex.ICode;
 import com.asktao.lib.ex.ResultCodeEnum;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.apache.commons.lang3.StringUtils;
@@ -43,6 +43,10 @@ public class RestResponse<T> extends ReturnCodeMsg implements Serializable {
 
     public static <T> RestResponse<T> failed(ICode<String, String> resultCode) {
         return build(resultCode, null);
+    }
+
+    public static <T> RestResponse<T> failed(String returnMsg) {
+        return new RestResponse<>(ResultCodeEnum.SYS_EXECUTE_ERROR.code(), returnMsg, null);
     }
 
     public static <T> RestResponse<T> failed(String returnCode, String returnMsg) {
