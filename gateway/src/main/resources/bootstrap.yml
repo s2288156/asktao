@@ -26,6 +26,8 @@ spring:
       resourceserver:
         jwt:
           jwk-set-uri: 'http://localhost:8200/auth/rsa/publicKey'
+  jackson:
+    default-property-inclusion: non_null
 
 secure:
   ignore:
