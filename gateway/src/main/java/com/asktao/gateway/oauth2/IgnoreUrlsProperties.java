@@ -14,6 +14,6 @@ import java.util.List;
 @Data
 @Component
 @ConfigurationProperties(prefix = "secure.ignore")
-public class IgnoreUrlsConfig {
+public class IgnoreUrlsProperties {
     private List<String> urls;
 }

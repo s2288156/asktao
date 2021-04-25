@@ -1,6 +1,6 @@
 package com.asktao.gateway.oauth2.authorization;
 
-import com.asktao.gateway.oauth2.IgnoreUrlsConfig;
+import com.asktao.gateway.oauth2.IgnoreUrlsProperties;
 import com.asktao.lib.constant.AuthConstant;
 import com.asktao.lib.domain.UserDto;
 import com.asktao.lib.util.JsonUtils;
@@ -45,7 +45,7 @@ public class AuthorizationManager implements ReactiveAuthorizationManager<Author
     private RedisTemplate<String, Object> redisTemplate;
 
     @Autowired
-    private IgnoreUrlsConfig ignoreUrlsConfig;
+    private IgnoreUrlsProperties ignoreUrlsProperties;
 
     PathMatcher pathMatcher;
 
@@ -55,7 +55,7 @@ public class AuthorizationManager implements ReactiveAuthorizationManager<Author
         URI uri = request.getURI();
         pathMatcher = new AntPathMatcher();
         // 白名单路径 或者 跨域预请求放行
-        List<String> ignoreUrls = ignoreUrlsConfig.getUrls();
+        List<String> ignoreUrls = ignoreUrlsProperties.getUrls();
         for (String ignoreUrl : ignoreUrls) {
             if (pathMatcher.match(ignoreUrl, uri.getPath()) || request.getMethod() == HttpMethod.OPTIONS) {
                 return Mono.just(allow());

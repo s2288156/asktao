@@ -28,7 +28,7 @@ import reactor.core.publisher.Mono;
 @EnableWebFluxSecurity
 public class ResourceServerConfig {
     private final AuthorizationManager authorizationManager;
-    private final IgnoreUrlsConfig ignoreUrlsConfig;
+    private final IgnoreUrlsProperties ignoreUrlsProperties;
     private final RestfulAccessDeniedHandler restfulAccessDeniedHandler;
     private final RestAuthenticationEntryPoint restAuthenticationEntryPoint;
 
@@ -43,7 +43,7 @@ public class ResourceServerConfig {
         // TODO: 2020/10/14 白名单路径，移除jwt请求头
 
         http.authorizeExchange()
-                .pathMatchers(ignoreUrlsConfig.getUrls().toArray(String[]::new)).permitAll()
+                .pathMatchers(ignoreUrlsProperties.getUrls().toArray(String[]::new)).permitAll()
                 .anyExchange()
                 .access(authorizationManager)
                 .and()
