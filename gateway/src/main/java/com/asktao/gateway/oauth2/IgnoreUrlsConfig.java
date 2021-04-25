@@ -1,4 +1,4 @@
-package com.asktao.gateway.config;
+package com.asktao.gateway.oauth2;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;

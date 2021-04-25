@@ -1,6 +1,6 @@
-package com.asktao.gateway.authorization;
+package com.asktao.gateway.oauth2.authorization;
 
-import com.asktao.gateway.config.IgnoreUrlsConfig;
+import com.asktao.gateway.oauth2.IgnoreUrlsConfig;
 import com.asktao.lib.constant.AuthConstant;
 import com.asktao.lib.domain.UserDto;
 import com.asktao.lib.util.JsonUtils;

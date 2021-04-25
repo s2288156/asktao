@@ -1,8 +1,8 @@
-package com.asktao.gateway.config;
+package com.asktao.gateway.oauth2;
 
-import com.asktao.gateway.authorization.AuthorizationManager;
-import com.asktao.gateway.component.RestAuthenticationEntryPoint;
-import com.asktao.gateway.component.RestfulAccessDeniedHandler;
+import com.asktao.gateway.oauth2.authorization.AuthorizationManager;
+import com.asktao.gateway.oauth2.component.RestAuthenticationEntryPoint;
+import com.asktao.gateway.oauth2.component.RestfulAccessDeniedHandler;
 import com.asktao.lib.constant.AuthConstant;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
