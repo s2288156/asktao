@@ -24,7 +24,6 @@ import javax.servlet.http.HttpServletRequest;
 @Slf4j
 @Service
 public class UserServiceImpl implements UserDetailsService {
-    @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
     @Autowired
     private HttpServletRequest request;
 
