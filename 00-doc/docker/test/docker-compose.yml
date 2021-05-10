@@ -1,0 +1,47 @@
+version: '3.1'
+
+services:
+
+  redis:
+    image: redis
+    restart: always
+    ports:
+      - 6379:6379
+    volumes:
+      - redis-data:/data # redis data
+      - redis-logs:/logs # redis log
+      - /home/wuyang/develop/docker/redis.conf:/usr/local/etc/redis/redis.conf # redis config
+
+  nacos:
+    image: nacos/nacos-server:1.4.1
+    container_name: nacos-standalone-mysql
+    env_file:
+      - /home/wuyang/develop/docker/nacos/env/nacos-standlone-mysql.env # 数据库参数配置
+    volumes:
+      - nacos-logs:/home/nacos/logs  # nacos日志输出
+      - /home/wuyang/develop/docker/nacos/init.d/custom.properties:/home/nacos/init.d/custom.properties # nacos自定义配置
+    ports:
+      - "8848:8848"
+      - "9555:9555"
+    depends_on:
+      - mysql
+    restart: always
+
+  mysql:
+    container_name: mysql
+    image: nacos/nacos-mysql:8.0.16
+    env_file:
+      - /home/wuyang/develop/docker/nacos/env/mysql.env # mysql env
+    volumes:
+      - mysql-data:/var/lib/mysql # mysql data
+    ports:
+      - "3306:3306"
+    restart: always
+
+volumes:
+  redis-data:
+  redis-conf:
+  redis-logs:
+  nacos-logs:
+  nacos-conf:
+  mysql-data:
