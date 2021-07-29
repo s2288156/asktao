@@ -1,7 +1,0 @@
-db_name: db_ums
-
-spring:
-  profiles:
-    active: dev
-  application:
-    name: ums

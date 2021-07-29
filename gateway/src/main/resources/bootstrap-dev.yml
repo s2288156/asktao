@@ -1,9 +1,0 @@
-server:
-  port: 8200
-spring:
-  cloud:
-    nacos:
-      discovery:
-        server-addr: http://node0.com:8848
-      config:
-        server-addr: http://node0.com:8848
