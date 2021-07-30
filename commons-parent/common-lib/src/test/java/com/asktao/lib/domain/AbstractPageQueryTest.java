@@ -11,6 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
  * @author wcy
  */
 class AbstractPageQueryTest {
+    protected static final String SEPARATOR = ",";
 
     @Test
     void splitSortTestCase() {
@@ -23,7 +24,7 @@ class AbstractPageQueryTest {
         String s2 = desc + f2;
         String s3 = aes + f3;
 
-        String sort = s1 + AbstractPageQuery.SEPARATOR + s2 + AbstractPageQuery.SEPARATOR + s3;
+        String sort = s1 + SEPARATOR + s2 + SEPARATOR + s3;
         TestPageQuery pageQuery = new TestPageQuery();
         pageQuery.setSort(sort);
 

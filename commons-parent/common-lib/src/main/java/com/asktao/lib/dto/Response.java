@@ -1,5 +1,7 @@
 package com.asktao.lib.dto;
 
+import com.asktao.lib.ex.ICode;
+
 /**
  * @author wuyang
  */
@@ -51,6 +53,14 @@ public class Response extends DTO{
         response.setSuccess(false);
         response.setErrCode(errCode);
         response.setErrMessage(errMessage);
+        return response;
+    }
+
+    public static Response buildFailure(ICode<String, String> errorCode) {
+        Response response = new Response();
+        response.setSuccess(false);
+        response.setErrCode(errorCode.code());
+        response.setErrMessage(errorCode.msg());
         return response;
     }
 
