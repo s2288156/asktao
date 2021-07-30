@@ -1,5 +1,6 @@
 package com.asktao.lib.domain;
 
+import com.asktao.lib.dto.AbstractPageQuery;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;

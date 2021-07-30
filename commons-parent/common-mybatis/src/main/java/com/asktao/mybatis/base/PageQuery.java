@@ -1,6 +1,6 @@
 package com.asktao.mybatis.base;
 
-import com.asktao.lib.domain.AbstractPageQuery;
+import com.asktao.lib.dto.AbstractPageQuery;
 import com.baomidou.mybatisplus.core.metadata.OrderItem;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import lombok.Data;

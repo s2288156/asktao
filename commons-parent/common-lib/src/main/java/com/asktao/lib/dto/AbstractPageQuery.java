@@ -1,6 +1,5 @@
-package com.asktao.lib.domain;
+package com.asktao.lib.dto;
 
-import com.asktao.lib.dto.Query;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.apache.commons.lang3.StringUtils;
