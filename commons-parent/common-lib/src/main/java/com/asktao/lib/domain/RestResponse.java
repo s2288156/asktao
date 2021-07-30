@@ -1,7 +1,7 @@
 package com.asktao.lib.domain;
 
+import com.asktao.lib.ex.CodeEnum;
 import com.asktao.lib.ex.ICode;
-import com.asktao.lib.ex.ResultCodeEnum;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -26,7 +26,7 @@ public class RestResponse<T> extends ReturnCodeMsg implements Serializable {
     }
 
     public boolean ok() {
-        return StringUtils.equals(ResultCodeEnum.SUCCESS.code(), getCode());
+        return StringUtils.equals(CodeEnum.SUCCESS.code(), getCode());
     }
 
     public boolean bad() {
@@ -34,11 +34,11 @@ public class RestResponse<T> extends ReturnCodeMsg implements Serializable {
     }
 
     public static <T> RestResponse<T> success() {
-        return build(ResultCodeEnum.SUCCESS, null);
+        return build(CodeEnum.SUCCESS, null);
     }
 
     public static <T> RestResponse<T> success(T data) {
-        return build(ResultCodeEnum.SUCCESS, data);
+        return build(CodeEnum.SUCCESS, data);
     }
 
     public static <T> RestResponse<T> failed(ICode<String, String> resultCode) {
@@ -46,7 +46,7 @@ public class RestResponse<T> extends ReturnCodeMsg implements Serializable {
     }
 
     public static <T> RestResponse<T> failed(String returnMsg) {
-        return new RestResponse<>(ResultCodeEnum.SYS_EXECUTE_ERROR.code(), returnMsg, null);
+        return new RestResponse<>(CodeEnum.SYS_EXECUTE_ERROR.code(), returnMsg, null);
     }
 
     public static <T> RestResponse<T> failed(String returnCode, String returnMsg) {
@@ -54,11 +54,11 @@ public class RestResponse<T> extends ReturnCodeMsg implements Serializable {
     }
 
     public static <T> RestResponse<T> unauthorized(T data) {
-        return build(ResultCodeEnum.UNAUTHORIZED, data);
+        return build(CodeEnum.UNAUTHORIZED, data);
     }
 
     public static <T> RestResponse<T> forbidden(T data) {
-        return build(ResultCodeEnum.FORBIDDEN, data);
+        return build(CodeEnum.FORBIDDEN, data);
     }
 
     private static <T> RestResponse<T> build(ICode<String, String> resultCode, T data) {

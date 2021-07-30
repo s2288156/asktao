@@ -2,7 +2,7 @@ package com.asktao.web.config;
 
 import com.asktao.lib.domain.RestResponse;
 import com.asktao.lib.ex.BizException;
-import com.asktao.lib.ex.ResultCodeEnum;
+import com.asktao.lib.ex.CodeEnum;
 import com.asktao.lib.ex.SysException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -39,7 +39,7 @@ public class ControllerExceptionHandler {
     @ExceptionHandler(AccessDeniedException.class)
     public ResponseEntity<?> handleAccessDeniedException(AccessDeniedException ex) {
         log.warn("[AccessDeniedException]: {}", ex.getMessage());
-        return ResponseEntity.status(HttpStatus.FORBIDDEN).body(RestResponse.failed(ResultCodeEnum.PERMISSION_ERROR));
+        return ResponseEntity.status(HttpStatus.FORBIDDEN).body(RestResponse.failed(CodeEnum.PERMISSION_ERROR));
     }
 
 
@@ -47,7 +47,7 @@ public class ControllerExceptionHandler {
     @ExceptionHandler(Exception.class)
     public ResponseEntity<?> handleException(Exception ex) {
         log.error("[UnknownException]: ", ex);
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(RestResponse.failed(ResultCodeEnum.SYS_EXECUTE_ERROR));
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(RestResponse.failed(CodeEnum.SYS_EXECUTE_ERROR));
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
@@ -55,13 +55,13 @@ public class ControllerExceptionHandler {
         BindingResult bindingResult = ex.getBindingResult();
         List<ObjectError> allErrors = bindingResult.getAllErrors();
         log.warn("校验异常字段filedName: {}", allErrors.get(0).getDefaultMessage());
-        return ResponseEntity.ok(RestResponse.failed(ResultCodeEnum.USER_ERROR.code(), allErrors.get(0).getDefaultMessage()));
+        return ResponseEntity.ok(RestResponse.failed(CodeEnum.USER_ERROR.code(), allErrors.get(0).getDefaultMessage()));
     }
 
     @ExceptionHandler(value = BindException.class)
     public ResponseEntity<?> bingEx(BindException e) {
         log.warn("校验异常字段filedName: {}", e.getFieldError().getField());
-        return ResponseEntity.ok(RestResponse.failed(ResultCodeEnum.USER_ERROR.code(),
+        return ResponseEntity.ok(RestResponse.failed(CodeEnum.USER_ERROR.code(),
                 e.getFieldError().getDefaultMessage()));
     }
 }
