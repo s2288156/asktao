@@ -9,18 +9,12 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>mall-application</artifactId>
+    <artifactId>mall-infrastructure</artifactId>
 
     <dependencies>
         <dependency>
             <groupId>com.asktao</groupId>
-            <artifactId>common-web</artifactId>
-            <version>1.0.0</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.asktao</groupId>
-            <artifactId>mall-infrastructure</artifactId>
+            <artifactId>common-mybatis</artifactId>
             <version>1.0.0</version>
         </dependency>
     </dependencies>

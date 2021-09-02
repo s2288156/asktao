@@ -1,5 +1,13 @@
 spring:
   application:
     name: mall
+  datasource:
+    url: jdbc:mysql://192.168.31.115:32222/db_test?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
+    username: root
+    password: 123123
+    hikari:
+      minimum-idle: 10
+      maximum-pool-size: 50
+      idle-timeout: 30000
 server:
   port: 18080

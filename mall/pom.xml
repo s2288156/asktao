@@ -13,6 +13,7 @@
         <module>mall-controller</module>
         <module>mall-application</module>
         <module>mall-start</module>
+        <module>mall-infrastructure</module>
     </modules>
 
     <artifactId>mall</artifactId>
