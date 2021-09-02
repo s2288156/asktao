@@ -14,7 +14,7 @@
     <dependencies>
         <dependency>
             <groupId>com.asktao</groupId>
-            <artifactId>common-web</artifactId>
+            <artifactId>mall-application</artifactId>
             <version>1.0.0</version>
         </dependency>
     </dependencies>

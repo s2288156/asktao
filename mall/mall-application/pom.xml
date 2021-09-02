@@ -3,18 +3,19 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>asktao</artifactId>
+        <artifactId>mall</artifactId>
         <groupId>com.asktao</groupId>
         <version>1.0.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <packaging>pom</packaging>
-    <modules>
-        <module>mall-controller</module>
-        <module>mall-application</module>
-        <module>mall-start</module>
-    </modules>
 
-    <artifactId>mall</artifactId>
+    <artifactId>mall-application</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.asktao</groupId>
+            <artifactId>common-web</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+    </dependencies>
 </project>
