@@ -1,10 +1,27 @@
+db_schema: db_mall
+db_user: root
+db_password: 123123
+
 spring:
   application:
     name: mall
+  cloud:
+    nacos:
+      config:
+        server-addr: asktao.com:8848
+        file-extension: yml
+        namespace: dev
+        extension-configs:
+          - data-id: mall.yml
+            group: mall
+            refresh: true
+          - data-id: mysql.yml
+            group: base
+            refresh: false
   datasource:
-    url: jdbc:mysql://192.168.31.115:32222/db_test?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
-    username: root
-    password: 123123
+    url: jdbc:mysql://asktao.com:3306/${db_schema}?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
+    username: ${db_user}
+    password: ${db_password}
     hikari:
       minimum-idle: 10
       maximum-pool-size: 50
