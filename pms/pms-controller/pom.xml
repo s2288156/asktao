@@ -11,4 +11,11 @@
 
     <artifactId>pms-controller</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.asktao</groupId>
+            <artifactId>pms-application</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+    </dependencies>
 </project>
