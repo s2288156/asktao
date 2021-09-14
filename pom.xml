@@ -9,6 +9,7 @@
         <module>gateway</module>
         <module>mall</module>
         <module>pms</module>
+        <module>oms</module>
     </modules>
 
     <groupId>com.asktao</groupId>
