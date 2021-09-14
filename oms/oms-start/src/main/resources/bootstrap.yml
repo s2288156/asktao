@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: oms
+  cloud:
+    nacos:
+      config:
+        server-addr: asktao.com:8848
+        file-extension: yml
+        namespace: dev
+        extension-configs:
+          - data-id: oms.yml
+            group: oms
+            refresh: true
+          - data-id: mysql.yml
+            group: base
+            refresh: false
+server:
+  port: 18020
