@@ -15,4 +15,9 @@ public class HelloController {
     public String say(String msg) {
         return "hello " + msg;
     }
+
+    @GetMapping("/ping")
+    public String ping() {
+        return "pong....";
+    }
 }

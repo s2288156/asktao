@@ -14,9 +14,12 @@ import java.util.Collection;
 @Slf4j
 @Component
 public class TokenService {
-    boolean canAccess(HttpServletRequest request, Authentication authentication) {
+    public boolean canAccess(HttpServletRequest request, Authentication authentication) {
+        // TODO: 2021/9/14 暂不实现ROLE相关鉴权逻辑
         Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
-        log.warn("{}", authorities);
+        if (log.isDebugEnabled()) {
+            log.warn("{}", authorities);
+        }
         return true;
     }
 }

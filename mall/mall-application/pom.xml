@@ -14,12 +14,6 @@
     <dependencies>
         <dependency>
             <groupId>com.asktao</groupId>
-            <artifactId>common-web</artifactId>
-            <version>1.0.0</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.asktao</groupId>
             <artifactId>mall-infrastructure</artifactId>
             <version>1.0.0</version>
         </dependency>
