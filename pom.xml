@@ -8,6 +8,7 @@
         <module>commons-parent</module>
         <module>gateway</module>
         <module>mall</module>
+        <module>pms</module>
     </modules>
 
     <groupId>com.asktao</groupId>
