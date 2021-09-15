@@ -12,7 +12,7 @@ import java.text.SimpleDateFormat
  *   PROJECT     project
  *   FILES       files helper
  */
-packageName = "com.asktao.auth.infrastructure.dataobject;"  //这里要换成自己项目 实体的包路径
+packageName = "com.asktao.mall.infrastructure.dataobject;"  //这里要换成自己项目 实体的包路径
 typeMapping = [
         (~/(?i)int/)                      : "Integer",  //数据库类型和Jave类型映射关系
         (~/(?i)float|double|real/): "Double",
@@ -53,7 +53,7 @@ def generate(out, table, className, fields) {
             out.println "import org.joda.money.Money;"
             out.println "import com.baomidou.mybatisplus.annotation.TableField;"
             out.println "import com.baomidou.mybatisplus.annotation.TableName;"
-            out.println "import com.zyzh.upp.core.MoneyTypeHandler;"
+            out.println "import com.asktao.mybatis.handler.MoneyTypeHandler;"
             break
         }
     }
