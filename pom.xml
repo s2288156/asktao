@@ -26,6 +26,7 @@
         <spring-cloud-alibaba.version>2021.1</spring-cloud-alibaba.version>
         <mybatis-plus.version>3.4.3</mybatis-plus.version>
         <nimbus-jsse-jwt.version>8.19</nimbus-jsse-jwt.version>
+        <joda-money.version>1.0.1</joda-money.version>
     </properties>
 
     <dependencies>
@@ -79,6 +80,12 @@
                 <groupId>com.nimbusds</groupId>
                 <artifactId>nimbus-jose-jwt</artifactId>
                 <version>${nimbus-jsse-jwt.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.joda</groupId>
+                <artifactId>joda-money</artifactId>
+                <version>${joda-money.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
