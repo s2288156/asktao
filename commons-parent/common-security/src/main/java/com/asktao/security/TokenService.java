@@ -18,7 +18,7 @@ public class TokenService {
         // TODO: 2021/9/14 暂不实现ROLE相关鉴权逻辑
         Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
         if (log.isDebugEnabled()) {
-            log.warn("{}", authorities);
+            log.debug("{}", authorities);
         }
         return true;
     }

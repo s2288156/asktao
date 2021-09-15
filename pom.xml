@@ -25,6 +25,7 @@
         <spring-cloud.version>2020.0.3</spring-cloud.version>
         <spring-cloud-alibaba.version>2021.1</spring-cloud-alibaba.version>
         <mybatis-plus.version>3.4.3</mybatis-plus.version>
+        <nimbus-jsse-jwt.version>8.19</nimbus-jsse-jwt.version>
     </properties>
 
     <dependencies>
@@ -72,6 +73,12 @@
                 <groupId>com.baomidou</groupId>
                 <artifactId>mybatis-plus-boot-starter</artifactId>
                 <version>${mybatis-plus.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.nimbusds</groupId>
+                <artifactId>nimbus-jose-jwt</artifactId>
+                <version>${nimbus-jsse-jwt.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
