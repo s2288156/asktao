@@ -5,7 +5,7 @@ import com.asktao.security.dto.SecurityUser;
 /**
  * @author wuyang
  */
-public interface ISecurityUserService {
+public interface IUserSecurityGateway {
 
     SecurityUser selectUserByUsername(String username);
 }
