@@ -3,6 +3,8 @@ spring:
     name: mall
   cloud:
     nacos:
+      discovery:
+        server-addr: asktao.com:8848
       config:
         server-addr: asktao.com:8848
         file-extension: yml
