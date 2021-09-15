@@ -1,4 +1,4 @@
-package com.asktao.lib.dto;
+package com.asktao.security.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;

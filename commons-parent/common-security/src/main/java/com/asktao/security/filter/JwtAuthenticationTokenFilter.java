@@ -1,6 +1,6 @@
 package com.asktao.security.filter;
 
-import com.asktao.lib.dto.JwtPayload;
+import com.asktao.security.dto.JwtPayload;
 import com.asktao.security.TokenService;
 import com.asktao.security.dto.SecurityUser;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,9 +1,8 @@
 package com.asktao.security;
 
-import com.asktao.lib.dto.JwtPayload;
+import com.asktao.security.dto.JwtPayload;
 import com.asktao.lib.ex.BizException;
 import com.asktao.lib.ex.CodeEnum;
-import com.asktao.lib.ex.SysException;
 import com.asktao.lib.util.JsonUtils;
 import com.nimbusds.jose.JOSEException;
 import com.nimbusds.jose.JWSObject;
