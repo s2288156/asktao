@@ -4,10 +4,11 @@ import com.asktao.security.dto.JwtPayload;
 import com.asktao.lib.ex.BizException;
 import com.asktao.lib.ex.CodeEnum;
 import com.asktao.lib.util.JsonUtils;
-import com.nimbusds.jose.JOSEException;
-import com.nimbusds.jose.JWSObject;
+import com.nimbusds.jose.*;
+import com.nimbusds.jose.crypto.RSASSASigner;
 import com.nimbusds.jose.crypto.RSASSAVerifier;
 import com.nimbusds.jose.jwk.RSAKey;
+import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,19 @@ public class TokenService {
 
     @Autowired
     private RSAKey rsaKey;
+
+    @SneakyThrows
+    public String sign(JwtPayload jwtPayload) {
+        String payloadJson = JsonUtils.toJson(jwtPayload);
+        JWSHeader jwsHeader = new JWSHeader.Builder(JWSAlgorithm.RS256)
+                .type(JOSEObjectType.JWT)
+                .build();
+        Payload payload = new Payload(StringUtils.defaultString(payloadJson, "{}"));
+        JWSSigner signer = new RSASSASigner(rsaKey);
+        JWSObject jwsObject = new JWSObject(jwsHeader, payload);
+        jwsObject.sign(signer);
+        return jwsObject.serialize();
+    }
 
     public boolean canAccess(HttpServletRequest request, Authentication authentication) {
         // TODO: 2021/9/14 暂不实现ROLE相关鉴权逻辑

@@ -3,6 +3,8 @@ package com.asktao.security.dto;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
 import java.util.Set;
 
 /**
@@ -40,4 +42,12 @@ public class JwtPayload {
      * 姓名
      **/
     private String name;
+
+    public JwtPayload() {
+        init();
+    }
+
+    private void init() {
+        setExp(LocalDateTime.now().plusDays(30).toEpochSecond(ZoneOffset.of("+8")));
+    }
 }

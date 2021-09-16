@@ -23,9 +23,7 @@ public class UserSecurityGateway implements IUserSecurityGateway {
     @Override
     public SecurityUser selectUserByUsername(String username) {
         Optional<UserDO> userOptional = userMapper.selectByUsername(username);
-        if (userOptional.isEmpty()) {
-            throw new BizException(CodeEnum.USER_NOT_EXISTS);
-        }
-        return null;
+        UserDO userDO = userOptional.orElseThrow(() -> new BizException(CodeEnum.USER_NOT_EXISTS));
+        return new SecurityUser(userDO.getUsername(), userDO.getPassword());
     }
 }
