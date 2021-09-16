@@ -1,6 +1,7 @@
 package com.asktao.mall.service.impl;
 
 import com.asktao.mall.dto.cmd.UserLoginCmd;
+import com.asktao.mall.dto.cmd.UserRegisterCmd;
 import com.asktao.mall.dto.vo.UserLoginVo;
 import com.asktao.mall.execute.cmd.UserLoginExe;
 import com.asktao.mall.service.IUserService;
@@ -19,5 +20,10 @@ public class UserServiceImpl implements IUserService {
     @Override
     public UserLoginVo login(UserLoginCmd userLoginCmd) {
         return userLoginExe.execute(userLoginCmd);
+    }
+
+    @Override
+    public void register(UserRegisterCmd userRegisterCmd) {
+
     }
 }

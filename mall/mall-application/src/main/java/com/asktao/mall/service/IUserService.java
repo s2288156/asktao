@@ -1,6 +1,7 @@
 package com.asktao.mall.service;
 
 import com.asktao.mall.dto.cmd.UserLoginCmd;
+import com.asktao.mall.dto.cmd.UserRegisterCmd;
 import com.asktao.mall.dto.vo.UserLoginVo;
 
 /**
@@ -10,4 +11,5 @@ public interface IUserService {
 
     UserLoginVo login(UserLoginCmd userLoginCmd);
 
+    void register(UserRegisterCmd userRegisterCmd);
 }

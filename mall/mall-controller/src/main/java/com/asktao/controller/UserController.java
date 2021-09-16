@@ -2,6 +2,7 @@ package com.asktao.controller;
 
 import com.asktao.lib.dto.SingleResponse;
 import com.asktao.mall.dto.cmd.UserLoginCmd;
+import com.asktao.mall.dto.cmd.UserRegisterCmd;
 import com.asktao.mall.dto.vo.UserLoginVo;
 import com.asktao.mall.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,5 +24,10 @@ public class UserController {
     @PostMapping("/login")
     public SingleResponse<UserLoginVo> login(@Validated UserLoginCmd userLoginCmd) {
         return SingleResponse.of(userService.login(userLoginCmd));
+    }
+
+    @PostMapping("/register")
+    public SingleResponse<?> register(@Validated UserRegisterCmd userRegisterCmd) {
+        return SingleResponse.buildSuccess();
     }
 }

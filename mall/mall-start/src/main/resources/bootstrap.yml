@@ -16,5 +16,10 @@ spring:
           - data-id: mysql.yml
             group: base
             refresh: false
+          - data-id: common.yml
+            group: base
+            refresh: false
+  jackson:
+    default-property-inclusion: non_null
 server:
   port: 18000
