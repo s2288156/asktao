@@ -4,7 +4,7 @@ CREATE TABLE `t_user`
     `create_time` timestamp   NOT NULL DEFAULT CURRENT_TIMESTAMP,
     `update_time` timestamp   NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     `username`    varchar(32) NULL,
-    `password`    varchar(255) NULL,
+    `password`    varchar(64) NULL,
     `name`        varchar(32) NULL,
     `sex`         varchar(8) NULL COMMENT '男 - MALE; 女 - FEMALE',
     `mobile`      varchar(11) NULL COMMENT '手机号',

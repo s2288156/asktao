@@ -28,6 +28,7 @@ public class UserController {
 
     @PostMapping("/register")
     public SingleResponse<?> register(@Validated UserRegisterCmd userRegisterCmd) {
+        userService.register(userRegisterCmd);
         return SingleResponse.buildSuccess();
     }
 }

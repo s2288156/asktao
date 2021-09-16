@@ -4,6 +4,7 @@ import com.asktao.mall.dto.cmd.UserLoginCmd;
 import com.asktao.mall.dto.cmd.UserRegisterCmd;
 import com.asktao.mall.dto.vo.UserLoginVo;
 import com.asktao.mall.execute.cmd.UserLoginExe;
+import com.asktao.mall.execute.cmd.UserRegisterExe;
 import com.asktao.mall.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,6 +18,9 @@ public class UserServiceImpl implements IUserService {
     @Autowired
     private UserLoginExe userLoginExe;
 
+    @Autowired
+    private UserRegisterExe userRegisterExe;
+
     @Override
     public UserLoginVo login(UserLoginCmd userLoginCmd) {
         return userLoginExe.execute(userLoginCmd);
@@ -24,6 +28,6 @@ public class UserServiceImpl implements IUserService {
 
     @Override
     public void register(UserRegisterCmd userRegisterCmd) {
-
+        userRegisterExe.execute(userRegisterCmd);
     }
 }
