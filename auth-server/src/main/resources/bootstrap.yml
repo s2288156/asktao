@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: auth
+  cloud:
+    nacos:
+      discovery:
+        server-addr: asktao.com:8848
+      config:
+        server-addr: asktao.com:8848
+        file-extension: yml
+        namespace: dev
+        extension-configs:
+          - data-id: auth.yml
+            group: auth
+            refresh: true
+          - data-id: mysql.yml
+            group: base
+            refresh: false
+          - data-id: common.yml
+            group: base
+            refresh: false
+  jackson:
+    default-property-inclusion: non_null
+server:
+  port: 18030

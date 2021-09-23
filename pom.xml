@@ -10,6 +10,7 @@
         <module>mall</module>
         <module>pms</module>
         <module>oms</module>
+        <module>auth-server</module>
     </modules>
 
     <groupId>com.asktao</groupId>
