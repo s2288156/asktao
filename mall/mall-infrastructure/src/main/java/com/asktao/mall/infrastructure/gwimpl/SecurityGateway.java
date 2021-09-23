@@ -5,7 +5,7 @@ import com.asktao.lib.ex.CodeEnum;
 import com.asktao.mall.infrastructure.dataobject.UserDO;
 import com.asktao.mall.infrastructure.mapper.UserMapper;
 import com.asktao.security.dto.SecurityUser;
-import com.asktao.security.service.IUserSecurityGateway;
+import com.asktao.security.service.ISecurityGateway;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -15,7 +15,7 @@ import java.util.Optional;
  * @author wuyang
  */
 @Component
-public class UserSecurityGateway implements IUserSecurityGateway {
+public class SecurityGateway implements ISecurityGateway {
 
     @Autowired
     private UserMapper userMapper;

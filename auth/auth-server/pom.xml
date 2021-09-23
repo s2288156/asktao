@@ -20,7 +20,7 @@
 
         <dependency>
             <groupId>com.asktao</groupId>
-            <artifactId>common-web</artifactId>
+            <artifactId>common-security</artifactId>
             <version>1.0.0</version>
         </dependency>
 
