@@ -21,5 +21,11 @@ spring:
             - Path=/mall/**
           filters:
             - StripPrefix=1
+        - id: auth
+          uri: lb://auth
+          predicates:
+            - Path=/auth/**
+          filters:
+            - StripPrefix=1
 server:
   port: 8000
